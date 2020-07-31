@@ -44,7 +44,7 @@ class UNMSControl(object):
         
         #Instantiate the request system
     
-        REQ = RestRequest(self.url)
+        #REQ = RestRequest(self.url)
         
             
     def Login(self):
@@ -59,11 +59,24 @@ class UNMSControl(object):
   
         return data
 
- 
+    def Logout(self,):
+        """
+        at the end of the session log out
+        """
+        
+        json_dict={'username':self.user,'password':self.password,'mobilePlatform':'ios','sessionTimeout':'0'}
+        action = '/user/logout'
+        
+        data = self.SessionPost(action,json_dict, auth_token = self.auth_token)
+
+        self.ME.Logging(self.program_name,data['message'])
+        
+        return data
+  
     
     
     
-    def SessionPost(self,action,json_dict,content_type = None,auth_token = None):    
+    def SessionPost(self,action,json_dict=None,content_type = None,auth_token = None):    
         """
         interface to the request system, specifially the post
         """
@@ -79,8 +92,9 @@ class UNMSControl(object):
 
         self.headers = content_type
 
-        if auth_token:
+        if (auth_token != None):
             self.headers['x-auth-token'] = auth_token
+        
 
 
         
@@ -232,6 +246,7 @@ if __name__ == '__main__':
     MyC.GetArguments()
     MyC.Initialize()
     MyC.Login()
+    MyC.Logout()
     #MyC.FirstTest()
     #MyC.TestConnection()
     #MyC.FetchUser()
