@@ -54,7 +54,7 @@ class UNMSControl(object):
         json_dict={'username':self.user,'password':self.password,'mobilePlatform':'ios','sessionTimeout':'0'}
         action = '/user/login'
         
-        data = self.SessionPost(action,json_dict)
+        data = self.SessionPost('POST',action,json_dict)
         self.auth_token =data['x-auth-token'] 
   
         return data
@@ -67,7 +67,7 @@ class UNMSControl(object):
         json_dict={'username':self.user,'password':self.password,'mobilePlatform':'ios','sessionTimeout':'0'}
         action = '/user/logout'
         
-        data = self.SessionPost(action,json_dict, auth_token = self.auth_token)
+        data = self.SessionPost('POST',action,json_dict, auth_token = self.auth_token)
 
         self.ME.Logging(self.program_name,data['message'])
         
@@ -76,7 +76,7 @@ class UNMSControl(object):
     
     
     
-    def SessionPost(self,action,json_dict=None,content_type = None,auth_token = None):    
+    def SessionPost(self,verb,action,json_dict=None,content_type = None,auth_token = None):    
         """
         interface to the request system, specifially the post
         """
@@ -103,7 +103,7 @@ class UNMSControl(object):
         
         try:
             #response = self.session.post(api,data = json_dump)
-            response = self.session.request('POST',api,headers=self.headers,data = json_dump)
+            response = self.session.request(verb,api,headers=self.headers,data = json_dump)
         except:
             message = " Problem with connecting to {0}".format(self.Host)
                        
