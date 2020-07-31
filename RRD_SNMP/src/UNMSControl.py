@@ -73,12 +73,127 @@ class UNMSControl(object):
         
         return data
   
+    def GetUser(self):
+        """
+        Info about current user
+        """
+        
+        #json_dict={'username':self.user,'password':self.password,'mobilePlatform':'ios','sessionTimeout':'0'}
+        action = '/user'
+        
+        data = self.SessionPost('GET',action, auth_token = self.auth_token)
+
+        #for x, y in data.items():
+        #    print(x, y)
+        print('username : ',data['username'])
+        print('email : ',data['email'])
+
+       
+        return data
+
+    def GetSiteID(self):
+        """ retunrs the site id given the site name
+        The sitename comes from command line arguments
+        """
+        
+        if(self.sitename == None):
+            self.ME.Logging(self.program_name,'You need to provide a sitename inorder to get the SiteID')
+            sys.exit(0)
+            
+        action = '/sites/search'
+        
+        # make the query string
+        q_string = '?query='+self.sitename+'&count=100&page=1'
+                
+        
+        data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
+        
+        
+        #for k in range(len(data)):
+        #    print(data[0]['identification'])
+        
+        #print(data)
+        self.siteID = data[0]['identification']['id']
+        self.siteParentID = data[0]['identification']['parent']
+        print("the SiteID for ",self.sitename,'  is ',data[0]['identification']['id'])
+        print(" \n\n\n***********The information for the parent is :*********")
+        
+        
+        for x,y in data[0]['identification']['parent'].items():
+            print(x,y)
+        #print(data[0]['identification']['id'])
+        #self.PrintDict(data[0]['identification'])
+        #self.PrintDict(data[0]['identification']['parent'])
+        
+        return data
+
+
+    def GetSiteDetails(self):
+        """
+        Prints out details of a site.
+        You need the siteid, which reuires to run GetSiteID first
+        """
+        
+        if(self.siteID == None):
+            self.ME.Logging(self.program_name,'No siteid found, probably need to run GetSiteID first')
+            sys.exit(0)
+        
+        action = '/sites/'
+        
+        # make the query string
+        q_string = self.siteID
+                
+        
+        data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
+        
+        print(data)
+        
+        self.PrintDict(data['identification'])
+        self.PrintDict(data['identification']['parent'])
+        self.PrintDict(data['description'])
+        
+        return data
+            
+    def GetSiteStatistic(self):
+        """
+        Returns traffic statistic bewteen siteID and parent
+        The result is in two lists of dictionaries each {x=time,y=rate)
+        self.upload and sel.download
+        
+        """
+        if(self.timeinterval == None):
+            self.ME.Logging(self.program_name,'No No Timeinterval found for statistics')
+            sys.exit(0)
+        action = '/sites/'
+ 
+        q_string = self.siteID+'/statistics?interval='+self.timeinterval+'&siri=false'
+
+        data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
+        
+        self.download = data['download']
+        self.upload = data['upload']
+          #for k in range(len(data['download'])):
+            #print(data['download'][k]['x'])
+            #print(data['download'][k]['y'])
+        
+        
+
+        #self.PrintDict(data['download'])
+        
+
+        
     
     
+    def PrintDict(self, dict):
+        """ prints dictionary """
+        
+        for x, y in dict.items():
+            print(x, y)
+
     
     def SessionPost(self,verb,action,json_dict=None,content_type = None,auth_token = None):    
         """
-        interface to the request system, specifially the post
+        interface to the request system, this is the heart of everything.
         """
         
         #convert dict into json format
@@ -193,6 +308,9 @@ class UNMSControl(object):
         parser.add_argument("-p","--password",help = "Password" )
         parser.add_argument("-u","--user",default='admin',help = "User name" )
         parser.add_argument("-H","--Host",help = "IP address" )
+        parser.add_argument("-S","--SiteName",help = "name of the site to look for" )
+
+        parser.add_argument("-T","--TimeInterval",help = "time interval for statistics, hour,day,month" )
 
         #parser.add_argument("-ip","--ip=ARG",help = "Attempt to bind to the specified IP address when connecting to servers" )
         
@@ -223,10 +341,23 @@ class UNMSControl(object):
             
         if(args.Host != None):
             self.Host=args.Host
+
         else:
             self.ME.Logging(self.program_name,message = 'You need to provide a Host')
             sys.exit(0)
+        
+
+        
+        if(args.SiteName != None):
+            self.sitename=args.SiteName
  
+        if(args.TimeInterval != None):
+            self.timeinterval=args.TimeInterval
+        else:
+            self.timeinterval = None
+
+
+        
         self.user=args.user
 
 
@@ -246,6 +377,10 @@ if __name__ == '__main__':
     MyC.GetArguments()
     MyC.Initialize()
     MyC.Login()
+    MyC.GetUser()
+    MyC.GetSiteID()
+    MyC.GetSiteDetails()
+    MyC.GetSiteStatistic()
     MyC.Logout()
     #MyC.FirstTest()
     #MyC.TestConnection()
