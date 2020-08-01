@@ -201,7 +201,7 @@ class UNMSControl(object):
         
         q_string='/aircubes/self.airCubeID'
             
-        self.PrintDict(data[0])   
+        self.PrintDict1(data[0])   
         
         return data
     
@@ -223,7 +223,23 @@ class UNMSControl(object):
                 print(p_info)
 
 
-    
+    def PrintDict1(self, dict):
+        """ prints dictionary """
+        
+        test = json.dumps(dict)
+        for p_id, p_info in dict.items():
+            print( '\n\n ******************  ',p_id,' *************************** \n')
+            
+            if not p_info is None and isinstance(p_info,type(dict)): 
+            
+                for key in p_info:
+
+                    print(key + ':', p_info[key])
+            else:
+                print(p_info)
+            
+        #print(dict)
+   
 
     
     
