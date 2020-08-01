@@ -119,11 +119,9 @@ class UNMSControl(object):
         print(" \n\n\n***********The information for the parent is :*********")
         
         
+        
         for x,y in data[0]['identification']['parent'].items():
             print(x,y)
-        #print(data[0]['identification']['id'])
-        #self.PrintDict(data[0]['identification'])
-        #self.PrintDict(data[0]['identification']['parent'])
         
         return data
 
@@ -147,11 +145,11 @@ class UNMSControl(object):
         data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
         
         print(data)
-        
-        self.PrintDict(data['identification'])
-        self.PrintDict(data['identification']['parent'])
-        self.PrintDict(data['description'])
-        
+        print(type(data))
+        #self.PrintDict(data['identification'])
+        #self.PrintDict(data['identification']['parent'])
+        #self.PrintDict(data['description'])
+        #self.PrintDict(data['identification'])
         return data
             
     def GetSiteStatistic(self):
@@ -181,15 +179,53 @@ class UNMSControl(object):
         #self.PrintDict(data['download'])
         
 
+    def GetAircubeDetail(self):
+        """ if there is an aircube we can get details of it
+        """
+        #first we determine if there is an aircube
         
+        action = '/devices'
+        
+        #First we determine if there is an aircube
+        
+        q_string = '?siteId='+self.siteID+'&withInterfaces=false&authorized=true&type=airCube'
+        data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
+        try:
+            self.aircubeID = data[0]['identification']['id']
+           
+        except:
+            self.ME.Logging(self.program_name,'No aircube found')
+            return 
+        
+        #Now that we found an aircube lets get the detaisl of this puppy
+        
+        q_string='/aircubes/self.airCubeID'
+            
+        self.PrintDict(data[0])   
+        
+        return data
+    
     
     
     def PrintDict(self, dict):
         """ prints dictionary """
         
-        for x, y in dict.items():
-            print(x, y)
+        test = json.dumps(dict)
+        
+        for p_id, p_info in dict.items():
+            print( '\n\n ******************  ',p_id,' *************************** \n')
+            
+            
+            try:
+                for key in p_info:
+                    print(key + ':', p_info[key])
+            except:
+                print(p_info)
 
+
+    
+
+    
     
     def SessionPost(self,verb,action,json_dict=None,content_type = None,auth_token = None):    
         """
@@ -381,6 +417,7 @@ if __name__ == '__main__':
     MyC.GetSiteID()
     MyC.GetSiteDetails()
     MyC.GetSiteStatistic()
+    MyC.GetAircubeDetail()
     MyC.Logout()
     #MyC.FirstTest()
     #MyC.TestConnection()
