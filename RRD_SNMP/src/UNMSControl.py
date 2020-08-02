@@ -14,6 +14,10 @@ import argparse as argp
 import textwrap
 import os
 from Request import RestRequest
+import urllib3
+
+
+
 
 class UNMSControl(object):
     '''
@@ -28,8 +32,10 @@ class UNMSControl(object):
         self.session = requests.Session()
         self.ME=MyError()
         self.program_name = os.path.basename(__file__)
- 
         
+        
+        # to suppress the insecure request warnings
+        urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
         
         
     def Initialize(self):
