@@ -210,7 +210,34 @@ class UNMSControl(object):
         return data
     
     
-    
+    def GetAirmaxDetail(self):
+        """ if there is an aircube we can get details of it
+        """
+        #first we determine if there is an aircube
+        
+        action = '/devices'
+        
+        #First we determine if there is an aircube
+        
+        q_string = '?siteId='+self.siteID+'&withInterfaces=false&authorized=true&type=airMax'
+        data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
+        try:
+            self.airmaxID = data[0]['identification']['id']
+           
+        except:
+            self.ME.Logging(self.program_name,'No airmax found')
+            return 
+        
+        #Now that we found an aircube lets get the detaisl of this puppy
+        
+        q_string='/airmaxes/self.airMaxID'
+            
+        if self.debug == 1:
+            self.PrintDict1(data[0])
+   
+        
+        return data
+   
  
 
     def PrintDict1(self, dict):
@@ -431,6 +458,7 @@ if __name__ == '__main__':
     MyC.GetSiteDetails()
     MyC.GetSiteStatistic()
     MyC.GetAircubeDetail()
+    MyC.GetAirmaxDetail()
     MyC.Logout()
     #MyC.FirstTest()
     #MyC.TestConnection()
