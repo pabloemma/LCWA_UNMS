@@ -119,9 +119,8 @@ class UNMSControl(object):
         print(" \n\n\n***********The information for the parent is :*********")
         
         
-        
-        for x,y in data[0]['identification']['parent'].items():
-            print(x,y)
+        if self.debug == 1:
+            self.PrintDict1(data[0])
         
         return data
 
@@ -144,12 +143,9 @@ class UNMSControl(object):
         
         data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
         
-        print(data)
-        print(type(data))
-        #self.PrintDict(data['identification'])
-        #self.PrintDict(data['identification']['parent'])
-        #self.PrintDict(data['description'])
-        #self.PrintDict(data['identification'])
+        if self.debug == 1:
+            self.PrintDict1(data)
+
         return data
             
     def GetSiteStatistic(self):
@@ -201,27 +197,15 @@ class UNMSControl(object):
         
         q_string='/aircubes/self.airCubeID'
             
-        self.PrintDict1(data[0])   
+        if self.debug == 1:
+            self.PrintDict1(data[0])
+   
         
         return data
     
     
     
-    def PrintDict(self, dict):
-        """ prints dictionary """
-        
-        test = json.dumps(dict)
-        
-        for p_id, p_info in dict.items():
-            print( '\n\n ******************  ',p_id,' *************************** \n')
-            
-            
-            try:
-                for key in p_info:
-                    print(key + ':', p_info[key])
-            except:
-                print(p_info)
-
+ 
 
     def PrintDict1(self, dict):
         """ prints dictionary """
@@ -363,6 +347,7 @@ class UNMSControl(object):
         parser.add_argument("-S","--SiteName",help = "name of the site to look for" )
 
         parser.add_argument("-T","--TimeInterval",help = "time interval for statistics, hour,day,month" )
+        parser.add_argument("-d","--debug",help = "debug switch, 0: no debug, 1: print out results of different queries" )
 
         #parser.add_argument("-ip","--ip=ARG",help = "Attempt to bind to the specified IP address when connecting to servers" )
         
@@ -407,6 +392,12 @@ class UNMSControl(object):
             self.timeinterval=args.TimeInterval
         else:
             self.timeinterval = None
+
+        # debug level
+        if(args.debug != None):
+            self.debug=args.args.debug
+        else:
+            self.debug = 0      # is also logical False
 
 
         
