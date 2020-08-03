@@ -9,12 +9,14 @@ import json
 import requests
 import sys
 from MyError  import MyError 
+from PlotUNMS  import PlotUNMS
 import platform
 import argparse as argp
 import textwrap
 import os
 from Request import RestRequest
 import urllib3
+import numpy as np
 
 
 
@@ -32,6 +34,9 @@ class UNMSControl(object):
         self.session = requests.Session()
         self.ME=MyError()
         self.program_name = os.path.basename(__file__)
+        
+        self.PA = PlotUNMS()
+        
         
         
         # to suppress the insecure request warnings
@@ -174,9 +179,25 @@ class UNMSControl(object):
         
         self.download = data['download']
         self.upload = data['upload']
-          #for k in range(len(data['download'])):
-            #print(data['download'][k]['x'])
-            #print(data['download'][k]['y'])
+        
+        # determine length of array
+        l_array = len(data['download'])
+
+        self.dl_array = np.zeros(l_array,dtype=int) # download data
+        self.ul_array =  np.zeros(l_array,dtype=int)#upload data
+        self.time_array = np.zeros(l_array,dtype=int) #Unix time stamp
+        
+        for k in range(len(data['download'])):
+            if data['download'][k]['y'] != None:
+                self.dl_array.fill(data['download'][k]['y'])
+                self.ul_array.fill(data['upload'][k]['y'])
+                self.time_array.fill(data['download'][k]['x'])
+        
+        print('debug',self.debug)      
+        if(self.debug == 2):
+            for k in range(len(data['download'])):
+                print(data['download'][k]['x'],data['download'][k]['y'])
+                print(data['upload'][k]['x'],data['upload'][k]['y'])
         
         
 
@@ -240,7 +261,11 @@ class UNMSControl(object):
         
         return data
    
- 
+    def PlotData(self):
+        """
+        Plot all the data
+        """
+        self.PA.PlotData(self.time_array,self.ul_array,self.dl_array)
 
     def PrintDict1(self, dict):
         """ prints dictionary """
@@ -382,7 +407,7 @@ class UNMSControl(object):
         parser.add_argument("-S","--SiteName",help = "name of the site to look for" )
 
         parser.add_argument("-T","--TimeInterval",help = "time interval for statistics, hour,day,month" )
-        parser.add_argument("-d","--debug",help = "debug switch, 0: no debug, 1: print out results of different queries" )
+        parser.add_argument("-d","--debug",help = "debug switch, 0: no debug, 1: print out results of different queries 2: lots of info" )
 
         #store_true prohibits input
         parser.add_argument("-V","--Version",action="store_true", help = "Prints out version number" )
@@ -433,7 +458,7 @@ class UNMSControl(object):
 
         # debug level
         if(args.debug != None):
-            self.debug=args.args.debug
+            self.debug=int(args.debug)
         else:
             self.debug = 0      # is also logical False
 
@@ -456,9 +481,11 @@ class UNMSControl(object):
         """ deals with version"""
         
         
-        self.version = '1.0.0'
+        self.version = '2.0.0'
         
         print('################ version : ',self.version,'  #######################')
+        print('version 1.0.0 : base version with limited functionality')
+        print('version 2.0.0 : base version with limited functionality and plots')
             
 if __name__ == '__main__':
     MyC =UNMSControl()
@@ -469,6 +496,7 @@ if __name__ == '__main__':
     MyC.GetSiteID()
     MyC.GetSiteDetails()
     MyC.GetSiteStatistic()
+    MyC.PlotData()
     MyC.GetAircubeDetail()
     MyC.GetAirmaxDetail()
     MyC.Logout()
