@@ -36,6 +36,8 @@ class UNMSControl(object):
         
         # to suppress the insecure request warnings
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+      
+        
         
         
     def Initialize(self):
@@ -382,6 +384,9 @@ class UNMSControl(object):
         parser.add_argument("-T","--TimeInterval",help = "time interval for statistics, hour,day,month" )
         parser.add_argument("-d","--debug",help = "debug switch, 0: no debug, 1: print out results of different queries" )
 
+        #store_true prohibits input
+        parser.add_argument("-V","--Version",action="store_true", help = "Prints out version number" )
+
         #parser.add_argument("-ip","--ip=ARG",help = "Attempt to bind to the specified IP address when connecting to servers" )
         
         
@@ -432,7 +437,8 @@ class UNMSControl(object):
         else:
             self.debug = 0      # is also logical False
 
-
+        if(args.Version != None):
+            self.PrintVersion()
         
         self.user=args.user
 
@@ -446,7 +452,13 @@ class UNMSControl(object):
         #    print(x, y)
         #print(message.raw)
         #print(message.request)
+    def PrintVersion(self):
+        """ deals with version"""
         
+        
+        self.version = '1.0.0'
+        
+        print('################ version : ',self.version,'  #######################')
             
 if __name__ == '__main__':
     MyC =UNMSControl()
