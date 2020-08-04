@@ -29,6 +29,11 @@ class PlotUNMS(object):
         np.set_printoptions(precision=2)
         fig=plt.figure() 
         ax=fig.add_subplot(1,1,1)
+        bbox=(0.03,.03,1.,0.25)
+        
+        #to make room for the xaxis label
+        #plt.tight_layout()
+        plt.gcf().subplots_adjust(bottom=0.25)
         
         #convert to matplotlib time
         
@@ -48,14 +53,14 @@ class PlotUNMS(object):
         #ax.text(.1,.36,'Average $\mu$ and Standard deviation $\sigma$',weight='bold',transform=ax.transAxes,fontsize=13)
         #ax.text(.1,.23,r'$\mu_{up}     = $'+str(np.around(np.mean(y2),2))+' '+'[Mb/s]'+r'   $\sigma_{up} =     $'+str(np.around(np.std(y2),2)),transform=ax.transAxes,fontsize=12)
         #ax.text(.1,.3,r'$\mu_{down} = $'+str(np.around(np.mean(y1),2))+' '+'[Mb/s]'+r'   $\sigma_{down} = $'+str(np.around(np.std(y1),2)),transform=ax.transAxes,fontsize=12)
-        plt.plot([],[])
+        #plt.plot([],[])
         plt.plot_date(temp1,y2,'g^',label='\n green UP ')
         plt.plot_date(temp1,y1,'bs',label=' blue DOWN')
         
         
         # Choose your xtick format string
-        date_fmt = '%d-%m-%y %H:%M:%S'
-        date_fmt = ' %H:%M:%S'
+        date_fmt = '%d-%m-%y %H:%M'
+        #date_fmt = ' %H:%M:%S'
 
 
         #plt.text(1.,1.,r' $\sigma = .1$')
@@ -64,11 +69,11 @@ class PlotUNMS(object):
         #ax.xaxis.set_major_locator(md.MinuteLocator(interval=60))
         ax.xaxis.set_major_formatter(md.DateFormatter(date_fmt))
         plt.xlabel('Time')
-        plt.ylabel('Speed in Mbs')
-        plt.legend(facecolor='ivory',loc="lower right",shadow=True, fancybox=True)
+        plt.ylabel('Transfer between station and parent in Mb/s')
+        plt.legend(facecolor='ivory',loc="upper left",shadow=True, fancybox=True)
 
-
-        plt.xticks(rotation='vertical')
+        degrees = 90
+        plt.xticks(rotation=degrees)
         #plt.tight_layout()
 
         #fig.savefig(file2, bbox_inches='tight')
