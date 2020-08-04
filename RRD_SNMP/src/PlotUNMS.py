@@ -25,7 +25,7 @@ class PlotUNMS(object):
     
     
     
-    def PlotData(self,x1,y1,y2):
+    def PlotData(self,sitename,x1,y1,y2):
         np.set_printoptions(precision=2)
         fig=plt.figure() 
         ax=fig.add_subplot(1,1,1)
@@ -69,7 +69,8 @@ class PlotUNMS(object):
         #ax.xaxis.set_major_locator(md.MinuteLocator(interval=60))
         ax.xaxis.set_major_formatter(md.DateFormatter(date_fmt))
         plt.xlabel('Time')
-        plt.ylabel('Transfer between station and parent in Mb/s')
+        ylab = "Transfer between {0} and parent in Mb/s".format(sitename)
+        plt.ylabel(ylab)
         plt.legend(facecolor='ivory',loc="upper left",shadow=True, fancybox=True)
 
         degrees = 90

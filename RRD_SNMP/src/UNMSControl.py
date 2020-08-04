@@ -265,7 +265,7 @@ class UNMSControl(object):
         """
         Plot all the data
         """
-        self.PA.PlotData(self.time_array,self.ul_array,self.dl_array)
+        self.PA.PlotData(self.sitename,self.time_array,self.ul_array,self.dl_array)
 
     def PrintDict1(self, dict):
         """ prints dictionary """
