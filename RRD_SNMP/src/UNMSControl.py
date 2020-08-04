@@ -189,9 +189,9 @@ class UNMSControl(object):
         
         for k in range(len(data['download'])):
             if data['download'][k]['y'] != None:
-                self.dl_array.fill(data['download'][k]['y'])
-                self.ul_array.fill(data['upload'][k]['y'])
-                self.time_array.fill(data['download'][k]['x'])
+                self.dl_array[k] = (data['download'][k]['y'])
+                self.ul_array[k] = (data['upload'][k]['y'])
+                self.time_array[k] = (data['download'][k]['x']/1000) #time is in milliseconds
         
         print('debug',self.debug)      
         if(self.debug == 2):
