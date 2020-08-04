@@ -14,7 +14,7 @@ import platform
 import argparse as argp
 import textwrap
 import os
-from Request import RestRequest
+
 import urllib3
 import numpy as np
 
