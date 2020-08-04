@@ -181,17 +181,17 @@ class UNMSControl(object):
         self.upload = data['upload']
         
         # determine length of array
-        l_array = len(data['download'])
+        
 
-        self.dl_array = np.zeros(l_array,dtype=int) # download data
-        self.ul_array =  np.zeros(l_array,dtype=int)#upload data
-        self.time_array = np.zeros(l_array,dtype=int) #Unix time stamp
+        self.dl_array = np.array([]) # download data
+        self.ul_array =  np.array([])#upload data
+        self.time_array = np.array([]) #Unix time stamp
         
         for k in range(len(data['download'])):
             if data['download'][k]['y'] != None:
-                self.dl_array[k] = (data['download'][k]['y'])
-                self.ul_array[k] = (data['upload'][k]['y'])
-                self.time_array[k] = (data['download'][k]['x']/1000) #time is in milliseconds
+                self.dl_array = np.append(self.dl_array,data['download'][k]['y'])
+                self.ul_array = np.append(self.ul_array,data['upload'][k]['y'])
+                self.time_array = np.append(self.time_array,data['download'][k]['x']/1000) #time is in milliseconds
         
         print('debug',self.debug)      
         if(self.debug == 2):
