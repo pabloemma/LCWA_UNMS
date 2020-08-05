@@ -72,7 +72,7 @@ class UNMSControl(object):
   
         return data
 
-    def Logout(self,):
+    def Logout(self):
         """
         at the end of the session log out
         """
