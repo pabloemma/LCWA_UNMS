@@ -22,7 +22,18 @@ class MyFrame(wx.Frame):
     """
     
     def __init__(self,parent,id,title):
-        wx.Frame.__init__(self,parent,id,title)
+        
+        
+        #define the Frame style
+        mystyle = wx.DEFAULT_FRAME_STYLE | wx.STAY_ON_TOP
+        
+        
+        
+        wx.Frame.__init__(self,parent,id,title,style = mystyle)
+        
+        
+        self.CreateStatusBar()
+        self.CreateToolBar()
 
         # Set size of Frame
         
@@ -48,6 +59,7 @@ class UNMS_GUI(wx.App):
 
         self.UF.SetSize((500,400))
         self.UF.Centre()
+        
 
         
         
@@ -65,10 +77,9 @@ class UNMS_GUI(wx.App):
         
 
   
-    def OnQuit(self, e):
-        print("OnQuit")
-        self.Close()
-        sys.exit(0)
+    def OnExit(self):
+        print("OnExit")
+        return 1 # needed
 
 
     ################ Here start the routines ###############
