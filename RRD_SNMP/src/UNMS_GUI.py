@@ -35,10 +35,80 @@ class MyFrame(wx.Frame):
         self.CreateStatusBar()
         self.CreateToolBar()
 
+        self.CreateMenu()
+
+
         # Set size of Frame
         
-        # Locate window
-        # self.Centre() # works as well as doing self.UF in UNMS_GUI
+    def CreateMenu(self):
+        """
+        creates the menu on the frame
+        """
+        menubar = wx.MenuBar()
+        
+
+
+
+        
+        # section for quit, file etc
+        file_menu = wx.Menu()
+        menubar.Append(file_menu,"&File \tCTRL+F")
+
+        item = wx.MenuItem(file_menu,wx.ID_NEW, "&Quit \tCTRL+Q"," leaves the program")
+        file_menu.Append(item)
+        self.Bind(wx.EVT_MENU,self.OnExit,item)
+
+        #section for action
+        action_menu = wx.Menu()
+        menubar.Append(action_menu,"&Action \tCTRL+A")
+
+        #action_menu.Append(wx.ID_NEW, "Login"," Log into the device with password,username and IP")
+        #action_menu.Append(wx.ID_NEW, "Logout"," Logout but dont exit program")
+        self.CreateMenuItem(action_menu, "Login",self.OnLogin)
+        self.CreateMenuItem(action_menu, "Logout",self.OnLogout)
+        
+        action_menu.InsertSeparator(2)
+ 
+        
+        self.SetMenuBar(menubar)
+        return 
+    
+ 
+    def CreateMenuItem(self, menu, label, func, icon=None, id=None):
+        if id:
+            item = wx.MenuItem(menu, id, label)
+        else:
+            item = wx.MenuItem(menu, -1, label)
+
+        if icon:
+            item.SetBitmap(wx.Bitmap(icon))
+
+        if id:
+            self.Bind(wx.EVT_MENU, func, id=id)
+        else:
+            self.Bind(wx.EVT_MENU, func, id=item.GetId())
+
+        menu.Append(item)
+        return item 
+ 
+ 
+ 
+ 
+ 
+    
+    def OnExit(self,event):
+        print("Program is terminating")
+        self.Close(True)
+        return 1 # needed
+    
+    def OnLogin(self,event):
+        print("OnLogin")
+        return 
+    
+    def OnLogout(self,event):
+        print("OnLogout")
+ 
+
 
 
 class UNMS_GUI(wx.App):
@@ -77,9 +147,6 @@ class UNMS_GUI(wx.App):
         
 
   
-    def OnExit(self):
-        print("OnExit")
-        return 1 # needed
 
 
     ################ Here start the routines ###############
