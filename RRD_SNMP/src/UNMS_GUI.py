@@ -16,56 +16,57 @@ from UNMSControl import UNMSControl
 
 
 
-class UNMS_GUI(wx.Frame):
+class MyFrame(wx.Frame):
+    """
+    The main Frame class
+    """
+    
+    def __init__(self,parent,id,title):
+        wx.Frame.__init__(self,parent,id,title)
 
-    def __init__(self, *args, **kwargs):
-        super(UNMS_GUI, self).__init__(*args, **kwargs)
-
-        self.InitUI()
+        # Set size of Frame
         
-        #instantiate UNMSControl
+        # Locate window
+        # self.Centre() # works as well as doing self.UF in UNMS_GUI
+
+
+class UNMS_GUI(wx.App):
+
+    def __init__(self,redirect = False,filename=None):
+        wx.App.__init__(self,redirect,filename)
+
+    def OnInit(self):
+        """
+        Needs to be called to initailize the wx App
+        """
+        
+        print ("oninit")
+        self.UF = MyFrame(parent = None , id = -1, title ='UNMS control')
+        self.UF.Show()
+
+        self.SetTopWindow(self.UF)
+
+        self.UF.SetSize((500,400))
+        self.UF.Centre()
+
+        
+        
+        
+        
+         #instantiate UNMSControl
         UNMS = UNMSControl()
 
         
-
-    def InitUI(self):
-
-        menubar = wx.MenuBar()
-        #regular Menu Item
-        filemenu = wx.Menu()
+        return True
+    
+    
         
-        # Action Menu for some of the more important stuff
-        actionmenu = wx.Menu()
-        
-        
-        #Create File menu
-        
-        #fileitem = filemenu.Append(wx.ID_EDIT,'Quit',' Quit Application') 
-        self.Bind(wx.EVT_MENU,self.OnQuit,filemenu.Append(wx.ID_EDIT,'Quit',' Quit Application'))
-         
-         
-         #Create Action menu
-        self.Bind(wx.EVT_MENU,self.OnLogin,actionmenu.Append(wx.ID_EDIT,'Login',' Login into system'))
-        self.Bind(wx.EVT_MENU,self.OnLogout,actionmenu.Append(wx.ID_EDIT,'Logout',' Log  off system'))
-
-        
-        
-        menubar.Append(filemenu, 'File')
-        menubar.Append(actionmenu, 'Action')
-        
-        
-        self.SetMenuBar(menubar)
-        
-        
-        
-        #Now we need to bind the action
-
  
-        self.SetSize((600, 400))
-        self.SetTitle('UNMS Control')
-        self.Centre()
+        
 
+  
     def OnQuit(self, e):
+        print("OnQuit")
         self.Close()
         sys.exit(0)
 
@@ -89,17 +90,12 @@ class UNMS_GUI(wx.Frame):
 
 
 
-def main():
-
-    app = wx.App()
-    ex = UNMS_GUI(None)
-    ex.Show()
-    app.MainLoop()
 
 
 if __name__ == '__main__':
-    main()
-
+    
+    MA = UNMS_GUI(redirect=False)
+    MA.MainLoop()
 
 
 
