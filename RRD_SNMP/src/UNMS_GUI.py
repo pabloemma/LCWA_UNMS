@@ -13,8 +13,36 @@ import wx
 import sys
 
 from UNMSControl import UNMSControl
+from loginpanel import LoginFrame
 
-
+class MyWindow(wx.Panel):
+    """
+    Creates a panel
+    with a box sizer
+    label: str for different Texctrl boxes
+    
+    
+    """
+    
+    
+    def __init__(self,parent,ID=-1,label="",pos =(800,200),size = (100,50)):
+        wx.Panel.___init(self,parent,ID,pos,size,wx.RAISED_BORDER, label )
+        
+        self.label = label
+        self.BackgroundColour("white")
+        self.SetMinSize(size)
+        self.Bind(wx.EVT_PAINT, self.OnPaint)
+    
+    
+    def OnPaint(self,event):
+        sz = self.GetClientSize()
+        dc = wx.PaintDC()
+        w,h = dc.CanGetTextExtent(self.label)
+        dc.SetFont(self.GetFont())
+        dc.DrawText(self.label,(sz.width-w)/2,(sz.height-h)/2)
+        
+        
+        
 
 class MyFrame(wx.Frame):
     """
@@ -103,6 +131,8 @@ class MyFrame(wx.Frame):
     
     def OnLogin(self,event):
         print("OnLogin")
+        TF=LoginFrame()
+        TF.Show()
         return 
     
     def OnLogout(self,event):
