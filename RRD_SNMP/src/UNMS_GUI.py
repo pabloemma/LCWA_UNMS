@@ -59,6 +59,10 @@ class MyFrame(wx.Frame):
         
         wx.Frame.__init__(self,parent,id,title,style = mystyle)
         
+        #instantiate UNMSControl
+        self.UNMS = UNMSControl()
+
+        
         
         self.CreateStatusBar()
         self.CreateToolBar()
@@ -92,12 +96,18 @@ class MyFrame(wx.Frame):
         action_menu = wx.Menu()
         menubar.Append(action_menu,"&Action \tCTRL+A")
 
-        #action_menu.Append(wx.ID_NEW, "Login"," Log into the device with password,username and IP")
-        #action_menu.Append(wx.ID_NEW, "Logout"," Logout but dont exit program")
         self.CreateMenuItem(action_menu, "Login",self.OnLogin)
         self.CreateMenuItem(action_menu, "Logout",self.OnLogout)
         
         action_menu.InsertSeparator(2)
+        
+        #section for services
+        service_menu = wx.Menu()
+        menubar.Append(service_menu,"Services")
+        item = wx.MenuItem(service_menu,wx.ID_NEW, "Get User"," username and email")
+        service_menu.Append(item)
+        self.Bind(wx.EVT_MENU,self.OnGetUser,item)
+       
  
         
         self.SetMenuBar(menubar)
@@ -132,6 +142,9 @@ class MyFrame(wx.Frame):
         return 1 # needed
     
     def OnLogin(self,event):
+        """
+        Asks for IP,username and password
+        """
         print("OnLogin")
         TF=LoginFrame()
 
@@ -141,13 +154,31 @@ class MyFrame(wx.Frame):
     
     def OnLogout(self,event):
         print("OnLogout")
+        
+    def OnGetUser(self,event):
+        """
+        Print out username and email of device
+        """
+        self.UNMS.GetUser()
  
 
     def my_listener(self, message, arg2=None):
         """
-        Listener function
+        Listener function; each message starts with the identifier
+        ;"login" : this comes from the login panel and includes IP,username and password
         """
-        print(f"Received the following message: {message}")
+        if (message[0] == "Login"):
+            self.UNMS.host = self.ip_adress = message[1]
+            self.UNMS.user = self.user_name = message[2]
+            self.UNMS.password = self.password = message[3]
+            self.UNMS.Initialize()
+            self.UNMS.Login()
+            
+            # here we get the token back
+            self.auth_token = self.UNMS.auth_token
+        
+        
+        #print(f"Received the following message: {message}")
         if arg2:
             print(f"Received another arguments: {arg2}")
 
@@ -177,8 +208,6 @@ class UNMS_GUI(wx.App):
         
         
         
-         #instantiate UNMSControl
-        UNMS = UNMSControl()
 
         
         return True
@@ -189,24 +218,6 @@ class UNMS_GUI(wx.App):
         
 
   
-
-
-    ################ Here start the routines ###############
-    def OnLogin(self,event):
-        """ Login to station
-        """
-        
-        print("in Onlogin")
-        
-        pass
-    
-    def OnLogout(self,event):
-        """
-        Logout of system
-        """
-        print('Logging out')
-        
-        pass
 
 
 

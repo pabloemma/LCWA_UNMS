@@ -79,6 +79,7 @@ class LoginFrame(wx.Frame):
     def OnSave(self,event):  
         
         self.loginlist = []
+        self.loginlist.append("Login")  # to determine which event has generated the message
         self.loginlist.append(self.ipnumber.GetValue())
         self.loginlist.append(self.username.GetValue())
         self.loginlist.append(self.password.GetValue())
