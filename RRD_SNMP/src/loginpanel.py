@@ -26,10 +26,10 @@ class LoginFrame(wx.Frame):
 
         #Now come three labels: IP, username, password
         self.iplbl=iplbl = wx.StaticText(panel,-1,"IP adress: ")
-        self.ipnumber=ipnumber = wx.TextCtrl(panel,-1,"")
+        self.ipnumber=ipnumber = wx.TextCtrl(panel,-1,value ='172.16.2.200')
         
         self.userlbl = userlbl = wx.StaticText(panel,-1,"Username: ")
-        self.username = username = wx.TextCtrl(panel,-1,"")
+        self.username = username = wx.TextCtrl(panel,-1,value = "admin")
 
         self.pwdlbl =pwdlbl  = wx.StaticText(panel,-1,"Password: ")
         self.password =password = wx.TextCtrl(panel,-1,"",style=wx.TE_PASSWORD)

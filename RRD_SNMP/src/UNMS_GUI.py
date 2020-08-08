@@ -115,6 +115,10 @@ class MyFrame(wx.Frame):
         item = wx.MenuItem(service_menu,wx.ID_NEW, "Get SiteID"," get site id for given sitename")
         service_menu.Append(item)
         self.Bind(wx.EVT_MENU,self.OnGetSiteID,item)
+        
+        self.CreateMenuItem(service_menu, "Get Site Details",self.OnGetSiteDetails)
+        self.CreateMenuItem(service_menu, "Get Site Statistic",self.OnGetSiteStatistics)
+      
  
         
         self.SetMenuBar(menubar)
@@ -169,6 +173,16 @@ class MyFrame(wx.Frame):
         """
         self.UNMS.GetUser()
         
+
+    def OnGetSiteDetails(self,event):
+        """
+        gets details on the specified site
+        """
+
+        
+        self.UNMS.GetSiteDetails()
+        
+    
     def OnGetSiteID(self,event):
         """
         get info site id according to site name
@@ -178,7 +192,21 @@ class MyFrame(wx.Frame):
             site_id = dialog.GetValue()
             self.UNMS.GetSiteID(site_id)
         dialog.Destroy()
- 
+        
+    def OnGetSiteStatistics(self,event):
+        """ 
+        Gets the TX/RX statistics between the device and the parent
+        """
+        choices = ["hour","day","month"]
+        dialog = wx.SingleChoiceDialog(None , "timeinterval" ,"Set time windows for statistics",choices)
+        if dialog.ShowModal() == wx.ID_OK:
+            timeinterval = dialog.GetStringSelection()
+            self.UNMS.GetSiteStatistic(timeinterval)
+            self.UNMS.PlotData()
+            
+        dialog.Destroy()
+
+    
     def OnDebugLevel(self,event):
         """
         Sets the debug level of UNMSControl

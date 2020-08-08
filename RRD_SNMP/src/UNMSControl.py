@@ -45,7 +45,7 @@ class UNMSControl(object):
         
         
         
-    def Initialize(self, host = None ):
+    def Initialize(self, host = None , debug = None ):
         """
         Initialize the system
         """
@@ -57,7 +57,9 @@ class UNMSControl(object):
         self.session.verify = ssl_verify = False
         
        #Here we initalize some of the values which in the standalone version would be given by CLI arguments
-
+        if debug == None :
+            self.debug = 0
+            
     def SetDebugLevel(self,debuglevel):
         """
         sets the debuglevel, mostlu used from GUI
@@ -167,13 +169,15 @@ class UNMSControl(object):
 
         return data
             
-    def GetSiteStatistic(self):
+    def GetSiteStatistic(self , timeinterval = None):
         """
         Returns traffic statistic bewteen siteID and parent
         The result is in two lists of dictionaries each {x=time,y=rate)
         self.upload and sel.download
         
         """
+        if(timeinterval != None):
+            self.timeinterval = timeinterval
         if(self.timeinterval == None):
             self.ME.Logging(self.program_name,'No No Timeinterval found for statistics')
             sys.exit(0)
