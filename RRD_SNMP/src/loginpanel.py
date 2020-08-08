@@ -6,6 +6,7 @@ Created on Aug 7, 2020
 
 
 import wx
+from pubsub import pub
 
 class LoginFrame(wx.Frame):
     """
@@ -13,8 +14,9 @@ class LoginFrame(wx.Frame):
     """
     
     def __init__(self):
-        wx.Frame.__init__(self,None,-1,"Login")
+        wx.Frame.__init__(self,None,-1,"Login",pos=(800,400))
         panel = wx.Panel(self)
+        
         
         #Create control labels
         
@@ -23,19 +25,21 @@ class LoginFrame(wx.Frame):
         toplbl.SetFont(wx.Font(18,wx.SWISS,wx.NORMAL,wx.BOLD))
 
         #Now come three labels: IP, username, password
-        iplbl = wx.StaticText(panel,-1,"IP adress: ")
-        ipnumber = wx.TextCtrl(panel,-1,"")
+        self.iplbl=iplbl = wx.StaticText(panel,-1,"IP adress: ")
+        self.ipnumber=ipnumber = wx.TextCtrl(panel,-1,"")
         
-        userlbl = wx.StaticText(panel,-1,"Username: ")
-        username = wx.TextCtrl(panel,-1,"")
+        self.userlbl = userlbl = wx.StaticText(panel,-1,"Username: ")
+        self.username = username = wx.TextCtrl(panel,-1,"")
 
-        pwdlbl = wx.StaticText(panel,-1,"Password: ")
-        password = wx.TextCtrl(panel,-1,"",style=wx.TE_PASSWORD)
+        self.pwdlbl =pwdlbl  = wx.StaticText(panel,-1,"Password: ")
+        self.password =password = wx.TextCtrl(panel,-1,"",style=wx.TE_PASSWORD)
         
         
         
         
-        savebtn = wx.Button(panel, -1, "Save")
+        self.savebtn =savebtn = wx.Button(panel, -1, "Save")
+        self.Bind(wx.EVT_BUTTON,self.OnSave,self.savebtn)
+        
         
         # now we can start laying out the panel with boxsizer
         
@@ -70,5 +74,15 @@ class LoginFrame(wx.Frame):
         
         
         panel.SetSizer(mainsizer)
+        self.Show(show=True)
         
+    def OnSave(self,event):  
+        
+        self.loginlist = []
+        self.loginlist.append(self.ipnumber.GetValue())
+        self.loginlist.append(self.username.GetValue())
+        self.loginlist.append(self.password.GetValue())
+        pub.sendMessage("panel_listener", message=self.loginlist)
+
+        self.Close()
       

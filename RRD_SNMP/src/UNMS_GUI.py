@@ -11,7 +11,7 @@ Created on Aug 4, 2020
 
 import wx
 import sys
-
+from pubsub import pub
 from UNMSControl import UNMSControl
 from loginpanel import LoginFrame
 
@@ -64,7 +64,9 @@ class MyFrame(wx.Frame):
         self.CreateToolBar()
 
         self.CreateMenu()
+        pub.subscribe(self.my_listener, "panel_listener") #for passing event handler back and forth
 
+  
 
         # Set size of Frame
         
@@ -132,6 +134,8 @@ class MyFrame(wx.Frame):
     def OnLogin(self,event):
         print("OnLogin")
         TF=LoginFrame()
+
+
         TF.Show()
         return 
     
@@ -139,6 +143,13 @@ class MyFrame(wx.Frame):
         print("OnLogout")
  
 
+    def my_listener(self, message, arg2=None):
+        """
+        Listener function
+        """
+        print(f"Received the following message: {message}")
+        if arg2:
+            print(f"Received another arguments: {arg2}")
 
 
 class UNMS_GUI(wx.App):
@@ -158,7 +169,8 @@ class UNMS_GUI(wx.App):
         self.SetTopWindow(self.UF)
 
         self.UF.SetSize((500,400))
-        self.UF.Centre()
+        #self.UF.Centre()
+        self.UF.SetPosition((50,400))
         
 
         
