@@ -59,6 +59,11 @@ class MyFrame(wx.Frame):
         
         wx.Frame.__init__(self,parent,id,title,style = mystyle)
         
+        self.version = 'version v1.0.0'
+        panel = wx.Panel(self,-1)
+        vs =wx.StaticText(panel,-1,self.version, (100,50),(160,-1),wx.ALIGN_CENTER)
+        font = wx.Font(25,wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, True)
+        
         #instantiate UNMSControl
         self.UNMS = UNMSControl()
 
@@ -116,9 +121,18 @@ class MyFrame(wx.Frame):
         
         self.CreateMenuItem(service_menu, "Get Site Details",self.OnGetSiteDetails)
         self.CreateMenuItem(service_menu, "Get Site Statistic",self.OnGetSiteStatistics)
+
+
+
+        devices_menu = wx.Menu()
+        menubar.Append(devices_menu,"Devices")
+        self.CreateMenuItem(devices_menu, "Get AirCubeDetail",self.OnGetAirCubeDetail)
+        self.CreateMenuItem(devices_menu, "Get AirMaxDetail",self.OnGetAirmaxDetail)
       
+        nonunms_menu = wx.Menu()
+        menubar.Append(nonunms_menu,"Non UNMS ")
+        self.CreateMenuItem(nonunms_menu, "Run iperf3",self.OnRunIperf3)
  
-        
         self.SetMenuBar(menubar)
         return 
     
@@ -176,8 +190,7 @@ class MyFrame(wx.Frame):
         """
         gets details on the specified site
         """
-
-        
+       
         self.UNMS.GetSiteDetails()
         
     
@@ -203,7 +216,26 @@ class MyFrame(wx.Frame):
             self.UNMS.PlotData()
             
         dialog.Destroy()
-
+        
+    def OnGetAirCubeDetail(self,event):
+        self.UNMS.GetAircubeDetail()
+ 
+    def OnGetAirmaxDetail(self,event):
+        self.UNMS.GetAirmaxDetail()
+        
+        
+        
+        
+        
+    #Here come the routines which do not have anything to do with UNMS
+    def OnRunIperf3(self,event):
+        """ 
+        runs iperf between a client and an iper server
+        currently not implemented. Needs to be run without vpn
+    
+        """
+        print("Not implemented yet")
+        
     
     def OnDebugLevel(self,event):
         """
@@ -247,6 +279,8 @@ class UNMS_GUI(wx.App):
         """
         Needs to be called to initailize the wx App
         """
+        self.version = "1.0.0"
+        self.author = "Andi Klein"
         
         print ("oninit")
         self.UF = MyFrame(parent = None , id = -1, title ='UNMS control')
@@ -258,6 +292,7 @@ class UNMS_GUI(wx.App):
         #self.UF.Centre()
         self.UF.SetPosition((1400,40))
         
+       
 
         
         
