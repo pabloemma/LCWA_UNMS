@@ -45,20 +45,25 @@ class UNMSControl(object):
         
         
         
-    def Initialize(self):
+    def Initialize(self, host = None ):
         """
         Initialize the system
         """
         
+        if (host != None):
+            self.Host = host
         self.url ="https://{0}/nms/api/v2.1".format(self.Host)
         
         self.session.verify = ssl_verify = False
         
-        
-        #Instantiate the request system
-    
-        #REQ = RestRequest(self.url)
-        
+       #Here we initalize some of the values which in the standalone version would be given by CLI arguments
+
+    def SetDebugLevel(self,debuglevel):
+        """
+        sets the debuglevel, mostlu used from GUI
+        """
+        self.debug = debuglevel
+        return
             
     def Login(self):
         """
@@ -104,11 +109,12 @@ class UNMSControl(object):
        
         return data
 
-    def GetSiteID(self):
+    def GetSiteID(self,sitename = None):
         """ retunrs the site id given the site name
         The sitename comes from command line arguments
         """
-        
+        if sitename != None:
+            self.sitename = sitename
         if(self.sitename == None):
             self.ME.Logging(self.program_name,'You need to provide a sitename inorder to get the SiteID')
             sys.exit(0)

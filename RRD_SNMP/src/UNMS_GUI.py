@@ -99,15 +99,22 @@ class MyFrame(wx.Frame):
         self.CreateMenuItem(action_menu, "Login",self.OnLogin)
         self.CreateMenuItem(action_menu, "Logout",self.OnLogout)
         
+        
+        self.CreateMenuItem(action_menu, "Debug Level",self.OnDebugLevel)
+        
         action_menu.InsertSeparator(2)
         
         #section for services
         service_menu = wx.Menu()
         menubar.Append(service_menu,"Services")
+
         item = wx.MenuItem(service_menu,wx.ID_NEW, "Get User"," username and email")
         service_menu.Append(item)
         self.Bind(wx.EVT_MENU,self.OnGetUser,item)
        
+        item = wx.MenuItem(service_menu,wx.ID_NEW, "Get SiteID"," get site id for given sitename")
+        service_menu.Append(item)
+        self.Bind(wx.EVT_MENU,self.OnGetSiteID,item)
  
         
         self.SetMenuBar(menubar)
@@ -153,14 +160,36 @@ class MyFrame(wx.Frame):
         return 
     
     def OnLogout(self,event):
-        print("OnLogout")
+        print("Logging out of UNMS server")
+        self.UNMS.Logout()
         
     def OnGetUser(self,event):
         """
         Print out username and email of device
         """
         self.UNMS.GetUser()
+        
+    def OnGetSiteID(self,event):
+        """
+        get info site id according to site name
+        """
+        dialog = wx.TextEntryDialog(None," Give name of the location",value="madre-de-dios",style=wx.OK | wx.CANCEL,pos=(800,500))
+        if dialog.ShowModal() == wx.ID_OK:
+            site_id = dialog.GetValue()
+            self.UNMS.GetSiteID(site_id)
+        dialog.Destroy()
  
+    def OnDebugLevel(self,event):
+        """
+        Sets the debug level of UNMSControl
+        """
+        choices = ["0","1","2"]
+        dialog = wx.SingleChoiceDialog(None , "select debug level" ,"Set Debug Level",choices)
+        if dialog.ShowModal() == wx.ID_OK:
+            debuglevel = int(dialog.GetStringSelection())
+            self.UNMS.SetDebugLevel(debuglevel)
+        dialog.Destroy()
+        
 
     def my_listener(self, message, arg2=None):
         """
@@ -171,7 +200,7 @@ class MyFrame(wx.Frame):
             self.UNMS.host = self.ip_adress = message[1]
             self.UNMS.user = self.user_name = message[2]
             self.UNMS.password = self.password = message[3]
-            self.UNMS.Initialize()
+            self.UNMS.Initialize(self.UNMS.host)
             self.UNMS.Login()
             
             # here we get the token back
@@ -185,7 +214,7 @@ class MyFrame(wx.Frame):
 
 class UNMS_GUI(wx.App):
 
-    def __init__(self,redirect = False,filename=None):
+    def __init__(self,redirect = True,filename=None):
         wx.App.__init__(self,redirect,filename)
 
     def OnInit(self):

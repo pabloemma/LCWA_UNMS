@@ -40,11 +40,14 @@ class PlotUNMS(object):
         
         dates=[dt.datetime.fromtimestamp(ts) for ts in x1]
         temp1 = []
+        counter = 0 
         for temp in dates:
             #datenums=md.date2num(list(dates))
             temp2=(md.datestr2num(str(temp)))
-            if(temp2>729162.71):
+            #print(temp2)
+            if(y1[counter] != 0):
                 temp1.append(temp2)
+            counter +=1
         #print(datenums)
         datenums =np.array(temp1)
 
