@@ -62,7 +62,7 @@ class MyFrame(wx.Frame):
         #instantiate UNMSControl
         self.UNMS = UNMSControl()
 
-        
+        self.UNMS.SetDebugLevel(0) #default, can be changed
         
         self.CreateStatusBar()
         self.CreateToolBar()
@@ -88,9 +88,7 @@ class MyFrame(wx.Frame):
         file_menu = wx.Menu()
         menubar.Append(file_menu,"&File \tCTRL+F")
 
-        item = wx.MenuItem(file_menu,wx.ID_NEW, "&Quit \tCTRL+Q"," leaves the program")
-        file_menu.Append(item)
-        self.Bind(wx.EVT_MENU,self.OnExit,item)
+        self.CreateMenuItem(file_menu, "Quit",self.OnExit)
 
         #section for action
         action_menu = wx.Menu()
@@ -258,7 +256,7 @@ class UNMS_GUI(wx.App):
 
         self.UF.SetSize((500,400))
         #self.UF.Centre()
-        self.UF.SetPosition((50,400))
+        self.UF.SetPosition((1400,40))
         
 
         

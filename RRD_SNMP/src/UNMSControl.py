@@ -57,8 +57,6 @@ class UNMSControl(object):
         self.session.verify = ssl_verify = False
         
        #Here we initalize some of the values which in the standalone version would be given by CLI arguments
-        if debug == None :
-            self.debug = 0
             
     def SetDebugLevel(self,debuglevel):
         """
