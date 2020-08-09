@@ -59,11 +59,20 @@ class MyFrame(wx.Frame):
         
         wx.Frame.__init__(self,parent,id,title,style = mystyle)
         
-        self.version = 'version v1.0.0'
+        self.version = 'UNMS Control version v1.0.0'
+        self.author = 'Andi Klein'
+        self.date = 'Summer MMXX '
         panel = wx.Panel(self,-1)
         vs =wx.StaticText(panel,-1,self.version, (100,50),(160,-1),wx.ALIGN_CENTER)
-        font = wx.Font(25,wx.FONTFAMILY_DEFAULT, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, True)
+        font = wx.Font(25,wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, True)
+        vs.SetFont(font)
+        vk =wx.StaticText(panel,-1,self.author, (100,100),(160,-1),wx.ALIGN_CENTER)
+        vl =wx.StaticText(panel,-1,self.date, (100,150),(160,-1),wx.ALIGN_CENTER)
+        font = wx.Font(20,wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, True)
+        vk.SetFont(font)
+        vl.SetFont(font)
         
+   
         #instantiate UNMSControl
         self.UNMS = UNMSControl()
 
@@ -290,7 +299,7 @@ class UNMS_GUI(wx.App):
 
         self.UF.SetSize((500,400))
         #self.UF.Centre()
-        self.UF.SetPosition((1400,40))
+        self.UF.SetPosition((1000,40))
         
        
 
