@@ -192,7 +192,7 @@ class MyFrame(wx.Frame):
         """
         Print out username and email of device
         """
-        self.UNMS.GetUser()
+        self.user = self.UNMS.GetUser()
         
 
     def OnGetSiteDetails(self,event):
@@ -200,7 +200,7 @@ class MyFrame(wx.Frame):
         gets details on the specified site
         """
        
-        self.UNMS.GetSiteDetails()
+        self.sitedetails = self.UNMS.GetSiteDetails()
         
     
     def OnGetSiteID(self,event):
@@ -210,7 +210,7 @@ class MyFrame(wx.Frame):
         dialog = wx.TextEntryDialog(None," Give name of the location",value="madre-de-dios",style=wx.OK | wx.CANCEL,pos=(800,500))
         if dialog.ShowModal() == wx.ID_OK:
             site_id = dialog.GetValue()
-            self.UNMS.GetSiteID(site_id)
+            self.siteid = self.UNMS.GetSiteID(site_id)
         dialog.Destroy()
         
     def OnGetSiteStatistics(self,event):
@@ -221,16 +221,16 @@ class MyFrame(wx.Frame):
         dialog = wx.SingleChoiceDialog(None , "timeinterval" ,"Set time windows for statistics",choices)
         if dialog.ShowModal() == wx.ID_OK:
             timeinterval = dialog.GetStringSelection()
-            self.UNMS.GetSiteStatistic(timeinterval)
+            self.sitestatistics = self.UNMS.GetSiteStatistic(timeinterval)
             self.UNMS.PlotData()
             
         dialog.Destroy()
         
     def OnGetAirCubeDetail(self,event):
-        self.UNMS.GetAircubeDetail()
+        self.aircube_details = self.UNMS.GetAircubeDetail()
  
     def OnGetAirmaxDetail(self,event):
-        self.UNMS.GetAirmaxDetail()
+        self.airmax_details = self.UNMS.GetAirmaxDetail()
         
         
         
