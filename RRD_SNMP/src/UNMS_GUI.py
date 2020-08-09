@@ -11,9 +11,13 @@ Created on Aug 4, 2020
 
 import wx
 import sys
+import os
 from pubsub import pub
 from UNMSControl import UNMSControl
 from loginpanel import LoginFrame
+from MyError  import MyError
+import socket
+import subprocess as sp
 
 class MyWindow(wx.Panel):
     """
@@ -84,8 +88,10 @@ class MyFrame(wx.Frame):
         self.CreateMenu()
         pub.subscribe(self.my_listener, "panel_listener") #for passing event handler back and forth
 
-  
-
+        self.ME=MyError()
+        
+        self.program_name = os.path.basename(__file__)
+ 
         # Set size of Frame
         
     def CreateMenu(self):
@@ -243,6 +249,46 @@ class MyFrame(wx.Frame):
         currently not implemented. Needs to be run without vpn
     
         """
+        #first check if we are in the 172 IP space
+        hostname=socket.gethostname()
+        ip_address = socket.gethostbyname(hostname)
+        test = ip_address.split('.')
+        if(test[0] != '172'):
+            self.ME.Logging(self.program_name,'Not in the 172 network, cannot do iperf')
+            return
+        else:
+            dialog = wx.TextEntryDialog(None," Enter IP of iperf server",value="172.16.10.249",style=wx.OK | wx.CANCEL,pos=(800,500))
+            if dialog.ShowModal() == wx.ID_OK:
+                self.iperf_ip = iperf_ip = dialog.GetValue()
+                
+                command =[]
+                command.append('iperf3 -b 0 -c 172.16.10.249')
+
+                command.append('iperf3 -R -b 0 -c 172.16.10.249')
+
+                command.append('iperf3 -u -b 0 -c 172.16.10.249')
+
+                command.append('iperf3 -R -u -b 0 -c 172.16.10.249')
+                
+                for coma in command:
+                    process = sp.Popen(coma,
+                         #stdout=outfile,
+                        stdout=sp.PIPE,
+                        stderr=sp.PIPE,
+                        close_fds=True,
+                        universal_newlines=True)
+        
+                    out,err = process.communicate()
+                    if process.returncode != 0:
+                        self.ME.Logging(self.program_name,' iperf error ' +err)
+                    else:
+                        print(out)
+ 
+                
+                    
+            dialog.Destroy()
+        
+        
         print("Not implemented yet")
         
     
