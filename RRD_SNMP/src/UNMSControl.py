@@ -133,7 +133,7 @@ class UNMSControl(object):
         
         #print(data)
         self.siteID = data[0]['identification']['id']
-        self.siteParentID = data[0]['identification']['parent']
+        self.siteParentID = data[0]['identification']['parent']['parentId']
         print("the SiteID for ",self.sitename,'  is ',data[0]['identification']['id'])
         print(" \n\n\n***********The information for the parent is :*********")
         
@@ -268,12 +268,61 @@ class UNMSControl(object):
    
         
         return data
+    
+    def GetSiteClients(self, idsite = None):
+        """
+        Provides a list of all the clients of a site
+        Either it is the parent id of the given site; for instance in madre de dios
+        the parent id would be the one of ridgeroad. Or is is given as an argument
+        """
+        if(idsite != None):
+            id_test = idsite
+        else:
+            id_test = self.siteParentID
+    
+        action = '/sites'
+        
+        #First we determine if there is an aircube
+        
+        q_string = '/'+id_test+'/clients'
+        data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
+
+        if self.debug == 1:
+            self.PrintDict1(data[0])
+   
+        
+        return data
+
+    def GetAllAP(self):
+        """
+        returns a list of all access points
+        """
+        action = '/devices'
+        q_string = '/aps/profiles'
+        data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
+
+        if self.debug == 1:
+            self.PrintDict1(data[0])
+        
+        return data
+    
+    def CreateBackup(self):
+        """ Backup of UNMS at server
+        """
+        action = '/backups/create'
+        q_string = ''
+        data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
+        if self.debug == 1:
+            self.PrintDict1(data[0])
+            
+        return data
+
    
     def PlotData(self):
         """
         Plot all the data
         """
-        self.PA.PlotData(self.sitename,self.time_array,self.ul_array,self.dl_array)
+        self.PA.PlotData(self.sitename,self.time_array,self.dl_array,self.ul_array)
 
     def PrintDict1(self, dict):
         """ prints dictionary """
@@ -494,6 +543,7 @@ class UNMSControl(object):
         print('################ version : ',self.version,'  #######################')
         print('version 1.0.0 : base version with limited functionality')
         print('version 2.0.0 : base version with limited functionality and plots')
+        print('version 2.0.01 : added UNMS backup')
             
 if __name__ == '__main__':
     MyC =UNMSControl()
@@ -507,6 +557,9 @@ if __name__ == '__main__':
     MyC.PlotData()
     MyC.GetAircubeDetail()
     MyC.GetAirmaxDetail()
+    MyC.GetSiteClients()
+    MyC.GetAllAP()
+    #MyC.CreateBackup()
     MyC.Logout()
     #MyC.FirstTest()
     #MyC.TestConnection()

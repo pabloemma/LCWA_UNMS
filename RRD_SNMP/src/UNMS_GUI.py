@@ -12,12 +12,18 @@ Created on Aug 4, 2020
 import wx
 import sys
 import os
+import socket
+import pprint
+import subprocess as sp
+import json
+import yaml
+
+
 from pubsub import pub
 from UNMSControl import UNMSControl
 from loginpanel import LoginFrame
 from MyError  import MyError
-import socket
-import subprocess as sp
+
 
 class MyWindow(wx.Panel):
     """
@@ -136,6 +142,8 @@ class MyFrame(wx.Frame):
         
         self.CreateMenuItem(service_menu, "Get Site Details",self.OnGetSiteDetails)
         self.CreateMenuItem(service_menu, "Get Site Statistic",self.OnGetSiteStatistics)
+        self.CreateMenuItem(service_menu, "Get Site Clients",self.OnGetSiteClients)
+        self.CreateMenuItem(service_menu, "Get All APs",self.OnGetAllAP)
 
 
 
@@ -147,6 +155,13 @@ class MyFrame(wx.Frame):
         nonunms_menu = wx.Menu()
         menubar.Append(nonunms_menu,"Non UNMS ")
         self.CreateMenuItem(nonunms_menu, "Run iperf3",self.OnRunIperf3)
+ 
+ 
+        #Help Menu
+        help_menu = wx.Menu()
+        menubar.Append(help_menu,"Help")
+        self.CreateMenuItem(help_menu, "General overview",self.OnHelpGeneral)
+
  
         self.SetMenuBar(menubar)
         return 
@@ -207,7 +222,8 @@ class MyFrame(wx.Frame):
         """
        
         self.sitedetails = self.UNMS.GetSiteDetails()
-        
+        self.UNMS.PrintDict1(self.sitedetails)
+ 
     
     def OnGetSiteID(self,event):
         """
@@ -232,6 +248,30 @@ class MyFrame(wx.Frame):
             
         dialog.Destroy()
         
+    def OnGetSiteClients(self,event):
+        """ provides a lits of the clients of a sites parent radio
+        in the case of madre de dios that would be ridgeroad
+        """
+        self.siteclients = self.UNMS.GetSiteClients()
+    
+    def OnGetAllAP(self,event):
+        self.allAP =  self.UNMS.GetAllAP()
+        
+        #self.PrintDict(json.dumps(self.allAP))
+        for k in range(0,len(self.allAP)):
+            print('\n *************** new AP listing ****************** \n')
+            #self.PrintDict(self.allAP[k])
+            print( yaml.dump(self.allAP[k], default_flow_style=False))
+            print('\n ************************************************* \n \n \n')
+       
+        #for k in range(0,len(self.allAP)):
+         #   print(self.allAP[k])
+          #  print("\n\n\n")
+        
+            #self.UNMS.PrintDict1(self.allAP[k])
+        #    self.PrintDict1(self.allAP[k])
+    
+        
     def OnGetAirCubeDetail(self,event):
         self.aircube_details = self.UNMS.GetAircubeDetail()
  
@@ -239,7 +279,21 @@ class MyFrame(wx.Frame):
         self.airmax_details = self.UNMS.GetAirmaxDetail()
         
         
+    ############Help system
+    
+    def OnHelpGeneral(self,event): 
+        """
+        provides an overview
+        """
+        frame = wx.Frame(parent = None,title ='Help System',size = (400,300))
+        panel = wx.Panel(frame,-1) 
         
+        
+        text = " This is an overview of the UNMS_GUI \n and how to use it. First you need to make sure that you are connecetd to the VPN "
+        
+        help = wx.StaticText(panel,-1,text)
+        help.Wrap(400)
+        frame.Show(show=True)
         
         
     #Here come the routines which do not have anything to do with UNMS
@@ -323,6 +377,28 @@ class MyFrame(wx.Frame):
         #print(f"Received the following message: {message}")
         if arg2:
             print(f"Received another arguments: {arg2}")
+
+    
+    def PrintDict(self,dict):
+        pprint.pprint(dict, width = 1 ,depth =2,sort_dicts=True)
+        
+        
+    def PrintDict1(self, dict):
+        """ prints dictionary """
+        
+        test = json.dumps(dict)
+        for p_id, p_info in dict.items():
+            print( '\n\n ******************  ',p_id,' *************************** \n')
+            
+            if not p_info is None and isinstance(p_info,type(dict)): 
+            
+                for key in p_info:
+
+                    print(key + ':', p_info[key])
+            else:
+                print(p_info)
+            
+        #print(dict)
 
 
 class UNMS_GUI(wx.App):
