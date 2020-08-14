@@ -146,6 +146,7 @@ class MyFrame(wx.Frame):
         self.CreateMenuItem(service_menu, "Get All APs",self.OnGetAllAP)
         self.CreateMenuItem(service_menu, "Get Devices discovered",self.OnGetDevicesDiscovered)
         self.CreateMenuItem(service_menu, "Get All SSID",self.OnGetAllSSID)
+        self.CreateMenuItem(service_menu, "Get Device credentials",self.OnGetDeviceCredential)
 
 
 
@@ -276,6 +277,13 @@ class MyFrame(wx.Frame):
 #        self.PrintDict(json.dumps(self.devdiscovered))
         for k in range(0,len(self.allssid)):
             self.PrintDict(self.allssid[k])
+    
+    def OnGetDeviceCredential(self,event):
+        self.devcredential =  self.UNMS.GetDeviceCredential()
+        
+#        self.PrintDict(json.dumps(self.devdiscovered))
+        for k in range(0,len(self.devcredential)):
+            self.PrintDict(self.devcredential[k])
      
         
     def OnGetAirCubeDetail(self,event):
