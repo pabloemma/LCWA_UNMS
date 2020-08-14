@@ -305,7 +305,29 @@ class UNMSControl(object):
             self.PrintDict1(data[0])
         
         return data
-    
+    def GetAllSSID(self):
+        """provides list of wireless ssid
+        """
+        action = '/devices'
+        q_string = '/ssid'
+        data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
+
+        if self.debug == 1:
+            self.PrintDict1(data[0])
+        return data
+
+    def GetDevicesDiscovered(self):
+        """provides list of devices
+        """
+        action = '/devices'
+        q_string = '/discovered'
+        data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
+
+        if self.debug == 1:
+            self.PrintDict1(data[0])
+        return data
+
+        
     def CreateBackup(self):
         """ Backup of UNMS at server
         """

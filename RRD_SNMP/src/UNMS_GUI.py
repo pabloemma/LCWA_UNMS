@@ -144,6 +144,8 @@ class MyFrame(wx.Frame):
         self.CreateMenuItem(service_menu, "Get Site Statistic",self.OnGetSiteStatistics)
         self.CreateMenuItem(service_menu, "Get Site Clients",self.OnGetSiteClients)
         self.CreateMenuItem(service_menu, "Get All APs",self.OnGetAllAP)
+        self.CreateMenuItem(service_menu, "Get Devices discovered",self.OnGetDevicesDiscovered)
+        self.CreateMenuItem(service_menu, "Get All SSID",self.OnGetAllSSID)
 
 
 
@@ -222,7 +224,7 @@ class MyFrame(wx.Frame):
         """
        
         self.sitedetails = self.UNMS.GetSiteDetails()
-        self.UNMS.PrintDict1(self.sitedetails)
+        self.PrintDict(self.sitedetails)
  
     
     def OnGetSiteID(self,event):
@@ -257,20 +259,24 @@ class MyFrame(wx.Frame):
     def OnGetAllAP(self,event):
         self.allAP =  self.UNMS.GetAllAP()
         
-        #self.PrintDict(json.dumps(self.allAP))
+#        self.PrintDict(json.dumps(self.allAP))
         for k in range(0,len(self.allAP)):
-            print('\n *************** new AP listing ****************** \n')
-            #self.PrintDict(self.allAP[k])
-            print( yaml.dump(self.allAP[k], default_flow_style=False))
-            print('\n ************************************************* \n \n \n')
-       
-        #for k in range(0,len(self.allAP)):
-         #   print(self.allAP[k])
-          #  print("\n\n\n")
+            self.PrintDict(self.allAP[k])
+            
+    def OnGetDevicesDiscovered(self,event):
+        self.devdiscovered =  self.UNMS.GetDevicesDiscovered()
         
-            #self.UNMS.PrintDict1(self.allAP[k])
-        #    self.PrintDict1(self.allAP[k])
-    
+#        self.PrintDict(json.dumps(self.devdiscovered))
+        for k in range(0,len(self.devdiscovered)):
+            self.PrintDict(self.devdiscovered[k])
+     
+    def OnGetAllSSID(self,event):
+        self.allssid =  self.UNMS.GetAllSSID()
+        
+#        self.PrintDict(json.dumps(self.devdiscovered))
+        for k in range(0,len(self.allssid)):
+            self.PrintDict(self.allssid[k])
+     
         
     def OnGetAirCubeDetail(self,event):
         self.aircube_details = self.UNMS.GetAircubeDetail()
@@ -380,26 +386,36 @@ class MyFrame(wx.Frame):
 
     
     def PrintDict(self,dict):
-        pprint.pprint(dict, width = 1 ,depth =2,sort_dicts=True)
+        #pprint.pprint(dict, width = 1 ,depth =2,sort_dicts=True)
         
-        
-    def PrintDict1(self, dict):
-        """ prints dictionary """
-        
-        test = json.dumps(dict)
-        for p_id, p_info in dict.items():
-            print( '\n\n ******************  ',p_id,' *************************** \n')
-            
-            if not p_info is None and isinstance(p_info,type(dict)): 
-            
-                for key in p_info:
+        print('\n *************** new AP listing ****************** \n')
+            #self.PrintDict(self.allAP[k])
+        print( yaml.dump(dict, default_flow_style=False))
+        test = yaml.dump(dict, default_flow_style=False)
+        try:
+            print (dict['name'])
+        except:
+            pass
+        print('\n ************************************************* \n \n \n')
+        self.gen_dict_extract('id',dict)
 
-                    print(key + ':', p_info[key])
-            else:
-                print(p_info)
-            
-        #print(dict)
 
+
+    def gen_dict_extract(self,key, var):
+        if hasattr(var,'iteritems'):
+            for k, v in var.iteritems():
+                if k == key:
+                    yield v
+                if isinstance(v, dict):
+                    for result in self.gen_dict_extract(key, v):
+                        yield result
+                elif isinstance(v, list):
+                    for d in v:
+                        for result in self.gen_dict_extract(key, d):
+                            yield result
+
+
+ 
 
 class UNMS_GUI(wx.App):
 
