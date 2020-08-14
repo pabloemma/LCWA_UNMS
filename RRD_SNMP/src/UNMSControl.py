@@ -332,9 +332,9 @@ class UNMSControl(object):
         
         #First we determine if there is an aircube
         
-        q_string = +self.siteID+'credentials'
+        q_string = '/'+self.siteID+'/credentials'
         data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
-        
+        return data
         
     def CreateBackup(self):
         """ Backup of UNMS at server
