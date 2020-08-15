@@ -589,6 +589,9 @@ if __name__ == '__main__':
     MyC.GetAirmaxDetail()
     MyC.GetSiteClients()
     MyC.GetAllAP()
+    MyC.GetAllSSID()
+    MyC.GetDevicesDiscovered()
+
     #MyC.CreateBackup()
     MyC.Logout()
     #MyC.FirstTest()
