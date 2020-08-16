@@ -154,7 +154,12 @@ class MyFrame(wx.Frame):
         menubar.Append(devices_menu,"Devices")
         self.CreateMenuItem(devices_menu, "Get AirCubeDetail",self.OnGetAirCubeDetail)
         self.CreateMenuItem(devices_menu, "Get AirMaxDetail",self.OnGetAirmaxDetail)
-      
+        devices_menu.InsertSeparator(2)
+
+        self.CreateMenuItem(devices_menu, "Get UNMS seetings",self.OnGetUNMSSettings)
+        self.CreateMenuItem(devices_menu, "Get UNMS warnings",self.OnGetLogWarnings)
+        self.CreateMenuItem(devices_menu, "Get UNMS errors",self.OnGetLogErrors)
+     
         nonunms_menu = wx.Menu()
         menubar.Append(nonunms_menu,"Non UNMS ")
         self.CreateMenuItem(nonunms_menu, "Run iperf3",self.OnRunIperf3)
@@ -284,15 +289,52 @@ class MyFrame(wx.Frame):
 #        self.PrintDict(json.dumps(self.devdiscovered))
         for k in range(0,len(self.devcredential)):
             self.PrintDict(self.devcredential[k])
+
+    def OnGetUNMSSettings(self,event):
+        self.UNMSSettings =  self.UNMS.GetUNMSSettings()
+        
+#        self.PrintDict(json.dumps(self.devdiscovered))
+        for k in range(0,len(self.UNMSSettings)):
+            self.PrintDict(self.UNMSSettings[k])
      
         
     def OnGetAirCubeDetail(self,event):
         self.aircube_details = self.UNMS.GetAircubeDetail()
+        if(self.aircube_details != None):
+            for k in range(0,len(self.aircube_details)):
+                self.PrintDict(self.aircube_details[k])
  
     def OnGetAirmaxDetail(self,event):
         self.airmax_details = self.UNMS.GetAirmaxDetail()
+        if(self.airmax_details != None):
+            for k in range(0,len(self.airmax_details)):
+                self.PrintDict(self.airmax_details[k])
+        
+    def OnGetLogWarnings(self,event):
         
         
+        #first get tag for logging
+        
+         
+        self.system_warnings = self.UNMS.GetLogWarnings()
+        if(self.airmax_details != None):
+            for k in range(0,len(self.system_warnings)):
+                self.PrintDict(self.system_warnings[k])
+        
+    def OnGetLogErrors(self,event): 
+
+        #first get tag for logging
+
+        
+        
+        self.system_errors = self.UNMS.GetLogErrors()
+        if(self.airmax_details != None):
+            for k in range(0,len(self.system_errors)):
+                self.PrintDict(self.system_errors[k])
+       
+        
+        
+           
     ############Help system
     
     def OnHelpGeneral(self,event): 
