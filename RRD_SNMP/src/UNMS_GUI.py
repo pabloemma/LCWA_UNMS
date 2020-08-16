@@ -23,6 +23,7 @@ from pubsub import pub
 from UNMSControl import UNMSControl
 from loginpanel import LoginFrame
 from MyError  import MyError
+from TagBox  import TagBox
 
 
 class MyWindow(wx.Panel):
@@ -95,6 +96,7 @@ class MyFrame(wx.Frame):
         pub.subscribe(self.my_listener, "panel_listener") #for passing event handler back and forth
 
         self.ME=MyError()
+        
         
         self.program_name = os.path.basename(__file__)
  
@@ -314,7 +316,8 @@ class MyFrame(wx.Frame):
         
         
         #first get tag for logging
-        
+        TA=TagBox()
+        TA.Show()
          
         self.system_warnings = self.UNMS.GetLogWarnings()
         if(self.airmax_details != None):
@@ -325,7 +328,9 @@ class MyFrame(wx.Frame):
 
         #first get tag for logging
 
-        
+        TA=TagBox()
+        TA.Show()
+
         
         self.system_errors = self.UNMS.GetLogErrors()
         if(self.airmax_details != None):
@@ -428,6 +433,8 @@ class MyFrame(wx.Frame):
             
             # here we get the token back
             self.auth_token = self.UNMS.auth_token
+        elif (message[0]=='Tag'):
+            self.UNMS.logtag = message[1]
         
         
         #print(f"Received the following message: {message}")

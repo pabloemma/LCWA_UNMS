@@ -8,16 +8,18 @@ Created on Jul 26, 2020
 import json
 import requests
 import sys
-from MyError  import MyError 
-from PlotUNMS  import PlotUNMS
 import platform
 import argparse as argp
 import textwrap
 import os
+import yaml
 
 import urllib3
 import numpy as np
 
+#ak import
+from MyError  import MyError 
+from PlotUNMS  import PlotUNMS
 
 
 
@@ -56,6 +58,7 @@ class UNMSControl(object):
         
         self.session.verify = ssl_verify = False
         
+        self.logtag ='login' # defualt logtag for logging
        #Here we initalize some of the values which in the standalone version would be given by CLI arguments
             
     def SetDebugLevel(self,debuglevel):
@@ -242,7 +245,7 @@ class UNMSControl(object):
     
     
     def GetAirmaxDetail(self):
-        """ if there is an aircube we can get details of it
+        """ if there is an airmax we can get details of it
         """
         #first we determine if there is an aircube
         
@@ -268,6 +271,38 @@ class UNMSControl(object):
    
         
         return data
+ 
+    def GetEdgeRouterDetail(self):
+        """ if there is an edgerouter we can get details of it
+        """
+        #first we determine if there is an aircube
+        
+        return
+        
+        action = '/devices'
+        
+        #First we determine if there is an aircube
+        
+        q_string = '?siteId='+self.siteID+'&withInterfaces=false&authorized=true&type=airMax'
+        data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
+        try:
+            self.airmaxID = data[0]['identification']['id']
+           
+        except:
+            self.ME.Logging(self.program_name,'No airmax found')
+            return 
+        
+        #Now that we found an aircube lets get the detaisl of this puppy
+        
+        q_string='/airmaxes/self.airMaxID'
+            
+        if self.debug == 1:
+            self.PrintDict1(data[0])
+   
+        
+        #return data
+ 
+ 
     
     def GetSiteClients(self, idsite = None):
         """
@@ -328,6 +363,16 @@ class UNMSControl(object):
         return data
 
     def GetDeviceCredential(self):
+        action = ''
+        
+        #First we determine if there is an aircube
+        
+        q_string = '/settings'
+        data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
+        return data
+    
+    def GetUNMSSettings(self):
+        
         action = '/vault'
         
         #First we determine if there is an aircube
@@ -335,6 +380,31 @@ class UNMSControl(object):
         q_string = '/'+self.siteID+'/credentials'
         data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
         return data
+
+    def GetLogWarnings(self):  
+        action = 'logs'
+        
+        #First we determine if there is an aircube
+        if(self.logtag != None):
+        
+            q_string = '?count=100&page=100&level=warning&tag='+self.logtag
+        else:
+            q_string = '?count=100&page=100&level=warning'
+        data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
+        return data
+   
+    def GetLogErrors(self ):  
+        action = 'logs'
+        
+        #First we determine if there is an aircube
+        if(self.logtag != None):
+
+            q_string = '?count=100&page=100&level=error&tag='+self.logtag
+        else:
+            q_string = '?count=100&page=100&level=warning'
+        data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
+        return data
+          
         
     def CreateBackup(self):
         """ Backup of UNMS at server
@@ -354,7 +424,7 @@ class UNMSControl(object):
         """
         self.PA.PlotData(self.sitename,self.time_array,self.dl_array,self.ul_array)
 
-    def PrintDict1(self, dict):
+    def PrintDict(self, dict):
         """ prints dictionary """
         
         test = json.dumps(dict)
@@ -370,7 +440,19 @@ class UNMSControl(object):
                 print(p_info)
             
         #print(dict)
-   
+    def PrintDict1(self,dict):
+        #pprint.pprint(dict, width = 1 ,depth =2,sort_dicts=True)
+        
+        print('\n *************** new AP listing ****************** \n')
+            #self.PrintDict(self.allAP[k])
+        print( yaml.dump(dict, default_flow_style=False))
+        test = yaml.dump(dict, default_flow_style=False)
+        try:
+            print (dict['name'])
+        except:
+            pass
+        print('\n ************************************************* \n \n \n')
+
 
     
     
@@ -568,12 +650,13 @@ class UNMSControl(object):
         """ deals with version"""
         
         
-        self.version = '2.0.0'
+        self.version = '2.1.0'
         
         print('################ version : ',self.version,'  #######################')
         print('version 1.0.0 : base version with limited functionality')
         print('version 2.0.0 : base version with limited functionality and plots')
         print('version 2.0.01 : added UNMS backup')
+        print('version 2.1.0 : sttable version')
             
 if __name__ == '__main__':
     MyC =UNMSControl()

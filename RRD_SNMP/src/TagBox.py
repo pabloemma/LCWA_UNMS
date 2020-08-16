@@ -4,6 +4,7 @@ Created on Aug 16, 2020
 @author: klein
 '''
 import wx
+from pubsub import pub
 class TagBox(wx.Frame):
     '''
     classdocs
@@ -18,8 +19,19 @@ class TagBox(wx.Frame):
         panel=wx.Panel(self,-1)
         tag_list = ['login','device','email-dispatch','nms-backup','nms-update','nms-error','device-state','device-backup','device-upgrade','device-interface','site']
         listbox = wx.ListBox(panel,-1,(20,20),(150,250),tag_list,wx.LB_SINGLE)
-        li = listbox.GetSelection() 
-        print (tag_list[li])  
+        
+        self.Bind(wx.EVT_LISTBOX, self.onListBox, listbox)
+
+
+    def onListBox(self, event): 
+         
+        li = event.GetEventObject().GetStringSelection()  
+        print(li)
+        message = ['Tag']
+        message.append(li)
+        pub.sendMessage("panel_listener", message=message)
+
+        self.Close()
 
 if __name__ == '__main__':
     app = wx.App(False)
