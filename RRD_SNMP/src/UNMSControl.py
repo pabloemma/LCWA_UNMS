@@ -656,7 +656,8 @@ class UNMSControl(object):
         print('version 1.0.0 : base version with limited functionality')
         print('version 2.0.0 : base version with limited functionality and plots')
         print('version 2.0.01 : added UNMS backup')
-        print('version 2.1.0 : sttable version')
+        print('version 2.1.0 : stable version')
+        print('version 2.1.1 : added logwarnig and logerror')
             
 if __name__ == '__main__':
     MyC =UNMSControl()
