@@ -70,9 +70,9 @@ class MyFrame(wx.Frame):
         
         wx.Frame.__init__(self,parent,id,title,style = mystyle)
         
-        self.version = 'UNMS Control version v1.0.0'
+        self.version = 'UNMS Control version v2.0.0'
         self.author = 'Andi Klein'
-        self.date = 'Summer MMXX '
+        self.date = 'Summer 2020 '
         panel = wx.Panel(self,-1)
         vs =wx.StaticText(panel,-1,self.version, (100,50),(160,-1),wx.ALIGN_CENTER)
         font = wx.Font(25,wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, True)
