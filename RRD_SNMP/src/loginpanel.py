@@ -14,7 +14,7 @@ class LoginFrame(wx.Frame):
     """
     
     def __init__(self):
-        wx.Frame.__init__(self,None,-1,"Login",pos=(800,400))
+        wx.Frame.__init__(self,None,-1,"Login",pos=(400,400))
         panel = wx.Panel(self)
         
         
