@@ -101,7 +101,7 @@ class MyFrame(wx.Frame):
         self.program_name = os.path.basename(__file__)
         
         #log into the system
-        self.OnLogin(0)
+        #self.OnLogin(0)
  
         # Set size of Frame
         
