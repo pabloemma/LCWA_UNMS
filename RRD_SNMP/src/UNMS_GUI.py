@@ -99,6 +99,9 @@ class MyFrame(wx.Frame):
         
         
         self.program_name = os.path.basename(__file__)
+        
+        #log into the system
+        self.OnLogin(0)
  
         # Set size of Frame
         
@@ -158,7 +161,7 @@ class MyFrame(wx.Frame):
         self.CreateMenuItem(devices_menu, "Get AirMaxDetail",self.OnGetAirmaxDetail)
         devices_menu.InsertSeparator(2)
 
-        self.CreateMenuItem(devices_menu, "Get UNMS seetings",self.OnGetUNMSSettings)
+        self.CreateMenuItem(devices_menu, "Get UNMS settings",self.OnGetUNMSSettings)
         self.CreateMenuItem(devices_menu, "Get UNMS warnings",self.OnGetLogWarnings)
         self.CreateMenuItem(devices_menu, "Get UNMS errors",self.OnGetLogErrors)
      
@@ -317,25 +320,20 @@ class MyFrame(wx.Frame):
         
         #first get tag for logging
         TA=TagBox()
+        TA.SetCode('Warning')
+
         TA.Show()
          
-        self.system_warnings = self.UNMS.GetLogWarnings()
-        if(self.airmax_details != None):
-            for k in range(0,len(self.system_warnings)):
-                self.PrintDict(self.system_warnings[k])
         
     def OnGetLogErrors(self,event): 
 
         #first get tag for logging
 
         TA=TagBox()
+        TA.SetCode('Error')
         TA.Show()
 
         
-        self.system_errors = self.UNMS.GetLogErrors()
-        if(self.airmax_details != None):
-            for k in range(0,len(self.system_errors)):
-                self.PrintDict(self.system_errors[k])
        
         
         
@@ -433,9 +431,13 @@ class MyFrame(wx.Frame):
             
             # here we get the token back
             self.auth_token = self.UNMS.auth_token
-        elif (message[0]=='Tag'):
-            self.UNMS.logtag = message[1]
-        
+        elif (message[0]=='Tag' and message[1]=='Warning' ):
+            self.UNMS.logtag = message[2]
+            self.UNMS.GetLogWarnings()
+        elif (message[0]=='Tag' and message[1]=='Error' ):
+            self.UNMS.logtag = message[2]
+            self.UNMS.GetLogErrors()
+         
         
         #print(f"Received the following message: {message}")
         if arg2:

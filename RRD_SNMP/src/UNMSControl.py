@@ -395,11 +395,10 @@ class UNMSControl(object):
             q_string = '?count=1000&page=1&level=warning'
         data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
         
-        if self.debug == 1:
-            try:
-                self.PrintLogs(data)
-            except:
-                self.ME.Logging(self.program_name,message = 'No print in log warning')
+        try:
+            self.PrintLogs(data)
+        except:
+            self.ME.Logging(self.program_name,message = 'No print in log warning')
         print('\n ************************  end warning log **************************')
 
  
@@ -417,11 +416,11 @@ class UNMSControl(object):
             q_string = '?count=1000&page=1&level=error'
         data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
 
-        if self.debug == 1:
-            try:
-                self.PrintLogs(data)
-            except:
-                self.ME.Logging(self.program_name,message = 'No print in log errors')
+
+        try:
+            self.PrintLogs(data)
+        except:
+            self.ME.Logging(self.program_name,message = 'No print in log errors')
 
         print('\n ************************  end error log **************************')
         
