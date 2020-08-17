@@ -38,6 +38,9 @@ class UNMSControl(object):
         self.program_name = os.path.basename(__file__)
         
         self.PA = PlotUNMS()
+                
+        self.logtag = 'login'
+
         
         
         
@@ -58,7 +61,6 @@ class UNMSControl(object):
         
         self.session.verify = ssl_verify = False
         
-        self.logtag ='login' # defualt logtag for logging
        #Here we initalize some of the values which in the standalone version would be given by CLI arguments
             
     def SetDebugLevel(self,debuglevel):
@@ -382,27 +384,47 @@ class UNMSControl(object):
         return data
 
     def GetLogWarnings(self):  
-        action = 'logs'
+        print('\n \n ************************  warning log **************************')
+        action = '/logs'
         
         #First we determine if there is an aircube
         if(self.logtag != None):
         
-            q_string = '?count=100&page=100&level=warning&tag='+self.logtag
+            q_string = '?count=1000&page=1&level=warning&tag='+self.logtag
         else:
-            q_string = '?count=100&page=100&level=warning'
+            q_string = '?count=1000&page=1&level=warning'
         data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
+        
+        if self.debug == 1:
+            try:
+                self.PrintLogs(data)
+            except:
+                self.ME.Logging(self.program_name,message = 'No print in log warning')
+        print('\n ************************  end warning log **************************')
+
+ 
+        
         return data
    
-    def GetLogErrors(self ):  
-        action = 'logs'
-        
+    def GetLogErrors(self):  
+        action = '/logs'
+        print('\n \n ************************  error log **************************')
         #First we determine if there is an aircube
         if(self.logtag != None):
 
-            q_string = '?count=100&page=100&level=error&tag='+self.logtag
+            q_string = '?count=1000&page=1&level=error&tag='+self.logtag
         else:
-            q_string = '?count=100&page=100&level=warning'
+            q_string = '?count=1000&page=1&level=error'
         data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
+
+        if self.debug == 1:
+            try:
+                self.PrintLogs(data)
+            except:
+                self.ME.Logging(self.program_name,message = 'No print in log errors')
+
+        print('\n ************************  end error log **************************')
+        
         return data
           
         
@@ -453,6 +475,19 @@ class UNMSControl(object):
             pass
         print('\n ************************************************* \n \n \n')
 
+
+
+    def PrintLogs(self, dict):
+        """ prints dictionary """
+        
+        #test = json.dumps(dict)
+        test = dict['items']
+        for k in range(0,len(test)):
+            #print (test[k]['device']['name'],'  ',test[k]['timestamp'],'  ',test[k]['message'])
+            print('{:<30s}{:>40s}   {:<60s}'.format(test[k]['device']['name'],test[k]['timestamp'],test[k]['message']))
+        return 
+    
+    
 
     
     
@@ -561,7 +596,8 @@ class UNMSControl(object):
         #instantiate the parser
         parser = argp.ArgumentParser(
             prog='UNMSControl',
-            formatter_class=argp.RawDescriptionHelpFormatter,
+#            formatter_class=argp.RawDescriptionHelpFormatter,
+            formatter_class=argp.RawTextHelpFormatter,
             epilog=textwrap.dedent('''
             program to control UNMS 
              
@@ -577,9 +613,25 @@ class UNMSControl(object):
 
         parser.add_argument("-T","--TimeInterval",help = "time interval for statistics, hour,day,month" )
         parser.add_argument("-d","--debug",help = "debug switch, 0: no debug, 1: print out results of different queries 2: lots of info" )
+        parser.add_argument("-l","--logtag",help = textwrap.dedent('''\
+
+                            logtag for logging
+                                                    allowed values:
+                                            
+                                                    blank (gives everything)
+                                                    device
+                                                    login
+                                                    site
+                                                    device-state
+                                                    device-backup
+                                                    device-upgrade
+                                                    device-interface
+                                                    nms-backup
+                                                    nms-error
+                                                    nms-error''' ))
 
         #store_true prohibits input
-        parser.add_argument("-V","--Version",action="store_true", help = "Prints out version number" )
+        parser.add_argument("-V","--Version",action="store_true", help = "Prints out version number " )
 
         #parser.add_argument("-ip","--ip=ARG",help = "Attempt to bind to the specified IP address when connecting to servers" )
         
@@ -633,6 +685,9 @@ class UNMSControl(object):
 
         if(args.Version != None):
             self.PrintVersion()
+
+        if(args.logtag != None):
+            self.logtag = args.logtag
         
         self.user=args.user
 
@@ -664,17 +719,22 @@ if __name__ == '__main__':
     MyC.GetArguments()
     MyC.Initialize()
     MyC.Login()
-    MyC.GetUser()
-    MyC.GetSiteID()
-    MyC.GetSiteDetails()
-    MyC.GetSiteStatistic()
-    MyC.PlotData()
-    MyC.GetAircubeDetail()
-    MyC.GetAirmaxDetail()
-    MyC.GetSiteClients()
-    MyC.GetAllAP()
-    MyC.GetAllSSID()
-    MyC.GetDevicesDiscovered()
+    MyC.GetLogWarnings()
+    MyC.GetLogErrors()
+    #
+    
+    
+    #MyC.GetUser()
+    #MyC.GetSiteID()
+    #MyC.GetSiteDetails()
+    #MyC.GetSiteStatistic()
+    #MyC.PlotData()
+    #MyC.GetAircubeDetail()
+    #MyC.GetAirmaxDetail()
+    #MyC.GetSiteClients()
+    #MyC.GetAllAP()
+    #MyC.GetAllSSID()
+    #MyC.GetDevicesDiscovered()
 
     #MyC.CreateBackup()
     MyC.Logout()
