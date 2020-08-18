@@ -143,8 +143,8 @@ class UNMSControl(object):
         except:
             self.ME.Logging(self.program_name,self.sitename+' not found')
         print("the SiteID for ",self.sitename,'  is ',data[0]['identification']['id'])
-        print(" \n\n\n***********The information for the parent is :*********")
-        print("the SiteID for the parent is \n ",self.siteParentID)
+        print(" \n\n\n ***********The information for the parent is :*********")
+        print("the SiteID for the parent is  ",self.siteParentID)
         
         
         if self.debug == 1:
