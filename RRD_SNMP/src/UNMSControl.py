@@ -137,10 +137,14 @@ class UNMSControl(object):
         #    print(data[0]['identification'])
         
         #print(data)
-        self.siteID = data[0]['identification']['id']
-        self.siteParentID = data[0]['identification']['parent']['parentId']
+        try: 
+            self.siteID = data[0]['identification']['id']
+            self.siteParentID = data[0]['identification']['parent']['parentId']
+        except:
+            self.ME.Logging(self.program_name,self.sitename+' not found')
         print("the SiteID for ",self.sitename,'  is ',data[0]['identification']['id'])
         print(" \n\n\n***********The information for the parent is :*********")
+        print("the SiteID for the parent is \n ",self.siteParentID)
         
         
         if self.debug == 1:
