@@ -319,7 +319,8 @@ class UNMSControl(object):
         if(idsite != None):
             id_test = idsite
         else:
-            id_test = self.siteParentID
+            #id_test = self.siteParentID
+            id_test = self.siteID
     
         action = '/sites'
         
@@ -329,8 +330,11 @@ class UNMSControl(object):
         data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
 
         if self.debug == 1:
-            self.PrintDict1(data[0])
-   
+            try:
+                self.PrintDict1(data[0])
+            except:
+                self.ME.Logging(self.program_name,message = ' No site clients  for ' +self.sitename)
+         
         
         return data
 
@@ -722,19 +726,19 @@ if __name__ == '__main__':
     MyC.GetArguments()
     MyC.Initialize()
     MyC.Login()
-    MyC.GetLogWarnings()
-    MyC.GetLogErrors()
+    #MyC.GetLogWarnings()
+    #MyC.GetLogErrors()
     #
     
     
     #MyC.GetUser()
-    #MyC.GetSiteID()
+    MyC.GetSiteID()
     #MyC.GetSiteDetails()
     #MyC.GetSiteStatistic()
     #MyC.PlotData()
     #MyC.GetAircubeDetail()
     #MyC.GetAirmaxDetail()
-    #MyC.GetSiteClients()
+    MyC.GetSiteClients()
     #MyC.GetAllAP()
     #MyC.GetAllSSID()
     #MyC.GetDevicesDiscovered()
