@@ -173,7 +173,7 @@ class UNMSControl(object):
         
         if self.debug == 1:
             self.PrintDict1(data)
-
+        self.JsonInterface(data)
         return data
             
     def GetSiteStatistic(self , timeinterval = None):
@@ -234,7 +234,8 @@ class UNMSControl(object):
         data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
         try:
             self.aircubeID = data[0]['identification']['id']
-           
+            
+
         except:
             self.ME.Logging(self.program_name,'No aircube found')
             return 
@@ -348,7 +349,8 @@ class UNMSControl(object):
 
         if self.debug == 1:
             self.PrintDict1(data[0])
-        
+        self.JsonInterface(data)
+
         return data
     def GetAllSSID(self):
         """provides list of wireless ssid
@@ -495,7 +497,12 @@ class UNMSControl(object):
         return 
     
     
-
+    def JsonInterface(self,data):
+        """
+        Currently takes a jason result and writes it to file test.json
+        """
+        with open("/Users/klein/scratch/data_file.json", "w") as write_file:
+            json.dump(data, write_file,sort_keys= True,indent = 4)
     
     
     def SessionPost(self,verb,action,json_dict=None,content_type = None,auth_token = None):    
@@ -738,8 +745,8 @@ if __name__ == '__main__':
     #MyC.PlotData()
     #MyC.GetAircubeDetail()
     #MyC.GetAirmaxDetail()
-    MyC.GetSiteClients()
-    #MyC.GetAllAP()
+    #MyC.GetSiteDetails()
+    MyC.GetAllAP()
     #MyC.GetAllSSID()
     #MyC.GetDevicesDiscovered()
 
