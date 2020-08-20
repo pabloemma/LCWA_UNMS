@@ -25,7 +25,7 @@ class PlotUNMS(object):
     
     
     
-    def PlotData(self,sitename,x1,y1,y2):
+    def PlotData(self,sitename,x1,y1,y2,dirname):
         np.set_printoptions(precision=2)
         fig=plt.figure() 
         ax=fig.add_subplot(1,1,1)
@@ -79,8 +79,8 @@ class PlotUNMS(object):
         degrees = 90
         plt.xticks(rotation=degrees)
         #plt.tight_layout()
-
-        #fig.savefig(file2, bbox_inches='tight')
+        file2 = dirname+sitename+'.pdf'
+        fig.savefig(file2, bbox_inches='tight')
         plt.show()
         return
     

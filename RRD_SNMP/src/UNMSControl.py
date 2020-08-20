@@ -470,7 +470,9 @@ class UNMSControl(object):
         """
         Plot all the data
         """
-        self.PA.PlotData(self.sitename,self.time_array,self.dl_array,self.ul_array)
+        if(self.output_dirname == None):
+            self.output_dirname = os.path.expanduser("~")+'/UNMS/output/'
+        self.PA.PlotData(self.sitename,self.time_array,self.dl_array,self.ul_array,self.output_dirname)
 
     def PrintDict(self, dict):
         """ prints dictionary """
@@ -741,7 +743,7 @@ class UNMSControl(object):
         """ deals with version"""
         
         
-        self.version = '2.1.2'
+        self.version = '2.1.4'
         self.versiontext = []
         
         self.versiontext.append('################ version : '+self.version+'  #######################')
@@ -752,6 +754,7 @@ class UNMSControl(object):
         self.versiontext.append('version 2.1.1 : added logwarnig and logerror')
         self.versiontext.append('version 2.1.2 : rewrote json output routine')
         self.versiontext.append('version 2.1.3 : added file output')
+        self.versiontext.append('version 2.1.4 : save plot to file')
         
         if silent == False :
         
