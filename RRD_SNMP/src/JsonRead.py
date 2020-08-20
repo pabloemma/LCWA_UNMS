@@ -12,12 +12,12 @@ class JsonRead(object):
     '''
 
 
-    def __init__(self,fileinput):
+    def __init__(self):
         '''
         Constructor
         '''
         
-    def ReadFile(self):
+    def ReadFile(self,filename):
         """
         Reads json file
         """
@@ -62,6 +62,6 @@ class JsonRead(object):
 
 if __name__ == '__main__':
     filename='/Users/klein/scratch/respo.json'
-    JR = JsonRead(filename)
-    JR.ReadFile()
+    JR = JsonRead()
+    JR.ReadFile(filename)
     

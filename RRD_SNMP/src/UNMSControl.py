@@ -20,6 +20,7 @@ import numpy as np
 #ak import
 from MyError  import MyError 
 from PlotUNMS  import PlotUNMS
+from JsonRead import  JsonRead
 
 
 
@@ -34,7 +35,8 @@ class UNMSControl(object):
         Constructor
         '''
         self.session = requests.Session()
-        self.ME=MyError()
+        self.ME = MyError()
+        self.JR = JsonRead()
         self.program_name = os.path.basename(__file__)
         
         self.PA = PlotUNMS()
@@ -148,8 +150,8 @@ class UNMSControl(object):
         
         
         if self.debug == 1:
-            self.PrintDict1(data[0])
-        
+            #self.PrintDict1(data[0])
+            self.JR.ReadData(json.dumps(data))
         return data
 
 
@@ -172,8 +174,9 @@ class UNMSControl(object):
         data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
         
         if self.debug == 1:
-            self.PrintDict1(data)
-        self.JsonInterface(data)
+            #self.PrintDict1(data)
+        #self.JsonInterface(data)
+            self.JR.ReadData(json.dumps(data))
         return data
             
     def GetSiteStatistic(self , timeinterval = None):
@@ -245,8 +248,8 @@ class UNMSControl(object):
         q_string='/aircubes/self.airCubeID'
             
         if self.debug == 1:
-            self.PrintDict1(data[0])
-   
+            #self.PrintDict1(data[0])
+            self.JR.ReadData(json.dumps(data))
         
         return data
     
@@ -274,8 +277,8 @@ class UNMSControl(object):
         q_string='/airmaxes/self.airMaxID'
             
         if self.debug == 1:
-            self.PrintDict1(data[0])
-   
+            #self.PrintDict1(data[0])
+            self.JR.ReadData(json.dumps(data))
         
         return data
  
@@ -304,7 +307,8 @@ class UNMSControl(object):
         q_string='/airmaxes/self.airMaxID'
             
         if self.debug == 1:
-            self.PrintDict1(data[0])
+            #self.PrintDict1(data[0])
+            self.JR.ReadData(json.dumps(data))
    
         
         #return data
@@ -348,8 +352,9 @@ class UNMSControl(object):
         data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
 
         if self.debug == 1:
-            self.PrintDict1(data[0])
-        self.JsonInterface(data)
+            #self.PrintDict1(data[0])
+            self.JR.ReadData(json.dumps(data))
+        #self.JsonInterface(data)
 
         return data
     def GetAllSSID(self):
@@ -360,7 +365,8 @@ class UNMSControl(object):
         data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
 
         if self.debug == 1:
-            self.PrintDict1(data[0])
+            #self.PrintDict1(data[0])
+            self.JR.ReadData(json.dumps(data))
         return data
 
     def GetDevicesDiscovered(self):
@@ -371,7 +377,8 @@ class UNMSControl(object):
         data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
 
         if self.debug == 1:
-            self.PrintDict1(data[0])
+            #self.PrintDict1(data[0])
+            self.JR.ReadData(json.dumps(data))
         return data
 
     def GetDeviceCredential(self):
@@ -444,7 +451,8 @@ class UNMSControl(object):
         q_string = ''
         data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
         if self.debug == 1:
-            self.PrintDict1(data[0])
+            #self.PrintDict1(data[0])
+            self.JR.ReadData(json.dumps(data))
             
         return data
 
