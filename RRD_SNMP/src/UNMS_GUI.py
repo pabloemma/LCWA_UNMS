@@ -25,6 +25,7 @@ from UNMSControl import UNMSControl
 from loginpanel import LoginFrame
 from MyError  import MyError
 from TagBox  import TagBox
+from OutputFileDialog import OutputFileDialog
 
 
 class MyWindow(wx.Panel):
@@ -143,6 +144,7 @@ class MyFrame(wx.Frame):
         
         
         self.CreateMenuItem(action_menu, "Debug Level",self.OnDebugLevel)
+        self.CreateMenuItem(action_menu, "Output file",self.OnSetOutputFile)
         
         action_menu.InsertSeparator(2)
         
@@ -348,9 +350,13 @@ class MyFrame(wx.Frame):
 
         
        
-        
-        
-           
+    def OnSetOutputFile(self,event):   
+        """
+        When called all output from UNMS will go to this outputfile
+        """
+        OF=OutputFileDialog()
+        OF.Show()
+      
     ############Help system
     
     def OnHelpGeneral(self,event): 
@@ -450,7 +456,9 @@ class MyFrame(wx.Frame):
         elif (message[0]=='Tag' and message[1]=='Error' ):
             self.UNMS.logtag = message[2]
             self.UNMS.GetLogErrors()
-         
+ 
+        elif (message[0] == "OutFile"):
+            self.UNMS.SetOutputFile(message[1], message[2])
         
         #print(f"Received the following message: {message}")
         if arg2:
@@ -509,7 +517,7 @@ class UNMS_GUI(wx.App):
 
         self.UF.SetSize((600,300))
         #self.UF.Centre()
-        self.UF.SetPosition((90,400))
+        self.UF.SetPosition((90,900))
         
        
 

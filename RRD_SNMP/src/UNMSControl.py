@@ -42,6 +42,7 @@ class UNMSControl(object):
         self.PA = PlotUNMS()
                 
         self.logtag = 'login'
+        self.output_dirname = None # output directory for outputfiles
 
         
         
@@ -351,10 +352,13 @@ class UNMSControl(object):
         q_string = '/aps/profiles'
         data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
 
-        if self.debug == 1:
-            #self.PrintDict1(data[0])
-            self.JR.ReadData(json.dumps(data))
-        #self.JsonInterface(data)
+        outfil = 'LCWA_ALL_AP.txt'
+        if(self.output_dirname != None):
+            APoutput_file = self.output_dirname +outfil
+        else:
+            APoutput_file = os.getcwd() + '/'+outfil
+        self.ME.Logging(self.program_name,'Your AP list is in file '+APoutput_file)
+        self.JsonInterface(json.dumps(data),APoutput_file)
 
         return data
     def GetAllSSID(self):
@@ -364,10 +368,17 @@ class UNMSControl(object):
         q_string = '/ssids'
         data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
 
-        if self.debug == 1:
-            #self.PrintDict1(data[0])
-            self.JR.ReadData(json.dumps(data))
+
+        outfil = 'LCWA_ALL_SSID.txt'
+        if(self.output_dirname != None):
+            SSIDoutput_file = self.output_dirname +outfil
+        else:
+            APoutput_file = os.getcwd() + '/'+outfil
+        self.ME.Logging(self.program_name,'Your SSID list is in file '+SSIDoutput_file)
+        self.JsonInterface(json.dumps(data),SSIDoutput_file)
+
         return data
+
 
     def GetDevicesDiscovered(self):
         """provides list of devices
@@ -376,9 +387,7 @@ class UNMSControl(object):
         q_string = '/discovered'
         data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
 
-        if self.debug == 1:
-            #self.PrintDict1(data[0])
-            self.JR.ReadData(json.dumps(data))
+        self.JR.ReadData(json.dumps(data))
         return data
 
     def GetDeviceCredential(self):
@@ -505,11 +514,11 @@ class UNMSControl(object):
         return 
     
     
-    def JsonInterface(self,data):
+    def JsonInterface(self,data,filename):
         """
         Currently takes a jason result and writes it to file test.json
         """
-        with open("/Users/klein/scratch/data_file.json", "w") as write_file:
+        with open(filename, "w") as write_file:
             json.dump(data, write_file,sort_keys= True,indent = 4)
     
     
@@ -714,15 +723,20 @@ class UNMSControl(object):
         self.user=args.user
 
 
-
-
-        #for k in dir(message):
-
-         #   print (k)
-        #for x, y in message.content.items():
-        #    print(x, y)
-        #print(message.raw)
-        #print(message.request)
+    def SetOutputFile(self,dirname,filename):
+        """ 
+        calling this function will redirect all stdout to a file
+        """
+        
+        self.output_dirname = dirname
+        self.output_filename = dirname + filename
+        self.ME.Logging(self.program_name,'You have chosen '+self.output_filename+' as output, \n all subsequent output will be found there')
+        
+        
+        sys.stdout = open(self.output_filename, "w")
+        
+        
+        
     def PrintVersion(self, silent = False):
         """ deals with version"""
         
@@ -737,6 +751,7 @@ class UNMSControl(object):
         self.versiontext.append('version 2.1.0 : stable version')
         self.versiontext.append('version 2.1.1 : added logwarnig and logerror')
         self.versiontext.append('version 2.1.2 : rewrote json output routine')
+        self.versiontext.append('version 2.1.3 : added file output')
         
         if silent == False :
         
@@ -750,6 +765,7 @@ if __name__ == '__main__':
     MyC.GetArguments()
     MyC.Initialize()
     MyC.Login()
+    MyC.SetOutputFile('/Users/klein/UNMS/output/','UNMS.txt')
     #MyC.GetLogWarnings()
     #MyC.GetLogErrors()
     #
