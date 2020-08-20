@@ -26,6 +26,7 @@ from loginpanel import LoginFrame
 from MyError  import MyError
 from TagBox  import TagBox
 from OutputFileDialog import OutputFileDialog
+import HelpGUI
 
 
 class MyWindow(wx.Panel):
@@ -188,7 +189,9 @@ class MyFrame(wx.Frame):
         #Help Menu
         help_menu = wx.Menu()
         menubar.Append(help_menu,"Help")
-        self.CreateMenuItem(help_menu, "General overview",self.OnHelpGeneral)
+        #self.CreateMenuItem(help_menu, "General overview",self.OnHelpGeneral)
+
+        self.CreateMenuItem(help_menu, "General overview",self.OnHelpGui)
 
  
         self.SetMenuBar(menubar)
@@ -373,6 +376,13 @@ class MyFrame(wx.Frame):
         help.Wrap(400)
         frame.Show(show=True)
         
+    def OnHelpGui(self,event):
+        """ give help on how to use the Control"""
+        #open a panel
+        print ("help gui")
+        MyGH = HelpGUI.MyGuiApp(redirect = False) 
+        MyGH.MainLoop()       
+    
         
     #Here come the routines which do not have anything to do with UNMS
     def OnRunIperf3(self,event):
