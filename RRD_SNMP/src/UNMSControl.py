@@ -706,7 +706,7 @@ class UNMSControl(object):
             self.debug = 0      # is also logical False
 
         if(args.Version != None):
-            self.PrintVersion()
+            self.PrintVersion(silent = False)
 
         if(args.logtag != None):
             self.logtag = args.logtag
@@ -723,19 +723,28 @@ class UNMSControl(object):
         #    print(x, y)
         #print(message.raw)
         #print(message.request)
-    def PrintVersion(self):
+    def PrintVersion(self, silent = False):
         """ deals with version"""
         
         
-        self.version = '2.1.0'
+        self.version = '2.1.2'
+        self.versiontext = []
         
-        print('################ version : ',self.version,'  #######################')
-        print('version 1.0.0 : base version with limited functionality')
-        print('version 2.0.0 : base version with limited functionality and plots')
-        print('version 2.0.01 : added UNMS backup')
-        print('version 2.1.0 : stable version')
-        print('version 2.1.1 : added logwarnig and logerror')
-            
+        self.versiontext.append('################ version : '+self.version+'  #######################')
+        self.versiontext.append('version 1.0.0 : base version with limited functionality')
+        self.versiontext.append('version 2.0.0 : base version with limited functionality and plots')
+        self.versiontext.append('version 2.0.01 : added UNMS backup')
+        self.versiontext.append('version 2.1.0 : stable version')
+        self.versiontext.append('version 2.1.1 : added logwarnig and logerror')
+        self.versiontext.append('version 2.1.2 : rewrote json output routine')
+        
+        if silent == False :
+        
+            for k in range(0,len(self.versiontext)):
+                print(self.versiontext[k])
+        return self.version
+    
+        
 if __name__ == '__main__':
     MyC =UNMSControl()
     MyC.GetArguments()

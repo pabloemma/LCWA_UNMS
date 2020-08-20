@@ -17,6 +17,7 @@ import pprint
 import subprocess as sp
 import json
 import yaml
+from datetime import datetime
 
 
 from pubsub import pub
@@ -69,23 +70,35 @@ class MyFrame(wx.Frame):
         
         
         wx.Frame.__init__(self,parent,id,title,style = mystyle)
+     
+     
+             #instantiate UNMSControl
+        self.UNMS = UNMSControl()
+        self.unmsversion = self.UNMS.PrintVersion(silent = True)
+
         
-        self.version = 'UNMS Control version v2.0.0'
+        self.version = 'UNMS GUI Control for LCWA'
         self.author = 'Andi Klein'
         self.date = 'Summer 2020 '
+        self.UNMSversion = 'UNMS version  '+self.unmsversion
+        now=datetime.now()
+        self.dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+ 
         panel = wx.Panel(self,-1)
-        vs =wx.StaticText(panel,-1,self.version, (100,50),(160,-1),wx.ALIGN_CENTER)
-        font = wx.Font(25,wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, True)
-        vs.SetFont(font)
-        vk =wx.StaticText(panel,-1,self.author, (100,100),(160,-1),wx.ALIGN_CENTER)
-        vl =wx.StaticText(panel,-1,self.date, (100,150),(160,-1),wx.ALIGN_CENTER)
+        vs =wx.StaticText(panel,-1,self.version, (100,20),(160,-1),wx.ALIGN_LEFT)
+        font1 = wx.Font(30,wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, True)
+        font2 = wx.Font(30,wx.FONTFAMILY_MODERN, wx.FONTSTYLE_ITALIC, wx.FONTWEIGHT_BOLD, True)
+        vs.SetFont(font1)
+        vk =wx.StaticText(panel,-1,self.author, (100,70),(160,-1),wx.ALIGN_LEFT)
+        vl =wx.StaticText(panel,-1,self.date, (100,100),(160,-1),wx.ALIGN_LEFT)
+        vm =wx.StaticText(panel,-1,self.UNMSversion, (100,130),(160,-1),wx.ALIGN_CENTER)
+        vn =wx.StaticText(panel,-1,self.dt_string, (100,160),(160,-1),wx.ALIGN_RIGHT)
         font = wx.Font(20,wx.FONTFAMILY_SWISS, wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_BOLD, True)
-        vk.SetFont(font)
+        vk.SetFont(font2)
         vl.SetFont(font)
-        
+        vm.SetFont(font)
+        vn.SetFont(font)
    
-        #instantiate UNMSControl
-        self.UNMS = UNMSControl()
 
         self.UNMS.SetDebugLevel(0) #default, can be changed
         
@@ -494,9 +507,9 @@ class UNMS_GUI(wx.App):
 
         self.SetTopWindow(self.UF)
 
-        self.UF.SetSize((500,400))
+        self.UF.SetSize((600,300))
         #self.UF.Centre()
-        self.UF.SetPosition((1000,40))
+        self.UF.SetPosition((90,400))
         
        
 
