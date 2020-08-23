@@ -174,6 +174,8 @@ class MyFrame(wx.Frame):
         devices_menu = wx.Menu()
         menubar.Append(devices_menu,"Devices")
         self.CreateMenuItem(devices_menu, "Get AirCubeDetail",self.OnGetAirCubeDetail)
+        self.CreateMenuItem(devices_menu, "Get AirCubeNetwork",self.OnGetAirCubeNetwork)
+        self.CreateMenuItem(devices_menu, "Ser AirCubeNetwork",self.OnSetAirCubeNetwork)
         self.CreateMenuItem(devices_menu, "Get AirMaxDetail",self.OnGetAirmaxDetail)
         devices_menu.InsertSeparator(2)
 
@@ -326,6 +328,19 @@ class MyFrame(wx.Frame):
         if(self.aircube_details != None):
             for k in range(0,len(self.aircube_details)):
                 self.PrintDict(self.aircube_details[k])
+
+    def OnGetAirCubeNetwork(self,event):
+        self.aircube_network = self.UNMS.GetAircubeNetwork()
+        if(self.aircube_network != None):
+            for k in range(0,len(self.aircube_network)):
+                self.PrintDict(self.aircube_network[k])
+                
+    def OnSetAirCubeNetwork(self,event):
+        """
+        Currently pass
+        """
+        pass
+     
  
     def OnGetAirmaxDetail(self,event):
         self.airmax_details = self.UNMS.GetAirmaxDetail()

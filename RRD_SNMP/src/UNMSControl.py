@@ -143,11 +143,12 @@ class UNMSControl(object):
         try: 
             self.siteID = data[0]['identification']['id']
             self.siteParentID = data[0]['identification']['parent']['parentId']
+            print("the SiteID for ",self.sitename,'  is ',data[0]['identification']['id'])
+            print(" \n\n\n ***********The information for the parent is :*********")
+            print("the SiteID for the parent is  ",self.siteParentID)
+
         except:
             self.ME.Logging(self.program_name,self.sitename+' not found')
-        print("the SiteID for ",self.sitename,'  is ',data[0]['identification']['id'])
-        print(" \n\n\n ***********The information for the parent is :*********")
-        print("the SiteID for the parent is  ",self.siteParentID)
         
         
         if self.debug == 1:
@@ -253,6 +254,24 @@ class UNMSControl(object):
             self.JR.ReadData(json.dumps(data))
         
         return data
+    
+    def GetAircubeNetwork(self):
+        """
+        control aircube
+        """
+        action = '/devices/'
+        
+        #First we determine if there is an aircube
+        
+        q_string = 'aircubes/'+self.siteID+'/network'
+
+        data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
+        
+        self.JR.ReadData(json.dumps(data))
+
+        return data
+        
+        
     
     
     def GetAirmaxDetail(self):
