@@ -249,9 +249,9 @@ class UNMSControl(object):
         
         q_string='/aircubes/self.airCubeID'
             
-        if self.debug == 1:
+        #if self.debug == 1:
             #self.PrintDict1(data[0])
-            self.JR.ReadData(json.dumps(data))
+        self.JR.ReadData(json.dumps(data))
         
         return data
     
@@ -263,7 +263,7 @@ class UNMSControl(object):
         
         #First we determine if there is an aircube
         
-        q_string = 'aircubes/'+self.siteID+'/network'
+        q_string = 'aircubes/'+self.aircubeID+'/network'
 
         data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
         
@@ -271,7 +271,24 @@ class UNMSControl(object):
 
         return data
         
+     
+    def GetAircubeWireless(self):
+        """
+        control aircube
+        """
+        action = '/devices/'
         
+        #First we determine if there is an aircube
+        
+        
+        q_string = 'aircubes/'+self.aircubeID+'/wireless'
+
+        data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
+        
+        self.JR.ReadData(json.dumps(data))
+
+        return data
+         
     
     
     def GetAirmaxDetail(self):
