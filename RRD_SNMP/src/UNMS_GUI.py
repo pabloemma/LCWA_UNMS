@@ -495,7 +495,7 @@ class MyFrame(wx.Frame):
         
         #print(f"Received the following message: {message}")
         if arg2:
-            print(f"Received another arguments: {arg2}")
+            print("Received another arguments: {arg2}")
 
     
     def PrintDict(self,dict):
