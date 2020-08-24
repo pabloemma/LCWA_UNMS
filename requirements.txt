@@ -1,0 +1,9 @@
+#andi's requirement file
+requests
+yaml
+numpy
+json
+pprint
+matplotlib
+pubsub
+wxpython
