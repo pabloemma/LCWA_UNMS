@@ -53,7 +53,9 @@ class MyInputList(wx.Frame):
         for p_id, p_info in self.inputdict.items():
 #            label.append(p_id)
             if  p_info != None and isinstance(p_info,dict): 
-            
+                label.append(p_id)
+                value.append('do not change')
+                
                 for key in p_info:
 
                     print(key + ':', p_info[key])
