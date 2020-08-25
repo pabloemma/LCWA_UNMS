@@ -304,6 +304,19 @@ class UNMSControl(object):
         
         self.JR.ReadData(json.dumps(data))
 
+
+        outfil = 'LCWA_Aircube.txt'
+
+        if(self.output_dirname != None):
+            AirCubeoutput_file = self.output_dirname +outfil
+        else:
+            AirCubeoutput_file = os.getcwd() + '/'+outfil
+        self.ME.Logging(self.program_name,'Your AirCube list is in file '+AirCubeoutput_file)
+        #self.JsonInterface(json.dumps(data),AirCubeoutput_file)
+        self.JsonInterface(data,AirCubeoutput_file)
+
+
+
         return data
     
     def PutAircubeSystem(self):  
@@ -442,7 +455,7 @@ class UNMSControl(object):
         else:
             APoutput_file = os.getcwd() + '/'+outfil
         self.ME.Logging(self.program_name,'Your AP list is in file '+APoutput_file)
-        self.JsonInterface(json.dumps(data),APoutput_file)
+        self.data(json.dumps(data),APoutput_file)
 
         return data
     def GetAllSSID(self):
@@ -457,9 +470,9 @@ class UNMSControl(object):
         if(self.output_dirname != None):
             SSIDoutput_file = self.output_dirname +outfil
         else:
-            APoutput_file = os.getcwd() + '/'+outfil
+            SSIDoutput_file = os.getcwd() + '/'+outfil
         self.ME.Logging(self.program_name,'Your SSID list is in file '+SSIDoutput_file)
-        self.JsonInterface(json.dumps(data),SSIDoutput_file)
+        self.data,SSIDoutput_file)
 
         return data
 
@@ -565,7 +578,7 @@ class UNMSControl(object):
         for p_id, p_info in dict.items():
             print( '\n\n ******************  ',p_id,' *************************** \n')
             
-            if not p_info is None and isinstance(p_info,type(dict)): 
+            if not p_info is None and isinstance(p_info,dict): 
             
                 for key in p_info:
 
