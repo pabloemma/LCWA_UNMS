@@ -6,10 +6,9 @@ Created on Aug 24, 2020
 
 
 import wx
-import yaml
+from pubsub import pub
 
 from JsonRead import JsonRead  
-from wx.lib import buttons
 
 
 class MyInputList(wx.Frame):
@@ -46,8 +45,8 @@ class MyInputList(wx.Frame):
         """
         label = []  # create an empty list for the labels
         value = []
-        namelbl = []
-        valuelbl = []
+        self.namelbl = []
+        self.valuelbl = []
         #Loop over dictionary and get keys
 
 
@@ -66,11 +65,18 @@ class MyInputList(wx.Frame):
                 value.append(p_info)
          
         for k in range(0,len(label)):
-            namelbl.append(wx.StaticText(self.mypanel,-1,label[k]))        
-            valuelbl.append(wx.TextCtrl(self.mypanel,-1,str(value[k]),size=(200,-1)))  
+            self.namelbl.append(wx.StaticText(self.mypanel,-1,label[k]))        
+            self.valuelbl.append(wx.TextCtrl(self.mypanel,-1,str(value[k]),size=(200,-1)))  
+         
+        self.value = value
+        self.label = label 
             
         saveBtn = wx.Button(self.mypanel,-1,'Save')      
         cancelBtn = wx.Button(self.mypanel,-1,'Cancel')
+        
+        self.Bind(wx.EVT_BUTTON,self.OnSave,saveBtn)
+        self.Bind(wx.EVT_BUTTON,self.OnCancel,cancelBtn)
+
         
         # Now comes the sizer part
         mainsizer = wx.BoxSizer(wx.VERTICAL)  
@@ -79,8 +85,8 @@ class MyInputList(wx.Frame):
         subsizer.AddGrowableCol(1)
         
         for k in range(0,len(label)):
-            subsizer.Add(namelbl[k],0, wx.ALIGN_RIGHT | wx.ALIGN_CENTRE_VERTICAL)
-            subsizer.Add(valuelbl[k],0,wx.EXPAND)
+            subsizer.Add(self.namelbl[k],0, wx.ALIGN_RIGHT | wx.ALIGN_CENTRE_VERTICAL)
+            subsizer.Add(self.valuelbl[k],0,wx.EXPAND)
         
         mainsizer.Add(subsizer,0,wx.EXPAND | wx.ALL,10)    
         #place the buttons
@@ -100,7 +106,32 @@ class MyInputList(wx.Frame):
         #mainsizer.SetSizeHints(self)
         return
     
- 
+    def OnCancel(self,event):
+        """
+        nothing changed
+        """
+        print("Cancel")
+        self.Destroy()
+        return
+
+    def OnSave(self,event):
+        """
+        nothing changed
+        """
+        print("Saving")
+        # get all the values
+        self.aircubelist = []
+        dictionary = {}
+        self.aircubelist.append("Aircube")  # to determine which event has generated the message
+        for k in range(0,len(self.label)):
+            dictionary[self.label[k]]=self.valuelbl[k].GetValue()
+        print(dictionary)
+            
+        #pub.sendMessage("panel_listener", message=self.aircubelist)
+
+        
+        self.Destroy()
+        return
    
    
 if __name__ == '__main__':
