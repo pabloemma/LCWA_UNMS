@@ -289,7 +289,55 @@ class UNMSControl(object):
 
         return data
          
+    def GetAircubeSystem(self):
+        """
+        control aircube
+        """
+        action = '/devices/'
+        
+        #First we determine if there is an aircube
+        
+        
+        q_string = 'aircubes/'+self.aircubeID+'/system'
+
+        data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
+        
+        self.JR.ReadData(json.dumps(data))
+
+        return data
     
+    def PutAircubeSystem(self):  
+        """
+        programs some of the aircube info
+        """
+        mydict = {"deviceName": "", 
+                  "timezone": "",
+                  "zonename": "",
+                  "username": "",
+                  "newPassword": "",
+                  "ledNightMode": {
+                  "enable": True,
+                  "start": 0,
+                  "end": 0
+                  },
+                  "poePassthrough": True,
+                  "resetButtonEnabled": True
+                  } 
+        
+        action = '/devices/'
+        
+        
+        
+        q_string = 'aircubes/'+self.aircubeID+'/system'
+        
+        
+        print(" these are your choices for aircube system")
+        
+        self.PrintDict1(mydict)
+
+        #data = self.SessionPost('Put',action+q_string,json_dict = mydict,auth_token = self.auth_token)
+
+        return
     
     def GetAirmaxDetail(self):
         """ if there is an airmax we can get details of it
@@ -313,9 +361,9 @@ class UNMSControl(object):
         
         q_string='/airmaxes/self.airMaxID'
             
-        if self.debug == 1:
+        #if self.debug == 1:
             #self.PrintDict1(data[0])
-            self.JR.ReadData(json.dumps(data))
+        self.JR.ReadData(json.dumps(data))
         
         return data
  
@@ -343,9 +391,9 @@ class UNMSControl(object):
         
         q_string='/airmaxes/self.airMaxID'
             
-        if self.debug == 1:
+        #if self.debug == 1:
             #self.PrintDict1(data[0])
-            self.JR.ReadData(json.dumps(data))
+        self.JR.ReadData(json.dumps(data))
    
         
         #return data
@@ -538,6 +586,23 @@ class UNMSControl(object):
         except:
             pass
         print('\n ************************************************* \n \n \n')
+
+        self.gen_dict_extract('id',dict)
+
+
+
+    def gen_dict_extract(self,key, var):
+        if hasattr(var,'iteritems'):
+            for k, v in var.iteritems():
+                if k == key:
+                    yield v
+                if isinstance(v, dict):
+                    for result in self.gen_dict_extract(key, v):
+                        yield result
+                elif isinstance(v, list):
+                    for d in v:
+                        for result in self.gen_dict_extract(key, d):
+                            yield result
 
 
 
@@ -779,7 +844,7 @@ class UNMSControl(object):
         """ deals with version"""
         
         
-        self.version = '2.1.4'
+        self.version = '2.1.5'
         self.versiontext = []
         
         self.versiontext.append('################ version : '+self.version+'  #######################')
@@ -791,6 +856,7 @@ class UNMSControl(object):
         self.versiontext.append('version 2.1.2 : rewrote json output routine')
         self.versiontext.append('version 2.1.3 : added file output')
         self.versiontext.append('version 2.1.4 : save plot to file')
+        self.versiontext.append('version 2.1.5 : uploading system to aircube')
         
         if silent == False :
         

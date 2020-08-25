@@ -176,6 +176,7 @@ class MyFrame(wx.Frame):
         self.CreateMenuItem(devices_menu, "Get AirCubeDetail",self.OnGetAirCubeDetail)
         self.CreateMenuItem(devices_menu, "Get AirCubeNetwork",self.OnGetAirCubeNetwork)
         self.CreateMenuItem(devices_menu, "Get AirCubeWireless",self.OnGetAirCubeWireless)
+        self.CreateMenuItem(devices_menu, "Get AirCubeSystem",self.OnGetAirCubeSystem)
         self.CreateMenuItem(devices_menu, "Set AirCubeNetwork",self.OnSetAirCubeNetwork)
         self.CreateMenuItem(devices_menu, "Get AirMaxDetail",self.OnGetAirmaxDetail)
         devices_menu.InsertSeparator(2)
@@ -333,8 +334,9 @@ class MyFrame(wx.Frame):
     def OnGetAirCubeNetwork(self,event):
         self.aircube_network = self.UNMS.GetAircubeNetwork()
         if(self.aircube_network != None):
-            for k in range(0,len(self.aircube_network)):
-                self.PrintDict(self.aircube_network[k])
+            #for k in range(0,len(self.aircube_network)):
+            print('\n\n\n Aircube Network ')
+            self.PrintDict(self.aircube_network)
 
     def OnGetAirCubeWireless(self,event):
         self.aircube_wireless = self.UNMS.GetAircubeWireless()
@@ -342,6 +344,13 @@ class MyFrame(wx.Frame):
             #for k in range(0,len(self.aircube_wireless)):
             print('\n\n\n Aircube Wireless ')
             self.PrintDict(self.aircube_wireless)
+
+    def OnGetAirCubeSystem(self,event):
+        self.aircube_system = self.UNMS.GetAircubeSystem()
+        if(self.aircube_system != None):
+            #for k in range(0,len(self.aircube_wireless)):
+            print('\n\n\n Aircube Wireless ')
+            self.PrintDict(self.aircube_system)
                 
     def OnSetAirCubeNetwork(self,event):
         """
@@ -498,10 +507,11 @@ class MyFrame(wx.Frame):
             print("Received another arguments: {arg2}")
 
     
+
     def PrintDict(self,dict):
         #pprint.pprint(dict, width = 1 ,depth =2,sort_dicts=True)
         
-        print('\n *************** new AP listing ****************** \n')
+        print('\n ***************w New Block ****************** \n')
             #self.PrintDict(self.allAP[k])
         print( yaml.dump(dict, default_flow_style=False))
         test = yaml.dump(dict, default_flow_style=False)
