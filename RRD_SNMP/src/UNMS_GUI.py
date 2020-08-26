@@ -26,6 +26,7 @@ from loginpanel import LoginFrame
 from MyError  import MyError
 from TagBox  import TagBox
 from OutputFileDialog import OutputFileDialog
+from InputList import MyInputList
 import HelpGUI
 
 
@@ -178,9 +179,11 @@ class MyFrame(wx.Frame):
         self.CreateMenuItem(devices_menu, "Get AirCubeWireless",self.OnGetAirCubeWireless)
         self.CreateMenuItem(devices_menu, "Get AirCubeSystem",self.OnGetAirCubeSystem)
         self.CreateMenuItem(devices_menu, "Set AirCubeNetwork",self.OnSetAirCubeNetwork)
-        self.CreateMenuItem(devices_menu, "Get AirMaxDetail",self.OnGetAirmaxDetail)
-        devices_menu.InsertSeparator(2)
+        devices_menu.InsertSeparator(5)
 
+        
+        self.CreateMenuItem(devices_menu, "Get AirMaxDetail",self.OnGetAirmaxDetail)
+ 
         self.CreateMenuItem(devices_menu, "Get UNMS settings",self.OnGetUNMSSettings)
         self.CreateMenuItem(devices_menu, "Get UNMS warnings",self.OnGetLogWarnings)
         self.CreateMenuItem(devices_menu, "Get UNMS errors",self.OnGetLogErrors)
@@ -352,12 +355,7 @@ class MyFrame(wx.Frame):
             print('\n\n\n Aircube Wireless ')
             self.PrintDict(self.aircube_system)
                 
-    def OnSetAirCubeNetwork(self,event):
-        """
-        Currently pass
-        """
-        pass
-     
+      
  
     def OnGetAirmaxDetail(self,event):
         self.airmax_details = self.UNMS.GetAirmaxDetail()
@@ -391,7 +389,17 @@ class MyFrame(wx.Frame):
         """
         OF=OutputFileDialog()
         OF.Show()
+        
+    def OnSetAircubeNetwork(self,event):
       
+      
+        self.aircube_system = self.UNMS.GetAircubeSystem()
+        MIL=MyInputList()
+        MIL.ReadData(self.aircube_system)
+        MIL.CreateLayout()
+        MIL.Show()
+        
+
     ############Help system
     
     def OnHelpGeneral(self,event): 
@@ -501,6 +509,8 @@ class MyFrame(wx.Frame):
  
         elif (message[0] == "OutFile"):
             self.UNMS.SetOutputFile(message[1], message[2])
+        elif (message[0] == "AircubeControl"):
+            self.UNMS.aircube_load(message[1])
         
         #print(f"Received the following message: {message}")
         if arg2:
