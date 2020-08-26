@@ -455,7 +455,7 @@ class UNMSControl(object):
         else:
             APoutput_file = os.getcwd() + '/'+outfil
         self.ME.Logging(self.program_name,'Your AP list is in file '+APoutput_file)
-        self.data(json.dumps(data),APoutput_file)
+        self.JsonInterface(self.data,APoutput_file)
 
         return data
     def GetAllSSID(self):
@@ -472,7 +472,7 @@ class UNMSControl(object):
         else:
             SSIDoutput_file = os.getcwd() + '/'+outfil
         self.ME.Logging(self.program_name,'Your SSID list is in file '+SSIDoutput_file)
-        self.data,SSIDoutput_file)
+        self.JsonInterface(self.data,SSIDoutput_file)
 
         return data
 
