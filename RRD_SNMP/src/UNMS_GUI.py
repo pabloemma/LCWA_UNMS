@@ -390,11 +390,11 @@ class MyFrame(wx.Frame):
         OF=OutputFileDialog()
         OF.Show()
         
-    def OnSetAircubeNetwork(self,event):
+    def OnSetAirCubeNetwork(self,event):
       
       
         self.aircube_system = self.UNMS.GetAircubeSystem()
-        MIL=MyInputList()
+        MIL=MyInputList('this is the UNMS gui')
         MIL.ReadData(self.aircube_system)
         MIL.CreateLayout()
         MIL.Show()
@@ -510,7 +510,7 @@ class MyFrame(wx.Frame):
         elif (message[0] == "OutFile"):
             self.UNMS.SetOutputFile(message[1], message[2])
         elif (message[0] == "AircubeControl"):
-            self.UNMS.aircube_load(message[1])
+            self.UNMS.SetAirCubeNetwork(message[1])
         
         #print(f"Received the following message: {message}")
         if arg2:

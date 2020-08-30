@@ -617,8 +617,14 @@ class UNMSControl(object):
                         for result in self.gen_dict_extract(key, d):
                             yield result
 
-
-
+    def SetAirCubeNetwork(self):
+        """ loads newtork parameters onto an aircube
+        """
+        self.ME.Logging(self.program_name,'AirCubeNetwork: this is not implemented yet' )
+        return
+    
+    
+    
     def PrintLogs(self, dict):
         """ prints dictionary """
         
@@ -857,7 +863,7 @@ class UNMSControl(object):
         """ deals with version"""
         
         
-        self.version = '2.1.5'
+        self.version = '2.1.6'
         self.versiontext = []
         
         self.versiontext.append('################ version : '+self.version+'  #######################')
@@ -870,6 +876,7 @@ class UNMSControl(object):
         self.versiontext.append('version 2.1.3 : added file output')
         self.versiontext.append('version 2.1.4 : save plot to file')
         self.versiontext.append('version 2.1.5 : uploading system to aircube')
+        self.versiontext.append('version 2.1.6 : loop over speedtest boxes')
         
         if silent == False :
         
@@ -877,27 +884,69 @@ class UNMSControl(object):
                 print(self.versiontext[k])
         return self.version
     
+    def DoLoop(self): 
+        """Loops over the speedtest sites
+       Not in 172.16.2.200
+        speedtest20a LC05
+        calle-galisteo-1 LC06
+        ncgrale LC14
+        vailale LC18
+        speedtest20e LC20
         
+        """ 
+        
+        self.speedtest_boxes = {'herrada-4':'LC01','colinas-del-sol':'LC02',
+                                'general-goodwin-22':'LC03','madre-de-dios':'LC04',
+                                'speedtest20a':'LC05','calle-galisteo-1':'LC06',
+                                'owl-creek-1':'LC07','vista-del-oro-3':'LC08',
+                                'lime-kiln-road-11':'LC09','vista-point-road-922':'LC10',
+                                'leaping-powder-road':'LC11','rockridge':'LC12',
+                                'apache-ridge-7':'LC13','ncgrale':'LC14',
+                                  'via-de-lama-2':'LC15','UA1':'LC16' ,
+                                  'canoncito':'LC17','vailale':'LC18',
+                                  'overlook-5':'LC19','speedtest20e':'LC20',
+                                  'happy-trails-6':'LC21' }
+        
+        # Now we need to loop over all these accounts
+        # This requires GetSiteID and then getstatistics
+        
+        for k,v in self.speedtest_boxes.items():
+            print(k,v)
+            try:
+                self.GetSiteID(sitename=k)
+                self.GetSiteStatistic(timeinterval='day')
+                
+                self.PlotData()
+            except:
+                self.ME.Logging(self.program_name, 'can\'t find '+k)
+        
+        
+        return
+        
+        
+        
+           
 if __name__ == '__main__':
     MyC =UNMSControl()
     MyC.GetArguments()
     MyC.Initialize()
     MyC.Login()
-    MyC.SetOutputFile('/Users/klein/UNMS/output/','UNMS.txt')
+    MyC.DoLoop()
+    #MyC.SetOutputFile('/Users/klein/UNMS/output/','UNMS.txt')
     #MyC.GetLogWarnings()
     #MyC.GetLogErrors()
     #
     
     
     #MyC.GetUser()
-    MyC.GetSiteID()
+    #MyC.GetSiteID()
     #MyC.GetSiteDetails()
     #MyC.GetSiteStatistic()
     #MyC.PlotData()
     #MyC.GetAircubeDetail()
     #MyC.GetAirmaxDetail()
     #MyC.GetSiteDetails()
-    MyC.GetAllAP()
+    #MyC.GetAllAP()
     #MyC.GetAllSSID()
     #MyC.GetDevicesDiscovered()
 
