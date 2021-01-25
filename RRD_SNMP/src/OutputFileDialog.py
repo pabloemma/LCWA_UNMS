@@ -11,10 +11,19 @@ class OutputFileDialog(wx.Frame):
     classdocs
     '''
 
-    def __init__(self):
+    def __init__(self,default_dir = None, default_file=None):
         wx.Frame.__init__(self,None,-1,"Login",pos=(50,50))
         panel = wx.Panel(self)
         
+        if(default_dir!=None):
+            default_dir = default_dir
+        else:
+             default_dir ='/LCWA/data/new/' 
+            
+        if(default_file!=None):
+            default_dir = default_file
+        else:
+             default_file ='reduced_devicedetail.csv' 
         
         #Create control labels
         
@@ -25,10 +34,10 @@ class OutputFileDialog(wx.Frame):
         #Now come three labels: IP, username, password
         self.outputlbl=outputlbl = wx.StaticText(panel,-1,"Output directory ")
         
-        self.directory=directory = wx.TextCtrl(panel,-1,value =os.path.expanduser("~")+'/UNMS/output/')
+        self.directory=directory = wx.TextCtrl(panel,-1,value =os.path.expanduser("~")+'/LCWA/data/new/')
         
         self.filelbl = filelbl = wx.StaticText(panel,-1,"Filename ")
-        self.filename = filename = wx.TextCtrl(panel,-1,value = "UNMSoutput.txt")
+        self.filename = filename = wx.TextCtrl(panel,-1,value = "reduce_devicedetail.csv")
 
         
         
