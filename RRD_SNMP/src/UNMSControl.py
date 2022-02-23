@@ -13,6 +13,7 @@ import argparse as argp
 import textwrap
 import os
 import yaml
+import pandas as pd
 
 import urllib3
 import numpy as np
@@ -123,7 +124,7 @@ class UNMSControl(object):
         """
         if sitename != None:
             self.sitename = sitename
-        if(self.sitename == None):
+        if(sitename == None):
             self.ME.Logging(self.program_name,'You need to provide a sitename inorder to get the SiteID')
             sys.exit(0)
             
@@ -195,10 +196,14 @@ class UNMSControl(object):
             sys.exit(0)
         action = '/sites/'
  
-        q_string = self.siteID+'/statistics?interval='+self.timeinterval+'&siri=false'
+ #       q_string = self.siteID+'/statistics?interval='+self.timeinterval+'&siri=false'
+
+        q_string = self.siteID+'/statistics?interval='+self.timeinterval
 
         data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
-        
+        #self.ReadJsonData(data)
+
+
         self.download = data['download']
         self.upload = data['upload']
         
@@ -455,7 +460,7 @@ class UNMSControl(object):
         else:
             APoutput_file = os.getcwd() + '/'+outfil
         self.ME.Logging(self.program_name,'Your AP list is in file '+APoutput_file)
-        self.JsonInterface(self.data,APoutput_file)
+        self.JsonInterface(data,APoutput_file)
 
         return data
     def GetAllSSID(self):
@@ -472,7 +477,7 @@ class UNMSControl(object):
         else:
             SSIDoutput_file = os.getcwd() + '/'+outfil
         self.ME.Logging(self.program_name,'Your SSID list is in file '+SSIDoutput_file)
-        self.JsonInterface(self.data,SSIDoutput_file)
+        self.JsonInterface(data,SSIDoutput_file)
 
         return data
 
@@ -616,6 +621,23 @@ class UNMSControl(object):
                     for d in v:
                         for result in self.gen_dict_extract(key, d):
                             yield result
+
+    def ReadJsonData(self,data):
+        
+        
+        
+        
+        #let's read the data into a panda structure
+        #site_pandas = pd.read_json(data)
+        #print(site_pandas)
+        for line1 in data:
+            print (line1)
+
+        records =[json.loads(line) for line in data]
+
+        print(records)
+
+
 
     def SetAirCubeNetwork(self):
         """ loads newtork parameters onto an aircube
@@ -877,6 +899,7 @@ class UNMSControl(object):
         self.versiontext.append('version 2.1.4 : save plot to file')
         self.versiontext.append('version 2.1.5 : uploading system to aircube')
         self.versiontext.append('version 2.1.6 : loop over speedtest boxes')
+        self.versiontext.append('version 2.2.0 : start using pandas')
         
         if silent == False :
         
@@ -931,18 +954,18 @@ if __name__ == '__main__':
     MyC.GetArguments()
     MyC.Initialize()
     MyC.Login()
-    MyC.DoLoop()
-    #MyC.SetOutputFile('/Users/klein/UNMS/output/','UNMS.txt')
-    #MyC.GetLogWarnings()
-    #MyC.GetLogErrors()
+    #MyC.DoLoop()
+    #MyC.SetOutputFile('/home/klein/UNMS/output/','UNMS.txt')
+    MyC.GetLogWarnings()
+    MyC.GetLogErrors()
     #
     
     
-    #MyC.GetUser()
-    #MyC.GetSiteID()
-    #MyC.GetSiteDetails()
-    #MyC.GetSiteStatistic()
-    #MyC.PlotData()
+    MyC.GetUser()
+    MyC.GetSiteID(sitename="madre-de-dios")
+    MyC.GetSiteDetails()
+    MyC.GetSiteStatistic(timeinterval='day')
+    MyC.PlotData()
     #MyC.GetAircubeDetail()
     #MyC.GetAirmaxDetail()
     #MyC.GetSiteDetails()
