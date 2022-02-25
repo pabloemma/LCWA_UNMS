@@ -169,6 +169,7 @@ class MyFrame(wx.Frame):
         self.CreateMenuItem(service_menu, "Get Devices discovered",self.OnGetDevicesDiscovered)
         self.CreateMenuItem(service_menu, "Get All SSID",self.OnGetAllSSID)
         self.CreateMenuItem(service_menu, "Get Device credentials",self.OnGetDeviceCredential)
+        self.CreateMenuItem(service_menu, "traffic to Vail",self.OnGetTraceStats)
 
 
 
@@ -291,6 +292,14 @@ class MyFrame(wx.Frame):
         in the case of madre de dios that would be ridgeroad
         """
         self.siteclients = self.UNMS.GetSiteClients()
+
+    def OnGetTraceStats(self,event):
+        dialog = wx.TextEntryDialog(None," Give name of the location",value="madre-de-dios",style=wx.OK | wx.CANCEL,pos=(800,500))
+        if dialog.ShowModal() == wx.ID_OK:
+            site_name = dialog.GetValue()
+            
+        dialog.Destroy() 
+        self.UNMS.GetTraceStats(site_name)      
     
     def OnGetAllAP(self,event):
         self.allAP =  self.UNMS.GetAllAP()

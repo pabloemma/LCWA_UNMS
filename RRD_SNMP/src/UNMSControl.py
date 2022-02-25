@@ -118,6 +118,20 @@ class UNMSControl(object):
        
         return data
 
+    
+    def GetTraceStats(self,sitename):
+        
+        while True:
+            self.GetSiteID(sitename)
+            self.GetSiteStatistic(timeinterval='day')
+            self.PlotData()
+            self.GetSiteDetails()
+            sitename = self.SiteParentName
+            if sitename == 'Vail' :
+                break
+        
+    
+    
     def GetSiteID(self,sitename = None):
         """ retunrs the site id given the site name
         The sitename comes from command line arguments
@@ -175,7 +189,7 @@ class UNMSControl(object):
                 
         
         data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
-        
+        self.SiteParentName = data["identification"]["parent"]["name"]
         if self.debug == 1:
             #self.PrintDict1(data)
         #self.JsonInterface(data)
@@ -959,7 +973,7 @@ if __name__ == '__main__':
     MyC.GetLogWarnings()
     MyC.GetLogErrors()
     #
-    
+    MyC.GetTraceStats("madre-de-dios")
     
     MyC.GetUser()
     MyC.GetSiteID(sitename="madre-de-dios")
