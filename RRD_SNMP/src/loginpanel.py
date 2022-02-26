@@ -39,7 +39,8 @@ class LoginFrame(wx.Frame):
         
         
         
-        self.savebtn =savebtn = wx.Button(panel, -1, "Save")
+        self.savebtn =savebtn = wx.Button(panel, -1, label = "Save")
+        self.savebtn.SetOwnForegroundColour("cadetblue")
         self.Bind(wx.EVT_BUTTON,self.OnSave,self.savebtn)
         
         
@@ -66,8 +67,8 @@ class LoginFrame(wx.Frame):
         #now do the sizer for the save button
         
         btnsizer = wx.BoxSizer(wx.HORIZONTAL)
-        btnsizer.Add((20,20),1)
-        btnsizer.Add(savebtn)
+        btnsizer.Add((25,25),1,wx.EXPAND)
+        btnsizer.Add(self.savebtn)
         
         #now put everything into main sizer
         

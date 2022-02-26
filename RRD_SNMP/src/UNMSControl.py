@@ -120,15 +120,20 @@ class UNMSControl(object):
 
     
     def GetTraceStats(self,sitename):
-        
+        counter = 0 # used so that Vail is called once and then exits
         while True:
             self.GetSiteID(sitename)
             self.GetSiteStatistic(timeinterval='day')
             self.PlotData()
             self.GetSiteDetails()
+            if sitename == self.SiteParentName:
+                break
             sitename = self.SiteParentName
             if sitename == 'Vail' :
-                break
+                if counter > 0 :
+                    break
+                counter = counter +1
+                
         
     
     
