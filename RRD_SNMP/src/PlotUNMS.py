@@ -138,7 +138,7 @@ class PlotUNMS(object):
 
             #plt.tight_layout(pad=0.2, w_pad=0.2, h_pad=.1)
 
-            plt.tight_layout(pad=0.2)
+            plt.tight_layout(w_pad=.2)
             fig.set_size_inches(8., 11.)
             myfile = self.dirname+self.sitename[0]+'_trace.pdf'
             fig.savefig(myfile, bbox_inches='tight')
