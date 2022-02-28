@@ -9,7 +9,8 @@ import matplotlib.dates as md
 from matplotlib.backends.backend_pdf import PdfPages
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes
 import numpy as np 
-import datetime as dt      
+import datetime as dt  
+import math    
        
 class PlotUNMS(object):
     '''
@@ -22,10 +23,17 @@ class PlotUNMS(object):
         """
         test
         """
-    
+        #Create empty tlists for plot arrays. The arrays are numpy arrays
+        self.time = []
+        self.y1   = []
+        self.y2   = []
+        self.ylab = []
+        self.sitename = []
     
     
     def PlotData(self,sitename,x1,y1,y2,dirname):
+        self.dirname = dirname
+        self.sitename.append(sitename)
         np.set_printoptions(precision=2)
         fig=plt.figure() 
         ax=fig.add_subplot(1,1,1)
@@ -59,8 +67,7 @@ class PlotUNMS(object):
         #plt.plot([],[])
         plt.plot_date(temp1,y2,'g^',label='\n green UP ')
         plt.plot_date(temp1,y1,'bs',label=' blue DOWN')
-        
-        
+
         # Choose your xtick format string
         date_fmt = '%d-%m-%y %H:%M'
         #date_fmt = ' %H:%M:%S'
@@ -78,9 +85,67 @@ class PlotUNMS(object):
 
         degrees = 90
         plt.xticks(rotation=degrees)
+
+        #save data in list:
+        self.time.append(temp1)
+        self.y1.append(y1)
+        self.y2.append(y2)
+        self.ylab.append(ylab)
+
+
+
         #plt.tight_layout()
         file2 = dirname+sitename+'.pdf'
         fig.savefig(file2, bbox_inches='tight')
         plt.show()
         return
     
+    def PlotAll(self):
+        print('now creating multiple plots')
+        print('length lo list',len(self.time))
+
+        if len(self.y1) == 1:   #only one plot
+            return
+        else:
+            # create multiple plots on one page
+            fig = plt.figure()  # create a figure
+            ax = []  # will hold array of subplots
+            plt.rc('axes', labelsize=5)
+
+            # now create subplots, fist detrmine how many we have.
+            # we will fill them in a grid of 2 wide and n deep
+            n = math.ceil(len(self.y1)/2.)
+            for k in range(len(self.y1)):
+                ax.append(fig.add_subplot(n,2,k+1))
+                #plt.rc('axes', labelsize=5)
+
+                plt.plot_date(self.time[k],self.y2[k],'g^',markersize = 3 ,label='\n green UP ')
+                plt.plot_date(self.time[k],self.y1[k],'bs',markersize = 3 ,label=' blue DOWN')
+
+                date_fmt = '%d-%m-%y %H:%M'
+                plt.grid(True)
+
+                ax[k].xaxis.set_major_formatter(md.DateFormatter(date_fmt))
+                plt.xlabel('Time')
+                #reduce label size
+
+                plt.ylabel(self.ylab[k])
+                
+                #plt.legend(facecolor='ivory',loc="lower left",shadow=True, fancybox=True)
+
+                degrees = 90
+                plt.xticks(rotation=degrees)
+
+            #plt.tight_layout(pad=0.2, w_pad=0.2, h_pad=.1)
+
+            plt.tight_layout(pad=0.2)
+            fig.set_size_inches(8., 11.)
+            myfile = self.dirname+self.sitename[0]+'_trace.pdf'
+            fig.savefig(myfile, bbox_inches='tight')
+
+            plt.show()
+ 
+
+
+
+        return
