@@ -121,16 +121,21 @@ class UNMSControl(object):
     
     def GetTraceStats(self,sitename):
         counter = 0 # used so that Vail is called once and then exits
+        self.GetSiteID(sitename) # for the firt time aftewrads we use parentid
         while True:
-            self.GetSiteID(sitename)
             self.GetSiteStatistic(timeinterval='day')
             self.PlotData()
             self.GetSiteDetails()
+            self.siteID = self.SiteParentId
             if sitename == self.SiteParentName:
+                self.PA.PlotAll()
                 break
             sitename = self.SiteParentName
-            if sitename == 'Vail' :
+            if sitename == 'Vail' :  # break because of the data problems
+                self.PA.PlotAll()
+                break   # remove this and previous line once we have solved the data problem
                 if counter > 0 :
+                    self.PA.PlotAll()
                     break
                 counter = counter +1
                 
@@ -195,6 +200,9 @@ class UNMSControl(object):
         
         data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
         self.SiteParentName = data["identification"]["parent"]["name"]
+        self.SiteParentId  = data["identification"]["parent"]["id"]
+        self.sitename = data["identification"]["parent"]["name"]
+        
         if self.debug == 1:
             #self.PrintDict1(data)
         #self.JsonInterface(data)
@@ -978,13 +986,13 @@ if __name__ == '__main__':
     MyC.GetLogWarnings()
     MyC.GetLogErrors()
     #
-    MyC.GetTraceStats("madre-de-dios")
+    MyC.GetTraceStats("general-goodwin-22")
     
-    MyC.GetUser()
-    MyC.GetSiteID(sitename="madre-de-dios")
-    MyC.GetSiteDetails()
-    MyC.GetSiteStatistic(timeinterval='day')
-    MyC.PlotData()
+    #MyC.GetUser()
+    #MyC.GetSiteID(sitename="madre-de-dios")
+    #MyC.GetSiteDetails()
+    #MyC.GetSiteStatistic(timeinterval='day')
+    #MyC.PlotData()
     #MyC.GetAircubeDetail()
     #MyC.GetAirmaxDetail()
     #MyC.GetSiteDetails()
