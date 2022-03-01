@@ -259,8 +259,16 @@ class MyFrame(wx.Frame):
         """
         gets details on the specified site
         """
+        dialog = wx.TextEntryDialog(None," give site id",value="00e72a96-9bcd-402b-9301-0ad7e43d3fd3",style=wx.OK | wx.CANCEL,pos=(800,500))
+        if dialog.ShowModal() == wx.ID_OK:
+            site_id = dialog.GetValue()
+            self.sitedetails = self.UNMS.GetSiteDetails(site_id)
+
        
-        self.sitedetails = self.UNMS.GetSiteDetails()
+        else: 
+        
+            self.sitedetails = self.UNMS.GetSiteDetails()
+        dialog.Destroy()            
         self.PrintDict(self.sitedetails)
  
     
@@ -530,7 +538,7 @@ class MyFrame(wx.Frame):
     def PrintDict(self,dict):
         #pprint.pprint(dict, width = 1 ,depth =2,sort_dicts=True)
         
-        print('\n ***************w New Block ****************** \n')
+        print('\n *************** New Block ****************** \n')
             #self.PrintDict(self.allAP[k])
         print( yaml.dump(dict, default_flow_style=False))
         test = yaml.dump(dict, default_flow_style=False)

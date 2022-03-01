@@ -45,6 +45,7 @@ class UNMSControl(object):
         self.logtag = 'login'
         self.output_dirname = None # output directory for outputfiles
 
+        self.siteID = None
         
         
         
@@ -126,8 +127,12 @@ class UNMSControl(object):
             self.GetSiteStatistic(timeinterval='day')
             self.PlotData()
             self.GetSiteDetails()
+            if  self.siteID == self.SiteParentId:
+                self.PA.PlotAll()
+                break
+ 
             self.siteID = self.SiteParentId
-            if sitename == self.SiteParentName:
+            if sitename == self.SiteParentName :
                 self.PA.PlotAll()
                 break
             sitename = self.SiteParentName
@@ -167,10 +172,10 @@ class UNMSControl(object):
         #print(data)
         try: 
             self.siteID = data[0]['identification']['id']
-            self.siteParentID = data[0]['identification']['parent']['parentId']
+            self.SiteParentId = data[0]['identification']['parent']['id']
             print("the SiteID for ",self.sitename,'  is ',data[0]['identification']['id'])
             print(" \n\n\n ***********The information for the parent is :*********")
-            print("the SiteID for the parent is  ",self.siteParentID)
+            print("the SiteID for the parent is  ",self.SiteParentId)
 
         except:
             self.ME.Logging(self.program_name,self.sitename+' not found')
@@ -182,16 +187,17 @@ class UNMSControl(object):
         return data
 
 
-    def GetSiteDetails(self):
+    def GetSiteDetails(self,siteid = None):
         """
         Prints out details of a site.
         You need the siteid, which reuires to run GetSiteID first
         """
         
-        if(self.siteID == None):
+        if(self.siteID == None and siteid == None):
             self.ME.Logging(self.program_name,'No siteid found, probably need to run GetSiteID first')
             sys.exit(0)
-        
+        elif (siteid != None):
+            self.siteID = siteid # overwrite the self.siteid variable
         action = '/sites/'
         
         # make the query string
@@ -208,7 +214,9 @@ class UNMSControl(object):
         #self.JsonInterface(data)
             self.JR.ReadData(json.dumps(data))
         return data
-            
+
+
+
     def GetSiteStatistic(self , timeinterval = None):
         """
         Returns traffic statistic bewteen siteID and parent
@@ -224,7 +232,7 @@ class UNMSControl(object):
         action = '/sites/'
  
  #       q_string = self.siteID+'/statistics?interval='+self.timeinterval+'&siri=false'
-
+        print('site  ',self.siteID)
         q_string = self.siteID+'/statistics?interval='+self.timeinterval
 
         data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
@@ -445,7 +453,7 @@ class UNMSControl(object):
  
  
     
-    def GetSiteClients(self, idsite = None):
+    def GetSiteClients(self, idsite = '856f32ac-2529-4049-a862-b6e014b05b1e'):
         """
         Provides a list of all the clients of a site
         Either it is the parent id of the given site; for instance in madre de dios
@@ -469,8 +477,12 @@ class UNMSControl(object):
                 self.PrintDict1(data[0])
             except:
                 self.ME.Logging(self.program_name,message = ' No site clients  for ' +self.sitename)
-         
-        
+        #here we create a table of all the client sites
+        #print(data[0])
+        #print(data[1])
+        for k in range(len(data)):
+            print(data[k]["id"], data[k]["identification"]["name"], data[k]["identification"]["status"] )
+        #print(len(data))
         return data
 
     def GetAllAP(self):
@@ -986,7 +998,8 @@ if __name__ == '__main__':
     MyC.GetLogWarnings()
     MyC.GetLogErrors()
     #
-    MyC.GetTraceStats("general-goodwin-22")
+    #MyC.GetSiteClients( idsite = '00e72a96-9bcd-402b-9301-0ad7e43d3fd3')
+    MyC.GetTraceStats("madrededios")
     
     #MyC.GetUser()
     #MyC.GetSiteID(sitename="madre-de-dios")
