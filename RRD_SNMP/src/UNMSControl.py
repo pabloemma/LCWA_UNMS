@@ -482,7 +482,12 @@ class UNMSControl(object):
         #print(data[1])
         for k in range(len(data)):
             print(data[k]["id"], data[k]["identification"]["name"], data[k]["identification"]["status"] )
+            self.siteID = data[k]["id"]
+            self.sitename = data[k]["identification"]["name"]
+            self.GetSiteStatistic(timeinterval = 'day')
+            self.PlotData()
         #print(len(data))
+        
         return data
 
     def GetAllAP(self):
@@ -998,8 +1003,8 @@ if __name__ == '__main__':
     MyC.GetLogWarnings()
     MyC.GetLogErrors()
     #
-    #MyC.GetSiteClients( idsite = '00e72a96-9bcd-402b-9301-0ad7e43d3fd3')
-    MyC.GetTraceStats("madrededios")
+    MyC.GetSiteClients( idsite = '856f32ac-2529-4049-a862-b6e014b05b1e')
+    #MyC.GetTraceStats("camp-stoney")
     
     #MyC.GetUser()
     #MyC.GetSiteID(sitename="madre-de-dios")
