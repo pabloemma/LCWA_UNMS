@@ -299,7 +299,14 @@ class MyFrame(wx.Frame):
         """ provides a lits of the clients of a sites parent radio
         in the case of madre de dios that would be ridgeroad
         """
-        self.siteclients = self.UNMS.GetSiteClients()
+        dialog = wx.TextEntryDialog(None," give site id",value="856f32ac-2529-4049-a862-b6e014b05b1e",style=wx.OK | wx.CANCEL,pos=(800,500))
+        if dialog.ShowModal() == wx.ID_OK:
+            site_id = dialog.GetValue()
+            
+
+
+            self.siteclients = self.UNMS.GetSiteClients(idsite = site_id)
+        dialog.Destroy()
 
     def OnGetTraceStats(self,event):
         dialog = wx.TextEntryDialog(None," Give name of the location",value="madre-de-dios",style=wx.OK | wx.CANCEL,pos=(800,500))

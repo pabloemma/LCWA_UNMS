@@ -31,7 +31,7 @@ class PlotUNMS(object):
         self.sitename = []
     
     
-    def PlotData(self,sitename,x1,y1,y2,dirname):
+    def PlotData(self,sitename,x1,y1,y2,dirname , pltflag = True):
         self.dirname = dirname
         self.sitename.append(sitename)
         np.set_printoptions(precision=2)
@@ -97,7 +97,8 @@ class PlotUNMS(object):
         #plt.tight_layout()
         file2 = dirname+sitename+'.pdf'
         fig.savefig(file2, bbox_inches='tight')
-        plt.show()
+        if(pltflag):
+            plt.show()
         return
     
     def PlotAll(self):
@@ -115,6 +116,7 @@ class PlotUNMS(object):
             # now create subplots, fist detrmine how many we have.
             # we will fill them in a grid of 2 wide and n deep
             n = math.ceil(len(self.y1)/2.)
+            print('\n\n We have',len(self.y1),'  plots \n\n')
             for k in range(len(self.y1)):
                 ax.append(fig.add_subplot(n,2,k+1))
                 #plt.rc('axes', labelsize=5)
@@ -144,8 +146,54 @@ class PlotUNMS(object):
             fig.savefig(myfile, bbox_inches='tight')
 
             plt.show()
+        
+        return
  
+    def PlotAllNew(self):
+        """not working yet"""
+        
+        if len(self.y1) == 1:   #only one plot
+            return
+        else:
+            # create multiple plots on one page
+            
+            print('\n\n We have',len(self.y1),'  plots \n\n')
+            # we will plot 12 plots per page, so we need  many pages
+            num_pages = math.ceil(len(self.y1)/12.)
+            fig_array = []
+            # here starts outer loop
+            for num in range(num_pages):
+                fig_array.append(plt.figure())  # create a figure
 
+            for k in range(len(self.y1)):
+                ax.append(fig.add_subplot(n,2,k+1))
+                #plt.rc('axes', labelsize=5)
 
+                plt.plot_date(self.time[k],self.y2[k],'g^',markersize = 3 ,label='\n green UP ')
+                plt.plot_date(self.time[k],self.y1[k],'bs',markersize = 3 ,label=' blue DOWN')
+
+                date_fmt = '%d-%m-%y %H:%M'
+                plt.grid(True)
+
+                ax[k].xaxis.set_major_formatter(md.DateFormatter(date_fmt))
+                plt.xlabel('Time')
+                #reduce label size
+
+                plt.ylabel(self.ylab[k])
+                
+                #plt.legend(facecolor='ivory',loc="lower left",shadow=True, fancybox=True)
+
+                degrees = 90
+                plt.xticks(rotation=degrees)
+
+            #plt.tight_layout(pad=0.2, w_pad=0.2, h_pad=.1)
+
+            plt.tight_layout(w_pad=.2)
+            fig.set_size_inches(8., 11.)
+            myfile = self.dirname+self.sitename[0]+'_trace.pdf'
+            fig.savefig(myfile, bbox_inches='tight')
+
+            plt.show()      
+    
 
         return
