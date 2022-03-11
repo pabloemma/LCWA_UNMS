@@ -487,7 +487,8 @@ class UNMSControl(object):
             self.GetSiteStatistic(timeinterval = 'day')
             self.PlotData(pltflag = False) #Do not plot in this loop
         #print(len(data))
-        self.PA.PlotAll()
+        #self.PA.PlotAll()
+        self.PA.PlotAllNew()
         return data
 
     def GetAllAP(self):

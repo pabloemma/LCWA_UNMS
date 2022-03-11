@@ -29,6 +29,7 @@ class PlotUNMS(object):
         self.y2   = []
         self.ylab = []
         self.sitename = []
+        self.names = []
     
     
     def PlotData(self,sitename,x1,y1,y2,dirname , pltflag = True):
@@ -91,6 +92,7 @@ class PlotUNMS(object):
         self.y1.append(y1)
         self.y2.append(y2)
         self.ylab.append(ylab)
+        self.names.append(sitename)
 
 
 
@@ -160,40 +162,48 @@ class PlotUNMS(object):
             print('\n\n We have',len(self.y1),'  plots \n\n')
             # we will plot 12 plots per page, so we need  many pages
             num_pages = math.ceil(len(self.y1)/12.)
-            fig_array = []
+            #num_pages  = 1
             # here starts outer loop
-            for num in range(num_pages):
-                fig_array.append(plt.figure())  # create a figure
-
-            for k in range(len(self.y1)):
-                ax.append(fig.add_subplot(n,2,k+1))
-                #plt.rc('axes', labelsize=5)
-
-                plt.plot_date(self.time[k],self.y2[k],'g^',markersize = 3 ,label='\n green UP ')
-                plt.plot_date(self.time[k],self.y1[k],'bs',markersize = 3 ,label=' blue DOWN')
-
-                date_fmt = '%d-%m-%y %H:%M'
-                plt.grid(True)
-
-                ax[k].xaxis.set_major_formatter(md.DateFormatter(date_fmt))
-                plt.xlabel('Time')
-                #reduce label size
-
-                plt.ylabel(self.ylab[k])
-                
-                #plt.legend(facecolor='ivory',loc="lower left",shadow=True, fancybox=True)
-
-                degrees = 90
-                plt.xticks(rotation=degrees)
-
-            #plt.tight_layout(pad=0.2, w_pad=0.2, h_pad=.1)
-
-            plt.tight_layout(w_pad=.2)
-            fig.set_size_inches(8., 11.)
             myfile = self.dirname+self.sitename[0]+'_trace.pdf'
-            fig.savefig(myfile, bbox_inches='tight')
-
-            plt.show()      
+            pdf = PdfPages(myfile)
+            for num in range(num_pages):
+                numx = 4
+                numy = 3
+                fig,axes = plt.subplots(numx,numy, sharex=True)
     
+                for k ,ax in enumerate(axes.flatten()):
+                    l = k + num*numx*numy
+                    if(l > len(self.y1)-1):
+                        break
+                    ax.plot_date(self.time[l],self.y2[l],'g^',markersize = 3 ,label='\n green UP ')
+                    ax.plot_date(self.time[l],self.y1[l],'bs',markersize = 3 ,label=' blue DOWN')
+                
+
+
+                
+
+                    date_fmt = '%d-%m-%y %H:%M'
+                    #plt.grid(True)
+
+                    ax.xaxis.set_major_formatter(md.DateFormatter(date_fmt))
+                    ax.set_xlabel('Time')
+                    #ax.set_yscale('log')
+                    ax.set_title(self.names[l])
+                    ax.set_yscale('linear')
+                    ax.set_ybound(lower = 0. , upper = 3.e7)
+                    ax.xaxis_date()
+                    for tick in ax.get_xticklabels():
+                        tick.set_rotation(90)
+                    #plt.xlabel('Time')
+                    
+  
+            fig.set_size_inches(8., 11.)
+            plt.savefig(pdf,format='pdf')
+            pdf.savefig()
+            #fig.savefig(myfile, bbox_inches='tight')
+        #plt.clf()
+        pdf.close()
+        plt.show()      
+
 
         return
