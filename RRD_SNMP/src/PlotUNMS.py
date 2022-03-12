@@ -198,16 +198,15 @@ class PlotUNMS(object):
                     ax.xaxis_date()
                     for tick in ax.get_xticklabels():
                         tick.set_rotation(90)
-                    #plt.xlabel('Time')
+                    
                     
   
                 fig_array[num].set_size_inches(8., 11.)
+                
                 #plt.savefig(pdf,format='pdf')
                 pdf.savefig(fig_array[num])
             #fig.savefig(myfile, bbox_inches='tight')
         #plt.clf()
+        plt.show()
         pdf.close()
-        plt.show()      
-
-
         return
