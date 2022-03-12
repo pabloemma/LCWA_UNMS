@@ -166,12 +166,16 @@ class PlotUNMS(object):
             # here starts outer loop
             myfile = self.dirname+self.sitename[0]+'_trace.pdf'
             pdf = PdfPages(myfile)
+
+            # create the lists for figures and axes
+            fig_array = [0 for k in range(num_pages)]
+            axes_array = [0 for k in range(num_pages)]
             for num in range(num_pages):
                 numx = 4
                 numy = 3
-                fig,axes = plt.subplots(numx,numy, sharex=True)
+                fig_array[num],axes_array[num] = plt.subplots(numx,numy, sharex=True)
     
-                for k ,ax in enumerate(axes.flatten()):
+                for k ,ax in enumerate(axes_array[num].flatten()):
                     l = k + num*numx*numy
                     if(l > len(self.y1)-1):
                         break
@@ -197,9 +201,9 @@ class PlotUNMS(object):
                     #plt.xlabel('Time')
                     
   
-            fig.set_size_inches(8., 11.)
-            plt.savefig(pdf,format='pdf')
-            pdf.savefig()
+                fig_array[num].set_size_inches(8., 11.)
+                #plt.savefig(pdf,format='pdf')
+                pdf.savefig(fig_array[num])
             #fig.savefig(myfile, bbox_inches='tight')
         #plt.clf()
         pdf.close()
