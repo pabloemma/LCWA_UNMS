@@ -234,8 +234,10 @@ class UNMSControl(object):
  #       q_string = self.siteID+'/statistics?interval='+self.timeinterval+'&siri=false'
         print('site  ',self.siteID)
         q_string = self.siteID+'/statistics?interval='+self.timeinterval
-
-        data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
+        try:
+            data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
+        except:
+            return
         #self.ReadJsonData(data)
 
 

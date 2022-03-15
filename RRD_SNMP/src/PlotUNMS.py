@@ -179,8 +179,10 @@ class PlotUNMS(object):
                     l = k + num*numx*numy
                     if(l > len(self.y1)-1):
                         break
-                    ax.plot_date(self.time[l],self.y2[l],'g^',markersize = 3 ,label='\n green UP ')
-                    ax.plot_date(self.time[l],self.y1[l],'bs',markersize = 3 ,label=' blue DOWN')
+                    #ax.plot_date(self.time[l],self.y2[l],'g^',markersize = 3 ,label='\n green UP ')
+                    #ax.plot_date(self.time[l],self.y1[l],'bs',markersize = 3 ,label=' blue DOWN')
+                    ax.plot(self.time[l],self.y2[l],'g^',markersize = 3 ,label='\n green UP ')
+                    ax.plot(self.time[l],self.y1[l],'bs',markersize = 3 ,label=' blue DOWN')
                 
 
 
@@ -210,3 +212,7 @@ class PlotUNMS(object):
         plt.show()
         pdf.close()
         return
+
+    def KunPlot(self):
+
+        pass
