@@ -487,10 +487,11 @@ class UNMSControl(object):
             self.siteID = data[k]["id"]
             self.sitename = data[k]["identification"]["name"]
             self.GetSiteStatistic(timeinterval = 'day')
-            self.PlotData(pltflag = False) #Do not plot in this loop
+            self.PlotData(pltflag = False,shortflag = True) #Do not plot in this loop, do not make usual plots
         #print(len(data))
         #self.PA.PlotAll()
         self.PA.PlotAllNew()
+       # self.PA.KunPlot()
         return data
 
     def GetAllAP(self):
@@ -615,13 +616,17 @@ class UNMSControl(object):
         return data
 
    
-    def PlotData(self,pltflag = True):
+    def PlotData(self,pltflag = True,shortflag = False):
         """
         Plot all the data
         """
         if(self.output_dirname == None):
             self.output_dirname = os.path.expanduser("~")+'/UNMS/output/'
-        self.PA.PlotData(self.sitename,self.time_array,self.dl_array,self.ul_array,self.output_dirname,pltflag = pltflag)
+        if(shortflag):
+            self.PA.PlotDataShort(self.sitename,self.time_array,self.dl_array,self.ul_array,self.output_dirname,pltflag = pltflag)
+        else:
+
+            self.PA.PlotData(self.sitename,self.time_array,self.dl_array,self.ul_array,self.output_dirname,pltflag = pltflag)
 
     def PrintDict(self, dict):
         """ prints dictionary """
