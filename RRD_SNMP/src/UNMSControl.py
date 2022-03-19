@@ -1011,7 +1011,8 @@ if __name__ == '__main__':
     MyC.GetLogWarnings()
     MyC.GetLogErrors()
     #
-    MyC.GetSiteClients( idsite = '856f32ac-2529-4049-a862-b6e014b05b1e')
+    #MyC.GetSiteClients( idsite = '856f32ac-2529-4049-a862-b6e014b05b1e') #ridgeraod
+    MyC.GetSiteClients( idsite = '529482c2-bde5-4f1d-8112-e67ffb8abe94') #spiritridge
     #MyC.GetTraceStats("camp-stoney")
     
     #MyC.GetUser()

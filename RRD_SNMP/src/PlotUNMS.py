@@ -205,7 +205,7 @@ class PlotUNMS(object):
                 for k, ax in enumerate(axes_array[num].flatten()):
                     l = k + num*numx*numy
                     if(l>1) and l<len(self.y1)-2:
-                        print('this \is l ',l)
+                        #print('this \is l ',l)
                         
                         outarray1 = self.SumPlots(outarray1,self.y1[l])
                         outarray2 = self.SumPlots(outarray2,self.y2[l])
@@ -232,7 +232,7 @@ class PlotUNMS(object):
                     if(l == len(self.y1)-1):
                         ax.plot(self.time[l], outarray1, 'rs',
                         markersize=3, label=' blue DOWN')
-                        ax.set_ybound(lower=0., upper=1.e8)
+                        ax.set_ybound(lower=0., upper=2.e8)
                     ax.xaxis_date()
                     for tick in ax.get_xticklabels():
                         tick.set_rotation(90)
@@ -249,9 +249,10 @@ class PlotUNMS(object):
 
     def SumPlots(self,arr1,arr2):
         """sums all the different arrays"""
-        if arr1.size !=0 and arr2.size !=0 :
+        if arr1.size !=0 and arr2.size !=0 and arr1.shape == arr2.shape:
             return np.add(arr1,arr2)
         else:
+            print('problems with adding the two arrys fromk numpy')
             return arr1
 
     def KunPlot(self):
