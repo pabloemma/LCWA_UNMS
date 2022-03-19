@@ -28,6 +28,7 @@ from TagBox  import TagBox
 from OutputFileDialog import OutputFileDialog
 from InputList import MyInputList
 import HelpGUI
+import sites as SITES #(get sites dictionary)
 
 
 class MyWindow(wx.Panel):
@@ -165,6 +166,7 @@ class MyFrame(wx.Frame):
         self.CreateMenuItem(service_menu, "Get Site Details",self.OnGetSiteDetails)
         self.CreateMenuItem(service_menu, "Get Site Statistic",self.OnGetSiteStatistics)
         self.CreateMenuItem(service_menu, "Get Site Clients",self.OnGetSiteClients)
+        self.CreateMenuItem(service_menu, "Get Site Clients by name",self.OnGetSiteClientsByName)
         self.CreateMenuItem(service_menu, "Get All APs",self.OnGetAllAP)
         self.CreateMenuItem(service_menu, "Get Devices discovered",self.OnGetDevicesDiscovered)
         self.CreateMenuItem(service_menu, "Get All SSID",self.OnGetAllSSID)
@@ -188,6 +190,9 @@ class MyFrame(wx.Frame):
         self.CreateMenuItem(devices_menu, "Get UNMS settings",self.OnGetUNMSSettings)
         self.CreateMenuItem(devices_menu, "Get UNMS warnings",self.OnGetLogWarnings)
         self.CreateMenuItem(devices_menu, "Get UNMS errors",self.OnGetLogErrors)
+
+    
+
      
         nonunms_menu = wx.Menu()
         menubar.Append(nonunms_menu,"Non UNMS ")
@@ -307,6 +312,31 @@ class MyFrame(wx.Frame):
 
             self.siteclients = self.UNMS.GetSiteClients(idsite = site_id)
         dialog.Destroy()
+
+    def OnGetSiteClientsByName(self,even):
+        ''' this is a pull down menu of available sites'''
+        # currently in a dictinary called lcwa_sites in file sites.py
+        #first we create the list of choices from the dictionary
+        list_choice = []
+        for key in SITES.lcwa_sites:
+            list_choice.append(key)
+
+        dialog = wx.SingleChoiceDialog(None , "sites available" ,"choose site",list_choice)
+        if dialog.ShowModal() == wx.ID_OK:
+            sitechoice = dialog.GetStringSelection()
+            # get the id from the dictionary
+
+            self.siteclients = self.UNMS.GetSiteClients(idsite = SITES.lcwa_sites[sitechoice])
+
+        dialog.Destroy()
+
+
+   
+
+        
+
+
+
 
     def OnGetTraceStats(self,event):
         dialog = wx.TextEntryDialog(None," Give name of the location",value="madre-de-dios",style=wx.OK | wx.CANCEL,pos=(800,500))

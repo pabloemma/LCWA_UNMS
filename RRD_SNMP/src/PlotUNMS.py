@@ -25,12 +25,23 @@ class PlotUNMS(object):
         test
         """
         # Create empty tlists for plot arrays. The arrays are numpy arrays
+
         self.time = []
         self.y1 = []
         self.y2 = []
         self.ylab = []
         self.sitename = []
         self.names = []
+
+    def ResetArrays(self): 
+        """Clera previuops arrays"""
+        self.time = []
+        self.y1 = []
+        self.y2 = []
+        self.ylab = []
+        self.sitename = []
+        self.names = []
+ 
 
     def PlotDataShort(self, sitename, x1, y1, y2, dirname, pltflag=True):
         self.dirname = dirname
@@ -245,6 +256,7 @@ class PlotUNMS(object):
         # plt.clf()
         plt.show()
         pdf.close()
+        self.ResetArrays() # clear plots
         return
 
     def SumPlots(self,arr1,arr2):
