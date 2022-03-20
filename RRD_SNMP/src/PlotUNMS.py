@@ -205,8 +205,11 @@ class PlotUNMS(object):
             # create the lists for figures and axes
             fig_array = [0 for k in range(num_pages)]
             axes_array = [0 for k in range(num_pages)]
-            outarray1 = np.add(self.y1[0],self.y1[1] ) # create first array
-            outarray2 = np.add(self.y2[0],self.y2[1] ) # create first array
+            
+            #outarray1 = np.add(self.y1[0],self.y1[1] ) # create first array
+            #outarray2 = np.add(self.y2[0],self.y2[1] ) # create first array
+            outarray1 = self.SumPlots(self.y1[0],self.y1[1])
+            outarray2 = self.SumPlots(self.y2[0],self.y2[1])
             for num in range(num_pages):
                 numx = 4
                 numy = 3
