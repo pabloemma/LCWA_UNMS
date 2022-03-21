@@ -29,6 +29,9 @@ from OutputFileDialog import OutputFileDialog
 from InputList import MyInputList
 import HelpGUI
 import sites as SITES #(get sites dictionary)
+import time
+
+#for windows
 
 
 class MyWindow(wx.Panel):
@@ -617,16 +620,22 @@ class UNMS_GUI(wx.App):
         self.author = "Andi Klein"
         
         print ("oninit")
-        self.UF = MyFrame(parent = None , id = -1, title ='UNMS control')
+        #answer = input("hit return")
+        
+        #self.UF = MyFrame(parent = None , id = -1, title ='UNMS control')
+        self.UF = MyFrame(parent = None , id = wx.ID_ANY, title ='UNMS control')
+        #self.UF.SetWindowStyle(wx.STAY_ON_TOP)
+        #time.sleep(10)
         self.UF.Show()
-
         self.SetTopWindow(self.UF)
 
         self.UF.SetSize((600,300))
-        #self.UF.Centre()
-        self.UF.SetPosition((90,900))
+        self.UF.Centre()
+        #self.UF.SetPosition((200,900))
         
-       
+
+
+ 
 
         
         
