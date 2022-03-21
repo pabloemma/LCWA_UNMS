@@ -615,7 +615,9 @@ class UNMSControl(object):
             
         return data
 
-    
+   
+    def PlotData(self,pltflag = True,shortflag = False):
+        """
         Plot all the data
         """
         if(self.output_dirname == None):
