@@ -619,7 +619,7 @@ class UNMS_GUI(wx.App):
         self.version = "1.0.0"
         self.author = "Andi Klein"
         
-        print ("oninit")
+        print ("oninit") 
         #answer = input("hit return")
         
         #self.UF = MyFrame(parent = None , id = -1, title ='UNMS control')
