@@ -621,7 +621,10 @@ class UNMSControl(object):
         Plot all the data
         """
         if(self.output_dirname == None):
-            self.output_dirname = os.path.expanduser("~")+'/UNMS/output/'
+            if platform.system() == 'Windows' :
+                self.output_dirname = os.path.expanduser("~")+'\\UNMS\\output\\'
+            else:    
+                self.output_dirname = os.path.expanduser("~")+'/UNMS/output/'
         if(shortflag):
             self.PA.PlotDataShort(self.sitename,self.time_array,self.dl_array,self.ul_array,self.output_dirname,pltflag = pltflag)
         else:
@@ -875,8 +878,8 @@ class UNMSControl(object):
             temp1=["/usr/bin/timeout", "-k", "300"," 200","/usr/bin/speedtest","--progress=no","-f","csv"] # we want csv output by default         
         # do our arguments
         else:
-            print(' Sorry we don\'t do Windows yet')
-            sys.exit(0)
+            print(' exprimental windows, be warned')
+            #sys.exit(0)
         args = parser.parse_args()
         
         
