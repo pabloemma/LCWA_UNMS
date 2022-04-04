@@ -139,6 +139,10 @@ class PlotUNMS(object):
     def PlotAll(self):
         print('now creating multiple plots')
         print('length lo list', len(self.time))
+        if plt.get_fignums():
+            plt.close('all')
+            # window(s) open
+
 
         if len(self.y1) == 1:  # only one plot
             return
@@ -188,6 +192,12 @@ class PlotUNMS(object):
 
     def PlotAllNew(self):
         """not working yet"""
+        
+        #check if any figures are open
+        if plt.get_fignums():
+            plt.close('all')
+            # window(s) open
+
 
         if len(self.y1) == 1:  # only one plot
             return
@@ -260,6 +270,9 @@ class PlotUNMS(object):
         plt.show()
         pdf.close()
         self.ResetArrays() # clear plots
+        
+        
+        
         return
 
     def SumPlots(self,arr1,arr2):
