@@ -1,0 +1,6 @@
+pip3 install -U wxPython
+pip3 install -U pyyaml
+pip3 install -U pypubsub
+pip3 install -U requests
+pip3 install -U pandas
+pip3 install -U matplotlib
