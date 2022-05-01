@@ -237,13 +237,13 @@ class PlotUNMS(object):
                         break
                     #ax.plot_date(self.time[l],self.y2[l],'g^',markersize = 3 ,label='\n green UP ')
                     #ax.plot_date(self.time[l],self.y1[l],'bs',markersize = 3 ,label=' blue DOWN')
-                    
-                    ax.plot(self.time[l], self.y2[l], 'g^',
+                    try:
+                        ax.plot(self.time[l], self.y2[l], 'g^',
                             markersize=3, label='\n green UP ')
-                    ax.plot(self.time[l], self.y1[l], 'bs',
+                        ax.plot(self.time[l], self.y1[l], 'bs',
                             markersize=3, label=' blue DOWN')
-                       
-
+                    except:
+                        print('array problems')
                     date_fmt = '%d-%m-%y %H:%M'
                     # plt.grid(True)
 
@@ -252,7 +252,14 @@ class PlotUNMS(object):
                     # ax.set_yscale('log')
                     ax.set_title(self.names[l])
                     ax.set_yscale('linear')
-                    ax.set_ybound(lower=0., upper=3.e7)
+                    if self.y1[l].mean() > 3.e7 :
+                        ax.set_ybound(lower=0., upper=3.e8)
+                    else:
+                        ax.set_ybound(lower=0., upper=3.e7)
+
+
+                    #print('mean',self.y1[l].mean())
+                    #ax.set_ybound(lower=0., upper=3.e7)
                     if(l == len(self.y1)-1):
                         ax.plot(self.time[l], outarray1, 'rs',
                         markersize=3, label=' blue DOWN')
