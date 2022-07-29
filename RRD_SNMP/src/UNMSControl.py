@@ -940,7 +940,7 @@ class UNMSControl(object):
         """ deals with version"""
         
         
-        self.version = '2.1.6'
+        self.version = '2.2.1'
         self.versiontext = []
         
         self.versiontext.append('################ version : '+self.version+'  #######################')
@@ -955,6 +955,7 @@ class UNMSControl(object):
         self.versiontext.append('version 2.1.5 : uploading system to aircube')
         self.versiontext.append('version 2.1.6 : loop over speedtest boxes')
         self.versiontext.append('version 2.2.0 : start using pandas')
+        self.versiontext.append('version 2.2.1 : in GUI got a site details by name')
         
         if silent == False :
         
