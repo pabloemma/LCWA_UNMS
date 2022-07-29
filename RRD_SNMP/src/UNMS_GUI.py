@@ -167,6 +167,7 @@ class MyFrame(wx.Frame):
         self.Bind(wx.EVT_MENU,self.OnGetSiteID,item)
         
         self.CreateMenuItem(service_menu, "Get Site Details",self.OnGetSiteDetails)
+        self.CreateMenuItem(service_menu, "Get Site Details by Name",self.OnGetSiteDetailsByName) 
         self.CreateMenuItem(service_menu, "Get Site Statistic",self.OnGetSiteStatistics)
         self.CreateMenuItem(service_menu, "Get Site Clients",self.OnGetSiteClients)
         self.CreateMenuItem(service_menu, "Get Site Clients by name",self.OnGetSiteClientsByName)
@@ -270,6 +271,24 @@ class MyFrame(wx.Frame):
         dialog = wx.TextEntryDialog(None," give site id",value="00e72a96-9bcd-402b-9301-0ad7e43d3fd3",style=wx.OK | wx.CANCEL,pos=(800,500))
         if dialog.ShowModal() == wx.ID_OK:
             site_id = dialog.GetValue()
+            self.sitedetails = self.UNMS.GetSiteDetails(site_id)
+
+       
+        else: 
+        
+            self.sitedetails = self.UNMS.GetSiteDetails()
+        dialog.Destroy()            
+        self.PrintDict(self.sitedetails)
+ 
+    def OnGetSiteDetailsByName(self,event):
+        """
+        gets details on the specified site
+        """
+        dialog = wx.TextEntryDialog(None," give site name",value="madre-de-dios",style=wx.OK | wx.CANCEL,pos=(800,500))
+        if dialog.ShowModal() == wx.ID_OK:
+            site_name = dialog.GetValue()
+            data = self.UNMS.GetSiteID(site_name)
+            site_id = data[0]['identification']['id']
             self.sitedetails = self.UNMS.GetSiteDetails(site_id)
 
        
