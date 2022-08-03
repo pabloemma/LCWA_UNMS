@@ -114,7 +114,9 @@ if __name__ == '__main__':
     JR.CreatePandas()
     filter = ['ssid','LCWN']
     JR.FilterSSID(filter)
-    JR.FilterPandas(["device.firmwareVersion","8.6.2"])
+
+    #JR.FilterPandas(["device.firmwareVersion","8.6.2"])
+    
     JR.Pandas2CSV('/home/klein/scratch/AP.csv')
     #JR.FlatMyDict()
     
