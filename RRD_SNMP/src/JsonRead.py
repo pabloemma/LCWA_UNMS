@@ -83,12 +83,16 @@ class JsonRead(object):
         self.AllDataFrame = PD.DataFrame(self.AllData)
         print(self.AllDataFrame)
 
-    def FilterPandas(self,filter):
+    def FilterSSID(self,filter):
         """this removes rows acoording to filter, where filter is a tuple"""
         self.AllDataFrameFiltered = self.AllDataFrame[self.AllDataFrame[filter[0]].str.startswith(filter[1], na=False)]
         
         pass
 
+    def FilterPandas(self.filter):
+        """ removes rows according to filter"""
+        self.AllDataFrameFiltered.drop(self.AllDataFrameFiltered[self.AllDataFrameFiltered[filter[0]] != filter[1]].index, inplace = True)
+        return
 
         
 
@@ -109,7 +113,7 @@ if __name__ == '__main__':
     JR.ReadFile(filename)
     JR.CreatePandas()
     filter = ['ssid','LCWN']
-    JR.FilterPandas(filter)
+    JR.FilterSSID(filter)
     JR.Pandas2CSV('/home/klein/scratch/AP.csv')
     #JR.FlatMyDict()
     
