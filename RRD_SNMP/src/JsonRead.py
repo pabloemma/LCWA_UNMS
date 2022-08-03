@@ -1,7 +1,13 @@
 '''
 Created on Aug 19, 2020
+modifgied Aug 2022
 
 @author: klein
+
+Reads a json file which has been created from UNMScontrol though
+GetAllAps. It first flattens the dictionaries into one dictionary and then runs a filter over it
+top remove the non LCWN entries.
+It finally saves the data as a csv file
 '''
 import json
 import pandas as PD
@@ -85,7 +91,11 @@ class JsonRead(object):
 
     def FilterSSID(self,filter):
         """this removes rows acoording to filter, where filter is a tuple"""
-        self.AllDataFrameFiltered = self.AllDataFrame[self.AllDataFrame[filter[0]].str.startswith(filter[1], na=False)]
+        if filter[0] == None:
+            self.AllDataFrameFiltered = self.AllDataFrame
+            return
+        else:
+            self.AllDataFrameFiltered = self.AllDataFrame[self.AllDataFrame[filter[0]].str.startswith(filter[1], na=False)]
         
         pass
 
@@ -102,7 +112,7 @@ class JsonRead(object):
         return
 
     def FlatMyDict(self,data: MutableMapping, sep: str= '.') -> MutableMapping:
-        """ flattens the dictionary into one"""  
+        """ flattens the dictionary into one the original json data has many dictionaries in it"""  
         [flat_dict] = PD.json_normalize(data, sep=sep).to_dict(orient='records')
         return flat_dict
       
@@ -113,6 +123,8 @@ if __name__ == '__main__':
     JR.ReadFile(filename)
     JR.CreatePandas()
     filter = ['ssid','LCWN']
+    #if you don't want to filter on ssid, uncomment the next line
+    #filter = [None,None]
     JR.FilterSSID(filter)
 
     #JR.FilterPandas(["device.firmwareVersion","8.6.2"])
