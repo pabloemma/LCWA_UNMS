@@ -83,13 +83,18 @@ class JsonRead(object):
         self.AllDataFrame = PD.DataFrame(self.AllData)
         print(self.AllDataFrame)
 
-    
+    def FilterPandas(self,filter):
+        """this removes rows acoording to filter, where filter is a tuple"""
+        self.AllDataFrameFiltered = self.AllDataFrame[self.AllDataFrame[filter[0]].str.startswith(filter[1], na=False)]
+        
+        pass
 
-        # print(self.AllData)
+
+        
 
     def Pandas2CSV(self,filename):
         """converts pandas into csv file"""
-        self.AllDataFrame.to_csv(filename)
+        self.AllDataFrameFiltered.to_csv(filename)
         return
 
     def FlatMyDict(self,data: MutableMapping, sep: str= '.') -> MutableMapping:
@@ -103,6 +108,8 @@ if __name__ == '__main__':
     JR = JsonRead()
     JR.ReadFile(filename)
     JR.CreatePandas()
+    filter = ['ssid','LCWN']
+    JR.FilterPandas(filter)
     JR.Pandas2CSV('/home/klein/scratch/AP.csv')
     #JR.FlatMyDict()
     
