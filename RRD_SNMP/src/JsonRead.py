@@ -89,7 +89,7 @@ class JsonRead(object):
         
         pass
 
-    def FilterPandas(self.filter):
+    def FilterPandas(self,filter):
         """ removes rows according to filter"""
         self.AllDataFrameFiltered.drop(self.AllDataFrameFiltered[self.AllDataFrameFiltered[filter[0]] != filter[1]].index, inplace = True)
         return
@@ -114,6 +114,7 @@ if __name__ == '__main__':
     JR.CreatePandas()
     filter = ['ssid','LCWN']
     JR.FilterSSID(filter)
+    JR.FilterPandas(["device.firmwareVersion","8.6.2"])
     JR.Pandas2CSV('/home/klein/scratch/AP.csv')
     #JR.FlatMyDict()
     
