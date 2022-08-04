@@ -112,10 +112,17 @@ class JsonRead(object):
         return
 
     def FlatMyDict(self,data: MutableMapping, sep: str= '.') -> MutableMapping:
-        """ flattens the dictionary into one the original json data has many dictionaries in it"""  
+        """ flattens the dictionary into one ,the original json data has many dictionaries in it"""  
         [flat_dict] = PD.json_normalize(data, sep=sep).to_dict(orient='records')
         return flat_dict
       
+    def DeviceLoop(self):
+        """we loop over the filtered data"""
+
+        for name,values in self.AllDataFrameFiltered['device.id'].iteritems():
+            print(values)
+         
+
 
 if __name__ == '__main__':
     filename='/home/klein/scratch/AP.json'
@@ -128,6 +135,7 @@ if __name__ == '__main__':
     JR.FilterSSID(filter)
 
     #JR.FilterPandas(["device.firmwareVersion","8.6.2"])
+    JR.DeviceLoop()
     
     JR.Pandas2CSV('/home/klein/scratch/AP.csv')
     #JR.FlatMyDict()

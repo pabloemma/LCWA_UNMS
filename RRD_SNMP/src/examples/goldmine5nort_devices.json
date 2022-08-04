@@ -1,0 +1,1148 @@
+{
+  "identification": {
+    "id": "085d5e32-43f1-4185-baf3-ef62d07683f1",
+    "site": {
+      "id": "5c5ce6e5-c606-4ddb-a266-45d679a9db50",
+      "name": "Goldmine",
+      "status": "active",
+      "type": "site",
+      "parent": {
+        "id": "4521ece7-ebb9-44f1-85d3-7bd1d2a1fd3a",
+        "name": "DonJose",
+        "status": "active",
+        "type": "site",
+        "parent": null
+      }
+    },
+    "mac": "80:2a:a8:24:d8:59",
+    "name": "Goldmine5North",
+    "hostname": "Goldmine5North",
+    "serialNumber": null,
+    "firmwareVersion": "8.6.2",
+    "model": "R5AC-PRISM",
+    "modelName": "Rocket 5AC Prism",
+    "platformId": "XC",
+    "platformName": "XC",
+    "type": "airMax",
+    "category": "wireless",
+    "authorized": true,
+    "updated": "2022-08-04T19:26:18.150Z",
+    "started": "2022-03-16T15:14:08.297Z",
+    "displayName": "Goldmine5North",
+    "role": "ap",
+    "wanInterfaceId": "eth0"
+  },
+  "overview": {
+    "runningOnBattery": null,
+    "status": "active",
+    "canUpgrade": true,
+    "isLocateRunning": null,
+    "cpu": 26,
+    "ram": 39,
+    "signal": null,
+    "signalMax": null,
+    "remoteSignalMax": null,
+    "uptime": 12197534,
+    "distance": 4950,
+    "outageScore": 0.994641,
+    "lastSeen": "2022-08-04T19:26:18.150Z",
+    "createdAt": "2019-09-26T15:02:46.481Z",
+    "voltage": null,
+    "consumption": null,
+    "biasCurrent": null,
+    "outputPower": null,
+    "maximalPower": null,
+    "frequency": 5485,
+    "stationsCount": 23,
+    "temperature": null,
+    "powerStatus": null,
+    "batteryCapacity": null,
+    "batteryTime": null,
+    "psu": [
+      {
+        "psuType": null,
+        "connected": false,
+        "maxChargingPower": null
+      }
+    ],
+    "linkScore": {
+      "linkScore": 0.950352,
+      "score": 0.919545,
+      "scoreMax": 1,
+      "airTimeScore": 1,
+      "linkScoreHint": "This link is great.",
+      "theoreticalDownlinkCapacity": null,
+      "theoreticalUplinkCapacity": null
+    },
+    "downlinkCapacity": 133786000,
+    "uplinkCapacity": 133515000,
+    "theoreticalUplinkCapacity": null,
+    "theoreticalDownlinkCapacity": null,
+    "theoreticalMaxUplinkCapacity": null,
+    "theoreticalMaxDownlinkCapacity": null,
+    "antenna": {
+      "name": "AM-5AC22-45",
+      "gain": 22
+    },
+    "channelWidth": 20,
+    "transmitPower": 27,
+    "downlinkUtilization": null,
+    "uplinkUtilization": null,
+    "wirelessMode": "ap-ptmp-airmax-ac",
+    "wirelessActiveInterfaceIds": [
+      "wlan0"
+    ]
+  },
+  "discovery": null,
+  "mode": "bridge",
+  "firmware": {
+    "current": "8.6.2",
+    "latestOnCurrentMajorVersion": "8.7.11",
+    "latest": "8.7.11",
+    "latestOver": null,
+    "compatible": true,
+    "upgradeRecommendedToVersion": null,
+    "semver": {
+      "current": {
+        "major": 8,
+        "minor": 6,
+        "patch": 2,
+        "prerelease": [],
+        "order": "524294.2.0"
+      },
+      "latest": {
+        "major": 8,
+        "minor": 7,
+        "patch": 11,
+        "prerelease": [],
+        "order": "524295.11.0"
+      },
+      "latestOver": null,
+      "latestOnCurrentMajorVersion": {
+        "major": 8,
+        "minor": 7,
+        "patch": 11,
+        "prerelease": [],
+        "order": "524295.11.0"
+      }
+    }
+  },
+  "upgrade": null,
+  "meta": {
+    "failedMessageDecryption": false,
+    "maintenance": false,
+    "restartTimestamp": null,
+    "note": null
+  },
+  "attributes": {
+    "series": "AC",
+    "ssid": "LCWNetGoldmine5North",
+    "apDevice": null,
+    "country": "United States"
+  },
+  "ipAddress": "172.16.18.58/24",
+  "enabled": true,
+  "latestBackup": {
+    "timestamp": "2022-03-02T23:59:49.553Z",
+    "id": "9366c174-54de-45cd-a324-0692d6e60705"
+  },
+  "location": {
+    "latitude": 35.419927,
+    "longitude": -106.129543,
+    "altitude": 6,
+    "elevation": 1826,
+    "heading": null,
+    "magneticHeading": null,
+    "tilt": null,
+    "roll": null
+  },
+  "interfaces": [
+    {
+      "identification": {
+        "position": 0,
+        "type": "br",
+        "name": "br0",
+        "description": null,
+        "mac": "80:2a:a8:24:d8:59",
+        "displayName": "br0"
+      },
+      "addresses": [
+        {
+          "cidr": "169.254.216.89/16",
+          "version": "v4",
+          "type": "static",
+          "origin": null
+        },
+        {
+          "cidr": "172.16.18.58/24",
+          "version": "v4",
+          "type": "static",
+          "origin": null
+        }
+      ],
+      "mtu": 1500,
+      "status": {
+        "status": "active",
+        "description": null,
+        "plugged": true,
+        "speed": null,
+        "currentSpeed": null
+      },
+      "lag": null,
+      "sfp": null,
+      "visible": true,
+      "enabled": true,
+      "canDisplayStatistics": true,
+      "statistics": {
+        "rxrate": 39200,
+        "txrate": 72736,
+        "rxbytes": 67296754591,
+        "txbytes": 104511280896,
+        "poePower": 0,
+        "dropped": 0,
+        "errors": 0
+      },
+      "pppoe": null,
+      "bridge": {
+        "id": 0,
+        "aging": null,
+        "conntrack": null,
+        "forwardingDelay": null,
+        "helloTime": null,
+        "maxAge": null,
+        "priority": null,
+        "promiscuous": null,
+        "stp": null,
+        "interfaces": [
+          "eth0",
+          "wlan0"
+        ]
+      },
+      "switch": null,
+      "port": {
+        "dhcpSnooping": null,
+        "flowControl": null,
+        "isolated": null,
+        "pingWatchdog": null,
+        "routed": null,
+        "speedLimit": null,
+        "stp": null
+      },
+      "vlan": null,
+      "poe": {
+        "output": null,
+        "capacities": []
+      },
+      "ospf": {
+        "ospfCapable": null,
+        "ospfConfig": {
+          "cost": null,
+          "auth": null,
+          "authKey": null,
+          "authKeysMD5": []
+        }
+      },
+      "speeds": {
+        "speed": null,
+        "capacities": []
+      },
+      "capabilities": {
+        "supportAutoEdge": null,
+        "supportCableTest": null,
+        "supportReset": null,
+        "loadBalanceValues": null
+      },
+      "wireless": null,
+      "isSwitchedPort": false,
+      "proxyARP": null,
+      "stations": null
+    },
+    {
+      "identification": {
+        "position": 0,
+        "type": "wlan",
+        "name": "wlan0",
+        "description": null,
+        "mac": "80:2a:a8:24:d8:59",
+        "displayName": "wlan0"
+      },
+      "addresses": [
+        {
+          "cidr": "172.16.18.58/24",
+          "version": "v4",
+          "type": "static",
+          "origin": null
+        },
+        {
+          "cidr": "169.254.216.89/16",
+          "version": "v4",
+          "type": "static",
+          "origin": null
+        }
+      ],
+      "mtu": 1500,
+      "status": {
+        "status": "active",
+        "description": null,
+        "plugged": true,
+        "speed": null,
+        "currentSpeed": null
+      },
+      "lag": null,
+      "sfp": null,
+      "visible": true,
+      "enabled": true,
+      "canDisplayStatistics": true,
+      "statistics": {
+        "rxrate": 7144568,
+        "txrate": 7565832,
+        "rxbytes": 5255882361032,
+        "txbytes": 37516735215337,
+        "poePower": 0,
+        "dropped": 0,
+        "errors": 0
+      },
+      "pppoe": null,
+      "bridge": null,
+      "switch": null,
+      "port": {
+        "dhcpSnooping": null,
+        "flowControl": null,
+        "isolated": null,
+        "pingWatchdog": null,
+        "routed": null,
+        "speedLimit": null,
+        "stp": null
+      },
+      "vlan": null,
+      "poe": {
+        "output": null,
+        "capacities": []
+      },
+      "ospf": {
+        "ospfCapable": null,
+        "ospfConfig": {
+          "cost": null,
+          "auth": null,
+          "authKey": null,
+          "authKeysMD5": []
+        }
+      },
+      "speeds": {
+        "speed": null,
+        "capacities": []
+      },
+      "capabilities": {
+        "supportAutoEdge": null,
+        "supportCableTest": null,
+        "supportReset": null,
+        "loadBalanceValues": null
+      },
+      "wireless": {
+        "ssid": "LCWNetGoldmine5North",
+        "frequency": 5485,
+        "frequencyBand": null,
+        "channelWidth": 20,
+        "dfsTimeRemaining": 0,
+        "dfsTimeTotal": 67000,
+        "dfsLockouts": null,
+        "key": "p0w3rt03h3p80pl3",
+        "security": "wpa2",
+        "transmitPower": 27,
+        "transmitEirp": null,
+        "frameLength": null,
+        "dlRatio": null,
+        "noiseFloor": -87,
+        "minTxPower": null,
+        "maxTxPower": null,
+        "antenna": {
+          "id": "10",
+          "gain": 22
+        }
+      },
+      "isSwitchedPort": false,
+      "proxyARP": null,
+      "stations": null
+    },
+    {
+      "identification": {
+        "position": 0,
+        "type": "eth",
+        "name": "eth0",
+        "description": null,
+        "mac": "80:2a:a8:25:d8:59",
+        "displayName": "eth0"
+      },
+      "addresses": [
+        {
+          "cidr": "169.254.216.89/16",
+          "version": "v4",
+          "type": "static",
+          "origin": null
+        },
+        {
+          "cidr": "172.16.18.58/24",
+          "version": "v4",
+          "type": "static",
+          "origin": null
+        }
+      ],
+      "mtu": 1500,
+      "status": {
+        "status": "active",
+        "description": "100 Mbps - Full Duplex",
+        "plugged": true,
+        "speed": "100-full",
+        "currentSpeed": "100-full"
+      },
+      "lag": null,
+      "sfp": null,
+      "visible": true,
+      "enabled": true,
+      "canDisplayStatistics": true,
+      "statistics": {
+        "rxrate": 7224888,
+        "txrate": 6897976,
+        "rxbytes": 36655554849216,
+        "txbytes": 4808938236340,
+        "poePower": 0,
+        "dropped": 0,
+        "errors": 10
+      },
+      "pppoe": null,
+      "bridge": null,
+      "switch": null,
+      "port": {
+        "dhcpSnooping": null,
+        "flowControl": null,
+        "isolated": null,
+        "pingWatchdog": null,
+        "routed": null,
+        "speedLimit": null,
+        "stp": null
+      },
+      "vlan": null,
+      "poe": {
+        "output": null,
+        "capacities": []
+      },
+      "ospf": {
+        "ospfCapable": null,
+        "ospfConfig": {
+          "cost": null,
+          "auth": null,
+          "authKey": null,
+          "authKeysMD5": []
+        }
+      },
+      "speeds": {
+        "speed": "100-full",
+        "capacities": []
+      },
+      "capabilities": {
+        "supportAutoEdge": null,
+        "supportCableTest": null,
+        "supportReset": null,
+        "loadBalanceValues": null
+      },
+      "wireless": null,
+      "isSwitchedPort": false,
+      "proxyARP": null,
+      "stations": null
+    }
+  ],
+  "airmax": {
+    "series": "AC",
+    "ssid": "LCWNetGoldmine5North",
+    "frequency": 5485,
+    "frequencyBands": [
+      [
+        5097,
+        9
+      ],
+      [
+        5102,
+        9
+      ],
+      [
+        5107,
+        9
+      ],
+      [
+        5112,
+        9
+      ],
+      [
+        5117,
+        9
+      ],
+      [
+        5122,
+        8
+      ],
+      [
+        5127,
+        9
+      ],
+      [
+        5132,
+        9
+      ],
+      [
+        5137,
+        9
+      ],
+      [
+        5142,
+        9
+      ],
+      [
+        5147,
+        10
+      ],
+      [
+        5152,
+        11
+      ],
+      [
+        5157,
+        12
+      ],
+      [
+        5162,
+        14
+      ],
+      [
+        5167,
+        15
+      ],
+      [
+        5172,
+        15
+      ],
+      [
+        5177,
+        15
+      ],
+      [
+        5182,
+        15
+      ],
+      [
+        5187,
+        12
+      ],
+      [
+        5192,
+        11
+      ],
+      [
+        5197,
+        9
+      ],
+      [
+        5202,
+        9
+      ],
+      [
+        5207,
+        10
+      ],
+      [
+        5212,
+        9
+      ],
+      [
+        5217,
+        9
+      ],
+      [
+        5222,
+        9
+      ],
+      [
+        5227,
+        9
+      ],
+      [
+        5232,
+        9
+      ],
+      [
+        5237,
+        9
+      ],
+      [
+        5242,
+        10
+      ],
+      [
+        5247,
+        10
+      ],
+      [
+        5252,
+        9
+      ],
+      [
+        5257,
+        10
+      ],
+      [
+        5262,
+        10
+      ],
+      [
+        5267,
+        9
+      ],
+      [
+        5272,
+        9
+      ],
+      [
+        5277,
+        9
+      ],
+      [
+        5282,
+        9
+      ],
+      [
+        5287,
+        9
+      ],
+      [
+        5292,
+        9
+      ],
+      [
+        5297,
+        9
+      ],
+      [
+        5302,
+        9
+      ],
+      [
+        5307,
+        8
+      ],
+      [
+        5312,
+        8
+      ],
+      [
+        5317,
+        9
+      ],
+      [
+        5322,
+        9
+      ],
+      [
+        5327,
+        10
+      ],
+      [
+        5332,
+        10
+      ],
+      [
+        5337,
+        11
+      ],
+      [
+        5342,
+        11
+      ],
+      [
+        5347,
+        10
+      ],
+      [
+        5352,
+        10
+      ],
+      [
+        5357,
+        7
+      ],
+      [
+        5362,
+        7
+      ],
+      [
+        5367,
+        7
+      ],
+      [
+        5372,
+        7
+      ],
+      [
+        5377,
+        7
+      ],
+      [
+        5382,
+        6
+      ],
+      [
+        5387,
+        6
+      ],
+      [
+        5392,
+        6
+      ],
+      [
+        5397,
+        6
+      ],
+      [
+        5402,
+        6
+      ],
+      [
+        5407,
+        6
+      ],
+      [
+        5412,
+        6
+      ],
+      [
+        5417,
+        6
+      ],
+      [
+        5422,
+        6
+      ],
+      [
+        5427,
+        7
+      ],
+      [
+        5432,
+        7
+      ],
+      [
+        5437,
+        8
+      ],
+      [
+        5442,
+        7
+      ],
+      [
+        5447,
+        6
+      ],
+      [
+        5452,
+        6
+      ],
+      [
+        5457,
+        7
+      ],
+      [
+        5462,
+        7
+      ],
+      [
+        5467,
+        10
+      ],
+      [
+        5472,
+        12
+      ],
+      [
+        5477,
+        17
+      ],
+      [
+        5482,
+        20
+      ],
+      [
+        5487,
+        21
+      ],
+      [
+        5492,
+        20
+      ],
+      [
+        5497,
+        14
+      ],
+      [
+        5502,
+        12
+      ],
+      [
+        5507,
+        8
+      ],
+      [
+        5512,
+        6
+      ],
+      [
+        5517,
+        7
+      ],
+      [
+        5522,
+        6
+      ],
+      [
+        5527,
+        7
+      ],
+      [
+        5532,
+        7
+      ],
+      [
+        5537,
+        7
+      ],
+      [
+        5542,
+        7
+      ],
+      [
+        5547,
+        6
+      ],
+      [
+        5552,
+        6
+      ],
+      [
+        5557,
+        7
+      ],
+      [
+        5562,
+        7
+      ],
+      [
+        5567,
+        8
+      ],
+      [
+        5572,
+        9
+      ],
+      [
+        5577,
+        8
+      ],
+      [
+        5582,
+        8
+      ],
+      [
+        5587,
+        7
+      ],
+      [
+        5592,
+        7
+      ],
+      [
+        5597,
+        7
+      ],
+      [
+        5602,
+        7
+      ],
+      [
+        5607,
+        8
+      ],
+      [
+        5612,
+        8
+      ],
+      [
+        5617,
+        8
+      ],
+      [
+        5622,
+        8
+      ],
+      [
+        5627,
+        12
+      ],
+      [
+        5632,
+        14
+      ],
+      [
+        5637,
+        15
+      ],
+      [
+        5642,
+        19
+      ],
+      [
+        5647,
+        25
+      ],
+      [
+        5652,
+        27
+      ],
+      [
+        5657,
+        24
+      ],
+      [
+        5662,
+        17
+      ],
+      [
+        5667,
+        16
+      ],
+      [
+        5672,
+        15
+      ],
+      [
+        5677,
+        11
+      ],
+      [
+        5682,
+        10
+      ],
+      [
+        5687,
+        10
+      ],
+      [
+        5692,
+        12
+      ],
+      [
+        5697,
+        15
+      ],
+      [
+        5702,
+        15
+      ],
+      [
+        5707,
+        14
+      ],
+      [
+        5712,
+        9
+      ],
+      [
+        5717,
+        8
+      ],
+      [
+        5722,
+        8
+      ],
+      [
+        5727,
+        7
+      ],
+      [
+        5732,
+        6
+      ],
+      [
+        5737,
+        6
+      ],
+      [
+        5742,
+        6
+      ],
+      [
+        5747,
+        6
+      ],
+      [
+        5752,
+        6
+      ],
+      [
+        5757,
+        7
+      ],
+      [
+        5762,
+        7
+      ],
+      [
+        5767,
+        6
+      ],
+      [
+        5772,
+        6
+      ],
+      [
+        5777,
+        6
+      ],
+      [
+        5782,
+        6
+      ],
+      [
+        5787,
+        7
+      ],
+      [
+        5792,
+        6
+      ],
+      [
+        5797,
+        7
+      ],
+      [
+        5802,
+        7
+      ],
+      [
+        5807,
+        7
+      ],
+      [
+        5812,
+        7
+      ],
+      [
+        5817,
+        8
+      ],
+      [
+        5822,
+        8
+      ],
+      [
+        5827,
+        8
+      ],
+      [
+        5832,
+        8
+      ],
+      [
+        5837,
+        8
+      ],
+      [
+        5842,
+        8
+      ],
+      [
+        5847,
+        8
+      ],
+      [
+        5852,
+        8
+      ],
+      [
+        5857,
+        8
+      ],
+      [
+        5862,
+        8
+      ],
+      [
+        5867,
+        8
+      ],
+      [
+        5872,
+        8
+      ],
+      [
+        5877,
+        7
+      ],
+      [
+        5882,
+        8
+      ],
+      [
+        5887,
+        7
+      ],
+      [
+        5892,
+        7
+      ],
+      [
+        5897,
+        7
+      ]
+    ],
+    "frequencyCenter": 5485,
+    "security": "wpa2",
+    "authentication": "psk",
+    "channelWidth": 20,
+    "countryCode": 840,
+    "antenna": {
+      "name": "AM-5AC22-45",
+      "gain": 22
+    },
+    "noiseFloor": -87,
+    "transmitChains": 2,
+    "receiveChains": 2,
+    "apMac": "80:2a:a8:24:d8:59",
+    "apDevice": {
+      "series": "AC"
+    },
+    "ccq": null,
+    "wds": false,
+    "stationsCount": 23,
+    "stationName": null,
+    "wirelessMode": "ap-ptmp-airmax-ac",
+    "transmitPower": 27,
+    "tddFraming": "Flexible (NEW)",
+    "gpsSignal": 0.9,
+    "location": {
+      "latitude": 35.419917,
+      "longitude": -106.129532
+    },
+    "cableLength": 0,
+    "cableSnr": 30,
+    "rxCinr": null,
+    "availableTxPowerRange": {
+      "max": 26,
+      "min": -4
+    },
+    "polling": {
+      "enabled": true
+    },
+    "remoteSignal": null,
+    "signalChain": null,
+    "signalRemoteChain": null,
+    "wlanRxBytes": 5255882361032,
+    "wlanTxBytes": 37516735215337
+  }
+}

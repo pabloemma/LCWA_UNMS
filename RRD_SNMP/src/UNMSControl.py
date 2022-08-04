@@ -79,6 +79,7 @@ class UNMSControl(object):
         """
         Login to system
         """
+
         json_dict={'username':self.user,'password':self.password,'mobilePlatform':'ios','sessionTimeout':'0'}
         action = '/user/login'
         
@@ -507,10 +508,46 @@ class UNMSControl(object):
             APoutput_file = self.output_dirname +outfil
         else:
             APoutput_file = os.getcwd() + '/'+outfil
+        self.APoutput_file = APoutput_file
         self.ME.Logging(self.program_name,'Your AP list is in file '+APoutput_file)
         self.JsonInterface(data,APoutput_file)
 
         return data
+
+    def CreateAPTable(self):
+        """
+        creates table with all the AP information
+        First it writes the file to output as usual
+        most of it is controlled through JsonRead
+        """
+        # get all the AP imnfo into a table
+        self.GetAllAP()
+
+        self.JR.ReadFile(self.APoutput_file)
+        self.JR.CreatePandas()
+        filter = ['ssid','LCWN']
+        self.JR.FilterSSID(filter)
+
+        # now we need to loop over the devices.
+        # we will use the device.id column
+        antenna_list=[]
+        for name,values in self.JR.AllDataFrameFiltered['device.id'].iteritems():
+            antenna_list.append(self.GetDeviceAntenna(values))
+
+        # now add antenna to the existing dataframe
+        self.JR.AllDataFrameFiltered['device.antenna']=antenna_list
+
+
+
+        # create new output file based on thye textfile with a csv extension
+        self.AP_csv_file = self.APoutput_file.replace('.txt','.csv')
+        self.JR.Pandas2CSV(self.AP_csv_file)
+ 
+
+
+
+
+
     def GetAllSSID(self):
         """provides list of wireless ssid
         """
@@ -529,6 +566,38 @@ class UNMSControl(object):
 
         return data
 
+    def GetDeviceDetail(self,device_id = None):
+
+        action ='/devices'
+        if device_id == None :
+            self.ME.Logging(self.program_name,'you need to provide a device id in function GetDeviceDetail \n')
+            return
+        
+    
+        action = '/devices'
+        
+        #First we determine if there is an aircube
+        
+        q_string = '/'+device_id+'/detail'
+        data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
+
+        return data
+
+    def GetDeviceAntenna(self,device_id = None):
+        """gets antenna of a device form /devices/id/detail"""
+        if device_id == None :
+            self.ME.Logging(self.program_name,'you need to provide a device id in function GetDeviceAntenna \n')
+            return
+
+
+        data = self.GetDeviceDetail(device_id)
+        #extract antenna from json file
+        try:
+            print("antenna",data['airmax']['antenna']['name'])
+            antenna = data['airmax']['antenna']['name']
+        except:
+            antenna = 'problem'
+        return antenna
 
     def GetDevicesDiscovered(self):
         """provides list of devices
@@ -887,15 +956,16 @@ class UNMSControl(object):
         if(args.password != None):
             self.password=args.password
         else:
+            
             self.ME.Logging(self.program_name,message = 'You need to provide a password')
-            sys.exit(0)
+            #sys.exit(0)
             
         if(args.Host != None):
             self.Host=args.Host
 
         else:
             self.ME.Logging(self.program_name,message = 'You need to provide a Host')
-            sys.exit(0)
+            #sys.exit(0)
         
 
         
@@ -921,7 +991,8 @@ class UNMSControl(object):
         
         self.user=args.user
 
-
+        
+ 
     def SetOutputFile(self,dirname,filename):
         """ 
         calling this function will redirect all stdout to a file
@@ -1016,9 +1087,10 @@ if __name__ == '__main__':
     MyC.GetLogErrors()
     #
     #MyC.GetSiteClients( idsite = '856f32ac-2529-4049-a862-b6e014b05b1e') #ridgeraod
-    MyC.GetSiteClients( idsite = '529482c2-bde5-4f1d-8112-e67ffb8abe94') #spiritridge
+    #MyC.GetSiteClients( idsite = '529482c2-bde5-4f1d-8112-e67ffb8abe94') #spiritridge
     #MyC.GetTraceStats("camp-stoney")
-    
+    MyC.CreateAPTable()
+    MyC.GetDeviceAntenna('085d5e32-43f1-4185-baf3-ef62d07683f1')
     #MyC.GetUser()
     #MyC.GetSiteID(sitename="madre-de-dios")
     #MyC.GetSiteDetails()
