@@ -12,7 +12,7 @@
             "type": "python",
             "request": "launch",
             "program": "${file}",
-            "args" :["-u","admin","-p","!LcwA!99"],
+            "args" :["-u","admin","-p","!LcwA!99", "-H","172.16.2.200"],
             "console": "integratedTerminal",
             "justMyCode": true
         }

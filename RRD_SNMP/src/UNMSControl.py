@@ -956,7 +956,7 @@ class UNMSControl(object):
         if(args.password != None):
             self.password=args.password
         else:
-            
+            self.password = None
             self.ME.Logging(self.program_name,message = 'You need to provide a password')
             #sys.exit(0)
             
@@ -964,6 +964,7 @@ class UNMSControl(object):
             self.Host=args.Host
 
         else:
+            
             self.ME.Logging(self.program_name,message = 'You need to provide a Host')
             #sys.exit(0)
         
@@ -990,6 +991,17 @@ class UNMSControl(object):
             self.logtag = args.logtag
         
         self.user=args.user
+
+        #this is for !@#$%^ vs code, which cannot deal with command line
+        
+        if(self.password == None):
+            with open('/home/klein/git/LCWA_UNMS/RRD_SNMP/src/authenticate.txt') as filein :
+                data = filein.read()
+            #convert spring into dict
+                temp = json.loads(data) 
+                self.user = temp['user']
+                self.password = temp['password']
+                self.Host = temp['Host']      
 
         
  
