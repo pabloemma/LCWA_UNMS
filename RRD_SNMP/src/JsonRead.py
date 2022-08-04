@@ -29,6 +29,7 @@ class JsonRead(object):
         #remove limits on columns and rows
         PD.set_option('display.max_rows', 10)
         PD.set_option('display.max_columns', 500)
+        self.prompt = 'JsonRead  >'
         
     def ReadFile(self,filename):
         """
@@ -108,6 +109,7 @@ class JsonRead(object):
 
     def Pandas2CSV(self,filename):
         """converts pandas into csv file"""
+        print('\n',self.prompt,'Your output file for the AP table is at  ',filename,'\n\n')
         self.AllDataFrameFiltered.to_csv(filename)
         return
 

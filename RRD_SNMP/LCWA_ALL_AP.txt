@@ -32,7 +32,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.308Z"
+            "updated": "2022-08-04T23:35:39.455Z"
         },
         "frequency": 5630,
         "key": "p0w3rt03h3p80pl3",
@@ -40,8 +40,8 @@
             "altitude": 5,
             "elevation": 2025,
             "heading": null,
-            "latitude": 35.491175,
-            "longitude": -105.927043,
+            "latitude": 35.491177,
+            "longitude": -105.927042,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -83,7 +83,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.308Z"
+            "updated": "2022-08-04T23:35:39.455Z"
         },
         "frequency": 5485,
         "key": "p0w3rt03h3p80pl3",
@@ -91,7 +91,7 @@
             "altitude": 5,
             "elevation": 2025,
             "heading": null,
-            "latitude": 35.49122,
+            "latitude": 35.491228,
             "longitude": -105.926988,
             "magneticHeading": null,
             "roll": null,
@@ -134,7 +134,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.308Z"
+            "updated": "2022-08-04T23:35:39.456Z"
         },
         "frequency": 5700,
         "key": "p0w3rt03h3p80pl3",
@@ -185,7 +185,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.308Z"
+            "updated": "2022-08-04T23:35:39.456Z"
         },
         "frequency": 5680,
         "key": "p0w3rt03h3p80pl3",
@@ -236,7 +236,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.308Z"
+            "updated": "2022-08-04T23:35:39.457Z"
         },
         "frequency": 5485,
         "key": "p0w3rt03h3p80pl3",
@@ -245,7 +245,7 @@
             "elevation": 2288,
             "heading": null,
             "latitude": 35.584417,
-            "longitude": -105.913478,
+            "longitude": -105.913483,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -287,7 +287,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.308Z"
+            "updated": "2022-08-04T23:35:39.457Z"
         },
         "frequency": 5170,
         "key": "p0w3rt03h3p80pl3",
@@ -338,7 +338,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.308Z"
+            "updated": "2022-08-04T23:35:39.457Z"
         },
         "frequency": 5660,
         "key": "p0w3rt03h3p80pl3",
@@ -346,7 +346,7 @@
             "altitude": 3,
             "elevation": 2288,
             "heading": null,
-            "latitude": 35.584528,
+            "latitude": 35.58453,
             "longitude": -105.914213,
             "magneticHeading": null,
             "roll": null,
@@ -355,6 +355,57 @@
         "mac": "80:2A:A8:A4:A3:92",
         "security": "wpa2",
         "ssid": "LCWNetVailNorthwest5"
+    },
+    {
+        "airmax": {
+            "mode": "ap-ptmp-airmax-ac",
+            "wds": false
+        },
+        "authentication": "psk",
+        "backupRadio": null,
+        "channelWidth": 20,
+        "countryCode": 840,
+        "device": {
+            "authorized": true,
+            "category": "wireless",
+            "displayName": "VailWest5",
+            "firmwareVersion": "8.6.2",
+            "id": "326861ec-238f-41b7-a828-8b356b954c63",
+            "ipAddress": "172.16.10.3/24",
+            "mac": "78:8a:20:14:3f:3a",
+            "model": "RP-5AC-Gen2",
+            "name": "VailWest5",
+            "platformId": "XC",
+            "platformName": "XC",
+            "serialNumber": null,
+            "site": {
+                "id": "00e72a96-9bcd-402b-9301-0ad7e43d3fd3",
+                "name": "Vail",
+                "parent": {
+                    "id": "f46a177f-9c23-41d7-9dd3-ba3f14791d3b",
+                    "parent": null
+                },
+                "status": "active",
+                "type": "site"
+            },
+            "type": "airMax",
+            "updated": "2022-08-04T23:35:39.457Z"
+        },
+        "frequency": 5630,
+        "key": "p0w3rt03h3p80pl3",
+        "location": {
+            "altitude": 3,
+            "elevation": 2288,
+            "heading": null,
+            "latitude": 35.584567,
+            "longitude": -105.914232,
+            "magneticHeading": null,
+            "roll": null,
+            "tilt": null
+        },
+        "mac": "78:8A:20:14:3F:3A",
+        "security": "wpa2",
+        "ssid": "LCWNetVailWest5"
     },
     {
         "airfiber": {
@@ -389,7 +440,7 @@
                 "type": "site"
             },
             "type": "airFiber",
-            "updated": "2022-08-04T23:27:57.308Z"
+            "updated": "2022-08-04T23:35:39.457Z"
         },
         "frequency": 5335,
         "key": "0000:0000:0000:0000",
@@ -397,8 +448,8 @@
             "altitude": 3,
             "elevation": 2288,
             "heading": null,
-            "latitude": 35.584444,
-            "longitude": -105.913407,
+            "latitude": 35.584464,
+            "longitude": -105.913413,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -409,8 +460,8 @@
     },
     {
         "airfiber": {
-            "frameLength": 5,
-            "mode": "ap-ptp"
+            "frameLength": 2,
+            "mode": "ap-ptmp"
         },
         "authentication": "psk",
         "backupRadio": null,
@@ -419,15 +470,15 @@
         "device": {
             "authorized": true,
             "category": "wireless",
-            "displayName": "VailLamyOverlook",
-            "firmwareVersion": "1.4.1",
-            "id": "8c087e99-d2b7-4747-be9f-00ae3875a8d3",
-            "ipAddress": "172.16.8.5/24",
-            "mac": "18:e8:29:1e:6a:95",
-            "model": "AF-5XHD",
-            "name": "VailLamyOverlook",
-            "platformId": "af5xhd",
-            "platformName": "af5xhd",
+            "displayName": "VailOrtiz",
+            "firmwareVersion": "2.0.6-beta.3",
+            "id": "741ed7c9-61c0-4f5c-ad97-88aa0f671756",
+            "ipAddress": "172.16.8.2/24",
+            "mac": "18:e8:29:1f:08:29",
+            "model": "LTU-Rocket",
+            "name": "VailOrtiz",
+            "platformId": "aflturocket",
+            "platformName": "lturocket",
             "serialNumber": null,
             "site": {
                 "id": "00e72a96-9bcd-402b-9301-0ad7e43d3fd3",
@@ -440,23 +491,74 @@
                 "type": "site"
             },
             "type": "airFiber",
-            "updated": "2022-08-04T23:27:57.308Z"
+            "updated": "2022-08-04T23:35:39.457Z"
         },
-        "frequency": 5740,
+        "frequency": 5335,
         "key": "0000:0000:0000:0000",
         "location": {
             "altitude": 3,
             "elevation": 2288,
             "heading": null,
-            "latitude": 35.584525,
-            "longitude": -105.913952,
+            "latitude": 35.584489,
+            "longitude": -105.914015,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
         },
-        "mac": "18:E8:29:1E:6A:95",
+        "mac": "18:E8:29:1F:08:29",
         "security": "wpa2",
-        "ssid": "LCWNetVailLamyOv"
+        "ssid": "LCWNetVailOrtiz"
+    },
+    {
+        "airfiber": {
+            "frameLength": 2,
+            "mode": "ap-ptmp"
+        },
+        "authentication": "psk",
+        "backupRadio": null,
+        "channelWidth": 30,
+        "countryCode": 840,
+        "device": {
+            "authorized": true,
+            "category": "wireless",
+            "displayName": "VailSangredeCristoNorthwest",
+            "firmwareVersion": "2.0.6-beta.3",
+            "id": "8000cb95-5c5d-4cdf-bf94-b6cf2e51b165",
+            "ipAddress": "172.16.10.11/24",
+            "mac": "fc:ec:da:77:b9:13",
+            "model": "LTU-Rocket",
+            "name": "VailSangredeCristoNorthwest",
+            "platformId": "aflturocket",
+            "platformName": "lturocket",
+            "serialNumber": null,
+            "site": {
+                "id": "00e72a96-9bcd-402b-9301-0ad7e43d3fd3",
+                "name": "Vail",
+                "parent": {
+                    "id": "f46a177f-9c23-41d7-9dd3-ba3f14791d3b",
+                    "parent": null
+                },
+                "status": "active",
+                "type": "site"
+            },
+            "type": "airFiber",
+            "updated": "2022-08-04T23:35:39.457Z"
+        },
+        "frequency": 5810,
+        "key": "0000:0000:0000:0000",
+        "location": {
+            "altitude": 3,
+            "elevation": 2288,
+            "heading": null,
+            "latitude": 35.584466,
+            "longitude": -105.913409,
+            "magneticHeading": null,
+            "roll": null,
+            "tilt": null
+        },
+        "mac": "FC:EC:DA:77:B9:13",
+        "security": "wpa2",
+        "ssid": "LCWNetVSdCNw"
     },
     {
         "airmax": {
@@ -491,7 +593,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.308Z"
+            "updated": "2022-08-04T23:35:39.457Z"
         },
         "frequency": 5670,
         "key": "p0w3rt03h3p80pl3",
@@ -542,7 +644,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.309Z"
+            "updated": "2022-08-04T23:35:39.457Z"
         },
         "frequency": 5710,
         "key": "p0w3rt03h3p80pl3",
@@ -550,8 +652,8 @@
             "altitude": 3,
             "elevation": 2288,
             "heading": null,
-            "latitude": 35.584457,
-            "longitude": -105.914052,
+            "latitude": 35.584447,
+            "longitude": -105.91404,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -562,8 +664,8 @@
     },
     {
         "airfiber": {
-            "frameLength": 2,
-            "mode": "ap-ptmp"
+            "frameLength": 5,
+            "mode": "ap-ptp"
         },
         "authentication": "psk",
         "backupRadio": null,
@@ -572,15 +674,15 @@
         "device": {
             "authorized": true,
             "category": "wireless",
-            "displayName": "VailSangredeCristoNorthwest",
-            "firmwareVersion": "2.0.6-beta.3",
-            "id": "8000cb95-5c5d-4cdf-bf94-b6cf2e51b165",
-            "ipAddress": "172.16.10.11/24",
-            "mac": "fc:ec:da:77:b9:13",
-            "model": "LTU-Rocket",
-            "name": "VailSangredeCristoNorthwest",
-            "platformId": "aflturocket",
-            "platformName": "lturocket",
+            "displayName": "VailLamyOverlook",
+            "firmwareVersion": "1.4.1",
+            "id": "8c087e99-d2b7-4747-be9f-00ae3875a8d3",
+            "ipAddress": "172.16.8.5/24",
+            "mac": "18:e8:29:1e:6a:95",
+            "model": "AF-5XHD",
+            "name": "VailLamyOverlook",
+            "platformId": "af5xhd",
+            "platformName": "af5xhd",
             "serialNumber": null,
             "site": {
                 "id": "00e72a96-9bcd-402b-9301-0ad7e43d3fd3",
@@ -593,125 +695,23 @@
                 "type": "site"
             },
             "type": "airFiber",
-            "updated": "2022-08-04T23:27:57.309Z"
+            "updated": "2022-08-04T23:35:39.457Z"
         },
-        "frequency": 5810,
+        "frequency": 5740,
         "key": "0000:0000:0000:0000",
         "location": {
             "altitude": 3,
             "elevation": 2288,
             "heading": null,
-            "latitude": 35.584467,
-            "longitude": -105.913396,
+            "latitude": 35.584586,
+            "longitude": -105.913973,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
         },
-        "mac": "FC:EC:DA:77:B9:13",
+        "mac": "18:E8:29:1E:6A:95",
         "security": "wpa2",
-        "ssid": "LCWNetVSdCNw"
-    },
-    {
-        "airmax": {
-            "mode": "ap-ptmp-airmax-ac",
-            "wds": false
-        },
-        "authentication": "psk",
-        "backupRadio": null,
-        "channelWidth": 20,
-        "countryCode": 840,
-        "device": {
-            "authorized": true,
-            "category": "wireless",
-            "displayName": "VailWest5",
-            "firmwareVersion": "8.6.2",
-            "id": "326861ec-238f-41b7-a828-8b356b954c63",
-            "ipAddress": "172.16.10.3/24",
-            "mac": "78:8a:20:14:3f:3a",
-            "model": "RP-5AC-Gen2",
-            "name": "VailWest5",
-            "platformId": "XC",
-            "platformName": "XC",
-            "serialNumber": null,
-            "site": {
-                "id": "00e72a96-9bcd-402b-9301-0ad7e43d3fd3",
-                "name": "Vail",
-                "parent": {
-                    "id": "f46a177f-9c23-41d7-9dd3-ba3f14791d3b",
-                    "parent": null
-                },
-                "status": "active",
-                "type": "site"
-            },
-            "type": "airMax",
-            "updated": "2022-08-04T23:27:57.309Z"
-        },
-        "frequency": 5630,
-        "key": "p0w3rt03h3p80pl3",
-        "location": {
-            "altitude": 3,
-            "elevation": 2288,
-            "heading": null,
-            "latitude": 35.584565,
-            "longitude": -105.914232,
-            "magneticHeading": null,
-            "roll": null,
-            "tilt": null
-        },
-        "mac": "78:8A:20:14:3F:3A",
-        "security": "wpa2",
-        "ssid": "LCWNetVailWest5"
-    },
-    {
-        "airfiber": {
-            "frameLength": 2,
-            "mode": "ap-ptmp"
-        },
-        "authentication": "psk",
-        "backupRadio": null,
-        "channelWidth": 30,
-        "countryCode": 840,
-        "device": {
-            "authorized": true,
-            "category": "wireless",
-            "displayName": "VailOrtiz",
-            "firmwareVersion": "2.0.6-beta.3",
-            "id": "741ed7c9-61c0-4f5c-ad97-88aa0f671756",
-            "ipAddress": "172.16.8.2/24",
-            "mac": "18:e8:29:1f:08:29",
-            "model": "LTU-Rocket",
-            "name": "VailOrtiz",
-            "platformId": "aflturocket",
-            "platformName": "lturocket",
-            "serialNumber": null,
-            "site": {
-                "id": "00e72a96-9bcd-402b-9301-0ad7e43d3fd3",
-                "name": "Vail",
-                "parent": {
-                    "id": "f46a177f-9c23-41d7-9dd3-ba3f14791d3b",
-                    "parent": null
-                },
-                "status": "active",
-                "type": "site"
-            },
-            "type": "airFiber",
-            "updated": "2022-08-04T23:27:57.309Z"
-        },
-        "frequency": 5335,
-        "key": "0000:0000:0000:0000",
-        "location": {
-            "altitude": 3,
-            "elevation": 2288,
-            "heading": null,
-            "latitude": 35.584497,
-            "longitude": -105.913997,
-            "magneticHeading": null,
-            "roll": null,
-            "tilt": null
-        },
-        "mac": "18:E8:29:1F:08:29",
-        "security": "wpa2",
-        "ssid": "LCWNetVailOrtiz"
+        "ssid": "LCWNetVailLamyOv"
     },
     {
         "airmax": {
@@ -746,7 +746,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.309Z"
+            "updated": "2022-08-04T23:35:39.457Z"
         },
         "frequency": 5655,
         "key": "p0w3rt03h3p80pl3",
@@ -797,7 +797,7 @@
                 "type": "endpoint"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.309Z"
+            "updated": "2022-08-04T23:35:39.457Z"
         },
         "frequency": 5735,
         "key": "0000:0000",
@@ -848,7 +848,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.309Z"
+            "updated": "2022-08-04T23:35:39.457Z"
         },
         "frequency": 5485,
         "key": "p0w3rt03h3p80pl3",
@@ -899,7 +899,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.309Z"
+            "updated": "2022-08-04T23:35:39.458Z"
         },
         "frequency": 5740,
         "key": "p0w3rt03h3p80pl3",
@@ -907,8 +907,8 @@
             "altitude": 7,
             "elevation": 1990,
             "heading": null,
-            "latitude": 35.480545,
-            "longitude": -105.875692,
+            "latitude": 35.480548,
+            "longitude": -105.87568,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -950,7 +950,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.309Z"
+            "updated": "2022-08-04T23:35:39.458Z"
         },
         "frequency": 5165,
         "key": "p0w3rt03h3p80pl3",
@@ -1001,7 +1001,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.309Z"
+            "updated": "2022-08-04T23:35:39.458Z"
         },
         "frequency": 5835,
         "key": "p0w3rt03h3p80pl3",
@@ -1009,7 +1009,7 @@
             "altitude": 7,
             "elevation": 1990,
             "heading": null,
-            "latitude": 35.480598,
+            "latitude": 35.480595,
             "longitude": -105.875677,
             "magneticHeading": null,
             "roll": null,
@@ -1052,7 +1052,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.309Z"
+            "updated": "2022-08-04T23:35:39.458Z"
         },
         "frequency": 5535,
         "key": "p0w3rt03h3p80pl3",
@@ -1060,8 +1060,8 @@
             "altitude": 6,
             "elevation": 1863,
             "heading": null,
-            "latitude": 35.418517,
-            "longitude": -106.193638,
+            "latitude": 35.418513,
+            "longitude": -106.19364,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -1103,7 +1103,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.309Z"
+            "updated": "2022-08-04T23:35:39.458Z"
         },
         "frequency": 5565,
         "key": "p0w3rt03h3p80pl3",
@@ -1154,7 +1154,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.309Z"
+            "updated": "2022-08-04T23:35:39.458Z"
         },
         "frequency": 5585,
         "key": "p0w3rt03h3p80pl3",
@@ -1162,8 +1162,8 @@
             "altitude": 6,
             "elevation": 1863,
             "heading": null,
-            "latitude": 35.418473,
-            "longitude": -106.193625,
+            "latitude": 35.418475,
+            "longitude": -106.193627,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -1171,57 +1171,6 @@
         "mac": "F0:9F:C2:8A:BD:8D",
         "security": "wpa2",
         "ssid": "LCWNetCerroChato5East"
-    },
-    {
-        "airmax": {
-            "mode": "ap-ptp",
-            "wds": false
-        },
-        "authentication": "psk",
-        "backupRadio": null,
-        "channelWidth": 20,
-        "countryCode": 840,
-        "device": {
-            "authorized": true,
-            "category": "wireless",
-            "displayName": "CerroChatoMorningSun",
-            "firmwareVersion": "8.6.2",
-            "id": "5b737b37-5f79-497e-b4ce-2ac7ee64ff70",
-            "ipAddress": "172.16.16.7/24",
-            "mac": "44:d9:e7:a6:c6:c1",
-            "model": "PBE-5AC-620",
-            "name": "CerroChatoMorningSun",
-            "platformId": "XC",
-            "platformName": "XC",
-            "serialNumber": null,
-            "site": {
-                "id": "16f916d7-a8d8-4139-a18a-12ddb8f7c2bc",
-                "name": "CerroChato",
-                "parent": {
-                    "id": "4521ece7-ebb9-44f1-85d3-7bd1d2a1fd3a",
-                    "parent": null
-                },
-                "status": "active",
-                "type": "site"
-            },
-            "type": "airMax",
-            "updated": "2022-08-04T23:27:57.309Z"
-        },
-        "frequency": 5700,
-        "key": "p0w3rt03h3p80pl3",
-        "location": {
-            "altitude": 6,
-            "elevation": 1863,
-            "heading": null,
-            "latitude": 35.418507,
-            "longitude": -106.19353,
-            "magneticHeading": null,
-            "roll": null,
-            "tilt": null
-        },
-        "mac": "44:D9:E7:A6:C6:C1",
-        "security": "wpa2",
-        "ssid": "LCWNetCerroChatoMorningSun"
     },
     {
         "airfiber": {
@@ -1256,7 +1205,7 @@
                 "type": "site"
             },
             "type": "airFiber",
-            "updated": "2022-08-04T23:27:57.309Z"
+            "updated": "2022-08-04T23:35:39.458Z"
         },
         "frequency": 5175,
         "key": "0000:0000:0000:0000",
@@ -1264,8 +1213,8 @@
             "altitude": 6,
             "elevation": 1863,
             "heading": null,
-            "latitude": 35.4186,
-            "longitude": -106.193616,
+            "latitude": 35.418559,
+            "longitude": -106.193606,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -1273,6 +1222,57 @@
         "mac": "18:E8:29:1F:41:1C",
         "security": "wpa2",
         "ssid": "LCWNetCCVdL"
+    },
+    {
+        "airmax": {
+            "mode": "ap-ptp",
+            "wds": false
+        },
+        "authentication": "psk",
+        "backupRadio": null,
+        "channelWidth": 20,
+        "countryCode": 840,
+        "device": {
+            "authorized": true,
+            "category": "wireless",
+            "displayName": "CerroChatoMorningSun",
+            "firmwareVersion": "8.6.2",
+            "id": "5b737b37-5f79-497e-b4ce-2ac7ee64ff70",
+            "ipAddress": "172.16.16.7/24",
+            "mac": "44:d9:e7:a6:c6:c1",
+            "model": "PBE-5AC-620",
+            "name": "CerroChatoMorningSun",
+            "platformId": "XC",
+            "platformName": "XC",
+            "serialNumber": null,
+            "site": {
+                "id": "16f916d7-a8d8-4139-a18a-12ddb8f7c2bc",
+                "name": "CerroChato",
+                "parent": {
+                    "id": "4521ece7-ebb9-44f1-85d3-7bd1d2a1fd3a",
+                    "parent": null
+                },
+                "status": "active",
+                "type": "site"
+            },
+            "type": "airMax",
+            "updated": "2022-08-04T23:35:39.458Z"
+        },
+        "frequency": 5700,
+        "key": "p0w3rt03h3p80pl3",
+        "location": {
+            "altitude": 6,
+            "elevation": 1863,
+            "heading": null,
+            "latitude": 35.418507,
+            "longitude": -106.19353,
+            "magneticHeading": null,
+            "roll": null,
+            "tilt": null
+        },
+        "mac": "44:D9:E7:A6:C6:C1",
+        "security": "wpa2",
+        "ssid": "LCWNetCerroChatoMorningSun"
     },
     {
         "airmax": {
@@ -1307,7 +1307,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.309Z"
+            "updated": "2022-08-04T23:35:39.458Z"
         },
         "frequency": 5740,
         "key": "p0w3rt03h3p80pl3",
@@ -1315,8 +1315,8 @@
             "altitude": 7,
             "elevation": 1807,
             "heading": null,
-            "latitude": 35.385233,
-            "longitude": -106.032542,
+            "latitude": 35.38523,
+            "longitude": -106.032545,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -1358,7 +1358,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.310Z"
+            "updated": "2022-08-04T23:35:39.458Z"
         },
         "frequency": 5265,
         "key": "p0w3rt03h3p80pl3",
@@ -1366,8 +1366,8 @@
             "altitude": 7,
             "elevation": 1807,
             "heading": null,
-            "latitude": 35.385358,
-            "longitude": -106.032433,
+            "latitude": 35.385355,
+            "longitude": -106.032432,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -1409,7 +1409,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.310Z"
+            "updated": "2022-08-04T23:35:39.458Z"
         },
         "frequency": 5705,
         "key": "p0w3rt03h3p80pl3",
@@ -1417,8 +1417,8 @@
             "altitude": 7,
             "elevation": 2368,
             "heading": null,
-            "latitude": 35.637017,
-            "longitude": -105.883597,
+            "latitude": 35.637018,
+            "longitude": -105.883595,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -1460,7 +1460,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.310Z"
+            "updated": "2022-08-04T23:35:39.458Z"
         },
         "frequency": 5265,
         "key": "p0w3rt03h3p80pl3",
@@ -1468,8 +1468,8 @@
             "altitude": 7,
             "elevation": 2368,
             "heading": null,
-            "latitude": 35.637043,
-            "longitude": -105.883522,
+            "latitude": 35.637048,
+            "longitude": -105.883518,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -1511,7 +1511,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.310Z"
+            "updated": "2022-08-04T23:35:39.458Z"
         },
         "frequency": 2429,
         "key": null,
@@ -1562,7 +1562,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.310Z"
+            "updated": "2022-08-04T23:35:39.459Z"
         },
         "frequency": 5525,
         "key": "p0w3rt03h3p80pl3",
@@ -1613,7 +1613,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.310Z"
+            "updated": "2022-08-04T23:35:39.459Z"
         },
         "frequency": 5580,
         "key": "p0w3rt03h3p80pl3",
@@ -1621,8 +1621,8 @@
             "altitude": 7,
             "elevation": 1733,
             "heading": null,
-            "latitude": 35.437843,
-            "longitude": -106.127907,
+            "latitude": 35.437845,
+            "longitude": -106.127908,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -1664,7 +1664,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.310Z"
+            "updated": "2022-08-04T23:35:39.459Z"
         },
         "frequency": 5610,
         "key": "p0w3rt03h3p80pl3",
@@ -1715,7 +1715,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.310Z"
+            "updated": "2022-08-04T23:35:39.459Z"
         },
         "frequency": 5165,
         "key": "p0w3rt03h3p80pl3",
@@ -1766,7 +1766,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.310Z"
+            "updated": "2022-08-04T23:35:39.459Z"
         },
         "frequency": 912,
         "key": null,
@@ -1817,7 +1817,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.310Z"
+            "updated": "2022-08-04T23:35:39.459Z"
         },
         "frequency": 917,
         "key": null,
@@ -1868,7 +1868,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.310Z"
+            "updated": "2022-08-04T23:35:39.459Z"
         },
         "frequency": 5545,
         "key": "p0w3rt03h3p80pl3",
@@ -1919,7 +1919,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.310Z"
+            "updated": "2022-08-04T23:35:39.459Z"
         },
         "frequency": 5835,
         "key": "p0w3rt03h3p80pl3",
@@ -1928,7 +1928,7 @@
             "elevation": 1817,
             "heading": null,
             "latitude": 35.38319,
-            "longitude": -106.046423,
+            "longitude": -106.04642,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -1970,7 +1970,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.310Z"
+            "updated": "2022-08-04T23:35:39.459Z"
         },
         "frequency": 5755,
         "key": "p0w3rt03h3p80pl3",
@@ -2021,7 +2021,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.310Z"
+            "updated": "2022-08-04T23:35:39.459Z"
         },
         "frequency": 5230,
         "key": "p0w3rt03h3p80pl3",
@@ -2072,7 +2072,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.310Z"
+            "updated": "2022-08-04T23:35:39.459Z"
         },
         "frequency": 5175,
         "key": "p0w3rt03h3p80pl3",
@@ -2123,7 +2123,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.311Z"
+            "updated": "2022-08-04T23:35:39.459Z"
         },
         "frequency": 5770,
         "key": "p0w3rt03h3p80pl3",
@@ -2174,7 +2174,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.311Z"
+            "updated": "2022-08-04T23:35:39.459Z"
         },
         "frequency": 5740,
         "key": "p0w3rt03h3p80pl3",
@@ -2182,7 +2182,7 @@
             "altitude": 10,
             "elevation": 1969,
             "heading": null,
-            "latitude": 35.379825,
+            "latitude": 35.379832,
             "longitude": -106.194602,
             "magneticHeading": null,
             "roll": null,
@@ -2225,7 +2225,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.311Z"
+            "updated": "2022-08-04T23:35:39.459Z"
         },
         "frequency": 5225,
         "key": "p0w3rt03h3p80pl3",
@@ -2233,8 +2233,8 @@
             "altitude": 10,
             "elevation": 1969,
             "heading": null,
-            "latitude": 35.379755,
-            "longitude": -106.194543,
+            "latitude": 35.37976,
+            "longitude": -106.194547,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -2276,7 +2276,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.311Z"
+            "updated": "2022-08-04T23:35:39.459Z"
         },
         "frequency": 5220,
         "key": "p0w3rt03h3p80pl3",
@@ -2327,7 +2327,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.311Z"
+            "updated": "2022-08-04T23:35:39.459Z"
         },
         "frequency": 5705,
         "key": "p0w3rt03h3p80pl3",
@@ -2335,8 +2335,8 @@
             "altitude": 6,
             "elevation": 2239,
             "heading": null,
-            "latitude": 35.554955,
-            "longitude": -105.821978,
+            "latitude": 35.554953,
+            "longitude": -105.82198,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -2378,7 +2378,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.311Z"
+            "updated": "2022-08-04T23:35:39.460Z"
         },
         "frequency": 5835,
         "key": "p0w3rt03h3p80pl3",
@@ -2387,7 +2387,7 @@
             "elevation": 2239,
             "heading": null,
             "latitude": 35.555015,
-            "longitude": -105.82202,
+            "longitude": -105.822015,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -2429,7 +2429,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.311Z"
+            "updated": "2022-08-04T23:35:39.460Z"
         },
         "frequency": 5635,
         "key": "p0w3rt03h3p80pl3",
@@ -2480,7 +2480,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.311Z"
+            "updated": "2022-08-04T23:35:39.460Z"
         },
         "frequency": 5285,
         "key": "p0w3rt03h3p80pl3",
@@ -2531,7 +2531,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.311Z"
+            "updated": "2022-08-04T23:35:39.460Z"
         },
         "frequency": 912,
         "key": null,
@@ -2582,7 +2582,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.311Z"
+            "updated": "2022-08-04T23:35:39.460Z"
         },
         "frequency": 5485,
         "key": "p0w3rt03h3p80pl3",
@@ -2590,8 +2590,8 @@
             "altitude": 7,
             "elevation": 2148,
             "heading": null,
-            "latitude": 35.599943,
-            "longitude": -105.931187,
+            "latitude": 35.599942,
+            "longitude": -105.931188,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -2633,7 +2633,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.311Z"
+            "updated": "2022-08-04T23:35:39.460Z"
         },
         "frequency": 5710,
         "key": "p0w3rt03h3p80pl3",
@@ -2684,7 +2684,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.311Z"
+            "updated": "2022-08-04T23:35:39.460Z"
         },
         "frequency": 5270,
         "key": "p0w3rt03h3p80pl3",
@@ -2735,7 +2735,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.311Z"
+            "updated": "2022-08-04T23:35:39.460Z"
         },
         "frequency": 5485,
         "key": "p0w3rt03h3p80pl3",
@@ -2743,7 +2743,7 @@
             "altitude": 7.62,
             "elevation": null,
             "heading": null,
-            "latitude": 35.616808,
+            "latitude": 35.616812,
             "longitude": -105.882902,
             "magneticHeading": null,
             "roll": null,
@@ -2786,7 +2786,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.311Z"
+            "updated": "2022-08-04T23:35:39.460Z"
         },
         "frequency": 5335,
         "key": "p0w3rt03h3p80pl3",
@@ -2795,7 +2795,7 @@
             "elevation": null,
             "heading": null,
             "latitude": 35.616788,
-            "longitude": -105.88285,
+            "longitude": -105.882852,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -2837,7 +2837,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.311Z"
+            "updated": "2022-08-04T23:35:39.460Z"
         },
         "frequency": 5670,
         "key": "p0w3rt03h3p80pl3",
@@ -2846,7 +2846,7 @@
             "elevation": 2098,
             "heading": null,
             "latitude": 35.498687,
-            "longitude": -105.887217,
+            "longitude": -105.88721,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -2888,7 +2888,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.311Z"
+            "updated": "2022-08-04T23:35:39.461Z"
         },
         "frequency": 5610,
         "key": "p0w3rt03h3p80pl3",
@@ -2897,7 +2897,7 @@
             "elevation": 2098,
             "heading": null,
             "latitude": 35.498705,
-            "longitude": -105.8872,
+            "longitude": -105.887198,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -2939,7 +2939,7 @@
                 "type": "endpoint"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.312Z"
+            "updated": "2022-08-04T23:35:39.461Z"
         },
         "frequency": 5175,
         "key": "p0w3rt03h3p80pl3",
@@ -2990,7 +2990,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.312Z"
+            "updated": "2022-08-04T23:35:39.461Z"
         },
         "frequency": 5775,
         "key": "p0w3rt03h3p80pl3",
@@ -3041,7 +3041,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.312Z"
+            "updated": "2022-08-04T23:35:39.461Z"
         },
         "frequency": 5565,
         "key": "p0w3rt03h3p80pl3",
@@ -3049,7 +3049,7 @@
             "altitude": 6,
             "elevation": 2342,
             "heading": null,
-            "latitude": 35.53641,
+            "latitude": 35.536417,
             "longitude": -105.815282,
             "magneticHeading": null,
             "roll": null,
@@ -3092,7 +3092,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.312Z"
+            "updated": "2022-08-04T23:35:39.461Z"
         },
         "frequency": 5830,
         "key": "p0w3rt03h3p80pl3",
@@ -3100,8 +3100,8 @@
             "altitude": 7,
             "elevation": 1872,
             "heading": null,
-            "latitude": 35.454585,
-            "longitude": -106.05678,
+            "latitude": 35.45459,
+            "longitude": -106.056778,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -3143,7 +3143,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.312Z"
+            "updated": "2022-08-04T23:35:39.461Z"
         },
         "frequency": 5695,
         "key": "p0w3rt03h3p80pl3",
@@ -3151,8 +3151,8 @@
             "altitude": 7,
             "elevation": 1872,
             "heading": null,
-            "latitude": 35.454368,
-            "longitude": -106.056598,
+            "latitude": 35.454357,
+            "longitude": -106.0566,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -3160,57 +3160,6 @@
         "mac": "24:5A:4C:06:30:67",
         "security": "wpa2",
         "ssid": "LCWNetDonJoseCerroPelon"
-    },
-    {
-        "airmax": {
-            "mode": "ap-ptmp-airmax-mixed",
-            "wds": false
-        },
-        "authentication": "psk",
-        "backupRadio": null,
-        "channelWidth": 20,
-        "countryCode": 840,
-        "device": {
-            "authorized": true,
-            "category": "wireless",
-            "displayName": "DonJose5Northeast",
-            "firmwareVersion": "8.7.1",
-            "id": "dbab7eb8-461a-4e3d-bf7d-d83a118928e1",
-            "ipAddress": "172.16.16.62/24",
-            "mac": "e0:63:da:d8:52:1c",
-            "model": "RP-5AC-Gen2",
-            "name": "DonJose5Northeast",
-            "platformId": "XC",
-            "platformName": "XC",
-            "serialNumber": null,
-            "site": {
-                "id": "4521ece7-ebb9-44f1-85d3-7bd1d2a1fd3a",
-                "name": "DonJose",
-                "parent": {
-                    "id": "00e72a96-9bcd-402b-9301-0ad7e43d3fd3",
-                    "parent": null
-                },
-                "status": "active",
-                "type": "site"
-            },
-            "type": "airMax",
-            "updated": "2022-08-04T23:27:57.312Z"
-        },
-        "frequency": 5165,
-        "key": "p0w3rt03h3p80pl3",
-        "location": {
-            "altitude": 7,
-            "elevation": 1872,
-            "heading": null,
-            "latitude": 35.454585,
-            "longitude": -106.05677,
-            "magneticHeading": null,
-            "roll": null,
-            "tilt": null
-        },
-        "mac": "E0:63:DA:D8:52:1C",
-        "security": "wpa2",
-        "ssid": "LCWNetDonJose5Northeast"
     },
     {
         "airfiber": {
@@ -3245,7 +3194,7 @@
                 "type": "site"
             },
             "type": "airFiber",
-            "updated": "2022-08-04T23:27:57.312Z"
+            "updated": "2022-08-04T23:35:39.461Z"
         },
         "frequency": 5780,
         "key": "0000:0000:0000:0000",
@@ -3253,8 +3202,8 @@
             "altitude": 7,
             "elevation": 1872,
             "heading": null,
-            "latitude": 35.454346,
-            "longitude": -106.056701,
+            "latitude": 35.454334,
+            "longitude": -106.056706,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -3262,6 +3211,57 @@
         "mac": "FC:EC:DA:77:B9:1A",
         "security": "wpa2",
         "ssid": "LCWNetDonJoseOrt"
+    },
+    {
+        "airmax": {
+            "mode": "ap-ptmp-airmax-mixed",
+            "wds": false
+        },
+        "authentication": "psk",
+        "backupRadio": null,
+        "channelWidth": 20,
+        "countryCode": 840,
+        "device": {
+            "authorized": true,
+            "category": "wireless",
+            "displayName": "DonJose5Northeast",
+            "firmwareVersion": "8.7.1",
+            "id": "dbab7eb8-461a-4e3d-bf7d-d83a118928e1",
+            "ipAddress": "172.16.16.62/24",
+            "mac": "e0:63:da:d8:52:1c",
+            "model": "RP-5AC-Gen2",
+            "name": "DonJose5Northeast",
+            "platformId": "XC",
+            "platformName": "XC",
+            "serialNumber": null,
+            "site": {
+                "id": "4521ece7-ebb9-44f1-85d3-7bd1d2a1fd3a",
+                "name": "DonJose",
+                "parent": {
+                    "id": "00e72a96-9bcd-402b-9301-0ad7e43d3fd3",
+                    "parent": null
+                },
+                "status": "active",
+                "type": "site"
+            },
+            "type": "airMax",
+            "updated": "2022-08-04T23:35:39.461Z"
+        },
+        "frequency": 5165,
+        "key": "p0w3rt03h3p80pl3",
+        "location": {
+            "altitude": 7,
+            "elevation": 1872,
+            "heading": null,
+            "latitude": 35.454587,
+            "longitude": -106.05677,
+            "magneticHeading": null,
+            "roll": null,
+            "tilt": null
+        },
+        "mac": "E0:63:DA:D8:52:1C",
+        "security": "wpa2",
+        "ssid": "LCWNetDonJose5Northeast"
     },
     {
         "airmax": {
@@ -3296,7 +3296,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.312Z"
+            "updated": "2022-08-04T23:35:39.461Z"
         },
         "frequency": 5530,
         "key": "p0w3rt03h3p80pl3",
@@ -3304,8 +3304,8 @@
             "altitude": 7,
             "elevation": 1872,
             "heading": null,
-            "latitude": 35.454615,
-            "longitude": -106.056765,
+            "latitude": 35.454612,
+            "longitude": -106.056768,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -3347,7 +3347,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.312Z"
+            "updated": "2022-08-04T23:35:39.461Z"
         },
         "frequency": 5665,
         "key": "p0w3rt03h3p80pl3",
@@ -3355,8 +3355,8 @@
             "altitude": 2,
             "elevation": 2408,
             "heading": null,
-            "latitude": 35.617215,
-            "longitude": -105.890048,
+            "latitude": 35.617217,
+            "longitude": -105.890047,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -3398,7 +3398,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.312Z"
+            "updated": "2022-08-04T23:35:39.461Z"
         },
         "frequency": 5595,
         "key": "p0w3rt03h3p80pl3",
@@ -3449,7 +3449,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.312Z"
+            "updated": "2022-08-04T23:35:39.461Z"
         },
         "frequency": 5550,
         "key": "p0w3rt03h3p80pl3",
@@ -3466,57 +3466,6 @@
         "mac": "B4:FB:E4:BE:3B:E2",
         "security": "wpa2",
         "ssid": "LCWNetGoldmineOldGoat"
-    },
-    {
-        "airmax": {
-            "mode": "ap-ptmp-airmax-ac",
-            "wds": false
-        },
-        "authentication": "psk",
-        "backupRadio": null,
-        "channelWidth": 20,
-        "countryCode": 840,
-        "device": {
-            "authorized": true,
-            "category": "wireless",
-            "displayName": "Goldmine5South",
-            "firmwareVersion": "8.6.2",
-            "id": "a045a8c2-3665-456d-8940-7f1d0b279ecb",
-            "ipAddress": "172.16.18.59/24",
-            "mac": "78:8a:20:14:40:a5",
-            "model": "RP-5AC-Gen2",
-            "name": "Goldmine5South",
-            "platformId": "XC",
-            "platformName": "XC",
-            "serialNumber": null,
-            "site": {
-                "id": "5c5ce6e5-c606-4ddb-a266-45d679a9db50",
-                "name": "Goldmine",
-                "parent": {
-                    "id": "4521ece7-ebb9-44f1-85d3-7bd1d2a1fd3a",
-                    "parent": null
-                },
-                "status": "active",
-                "type": "site"
-            },
-            "type": "airMax",
-            "updated": "2022-08-04T23:27:57.312Z"
-        },
-        "frequency": 5335,
-        "key": "p0w3rt03h3p80pl3",
-        "location": {
-            "altitude": 6,
-            "elevation": 1826,
-            "heading": null,
-            "latitude": 35.419932,
-            "longitude": -106.129553,
-            "magneticHeading": null,
-            "roll": null,
-            "tilt": null
-        },
-        "mac": "78:8A:20:14:40:A5",
-        "security": "wpa2",
-        "ssid": "LCWNetGoldmine5South"
     },
     {
         "airmax": {
@@ -3551,7 +3500,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.312Z"
+            "updated": "2022-08-04T23:35:39.461Z"
         },
         "frequency": 5485,
         "key": "p0w3rt03h3p80pl3",
@@ -3559,8 +3508,8 @@
             "altitude": 6,
             "elevation": 1826,
             "heading": null,
-            "latitude": 35.419955,
-            "longitude": -106.129488,
+            "latitude": 35.419948,
+            "longitude": -106.129502,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -3602,7 +3551,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.312Z"
+            "updated": "2022-08-04T23:35:39.462Z"
         },
         "frequency": 5650,
         "key": "p0w3rt03h3p80pl3",
@@ -3610,8 +3559,8 @@
             "altitude": 6,
             "elevation": 1826,
             "heading": null,
-            "latitude": 35.419953,
-            "longitude": -106.129547,
+            "latitude": 35.419952,
+            "longitude": -106.129545,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -3619,6 +3568,57 @@
         "mac": "78:8A:20:14:13:EA",
         "security": "wpa2",
         "ssid": "LCWNetGoldmine5Cerrillos"
+    },
+    {
+        "airmax": {
+            "mode": "ap-ptmp-airmax-ac",
+            "wds": false
+        },
+        "authentication": "psk",
+        "backupRadio": null,
+        "channelWidth": 20,
+        "countryCode": 840,
+        "device": {
+            "authorized": true,
+            "category": "wireless",
+            "displayName": "Goldmine5South",
+            "firmwareVersion": "8.6.2",
+            "id": "a045a8c2-3665-456d-8940-7f1d0b279ecb",
+            "ipAddress": "172.16.18.59/24",
+            "mac": "78:8a:20:14:40:a5",
+            "model": "RP-5AC-Gen2",
+            "name": "Goldmine5South",
+            "platformId": "XC",
+            "platformName": "XC",
+            "serialNumber": null,
+            "site": {
+                "id": "5c5ce6e5-c606-4ddb-a266-45d679a9db50",
+                "name": "Goldmine",
+                "parent": {
+                    "id": "4521ece7-ebb9-44f1-85d3-7bd1d2a1fd3a",
+                    "parent": null
+                },
+                "status": "active",
+                "type": "site"
+            },
+            "type": "airMax",
+            "updated": "2022-08-04T23:35:39.462Z"
+        },
+        "frequency": 5335,
+        "key": "p0w3rt03h3p80pl3",
+        "location": {
+            "altitude": 6,
+            "elevation": 1826,
+            "heading": null,
+            "latitude": 35.419932,
+            "longitude": -106.129553,
+            "magneticHeading": null,
+            "roll": null,
+            "tilt": null
+        },
+        "mac": "78:8A:20:14:40:A5",
+        "security": "wpa2",
+        "ssid": "LCWNetGoldmine5South"
     },
     {
         "airmax": {
@@ -3653,7 +3653,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.313Z"
+            "updated": "2022-08-04T23:35:39.462Z"
         },
         "frequency": 5700,
         "key": "p0w3rt03h3p80pl3",
@@ -3661,8 +3661,8 @@
             "altitude": 6,
             "elevation": 1826,
             "heading": null,
-            "latitude": 35.419903,
-            "longitude": -106.129543,
+            "latitude": 35.419922,
+            "longitude": -106.129533,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -3704,7 +3704,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.313Z"
+            "updated": "2022-08-04T23:35:39.462Z"
         },
         "frequency": 5165,
         "key": "p0w3rt03h3p80pl3",
@@ -3755,7 +3755,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.313Z"
+            "updated": "2022-08-04T23:35:39.462Z"
         },
         "frequency": 64800,
         "key": null,
@@ -3806,7 +3806,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.313Z"
+            "updated": "2022-08-04T23:35:39.462Z"
         },
         "frequency": 58320,
         "key": "p0w3rt03h3p80pl3",
@@ -3857,7 +3857,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.313Z"
+            "updated": "2022-08-04T23:35:39.462Z"
         },
         "frequency": 5835,
         "key": "p0w3rt03h3p80pl3",
@@ -3865,8 +3865,8 @@
             "altitude": 7,
             "elevation": 2492,
             "heading": null,
-            "latitude": 35.619105,
-            "longitude": -105.887408,
+            "latitude": 35.619103,
+            "longitude": -105.887415,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -3908,7 +3908,7 @@
                 "type": "endpoint"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.313Z"
+            "updated": "2022-08-04T23:35:39.462Z"
         },
         "frequency": 5550,
         "key": "p0w3rt03h3p80pl3",
@@ -3959,7 +3959,7 @@
                 "type": "endpoint"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.313Z"
+            "updated": "2022-08-04T23:35:39.462Z"
         },
         "frequency": 5485,
         "key": "98cnv279",
@@ -4010,7 +4010,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.313Z"
+            "updated": "2022-08-04T23:35:39.462Z"
         },
         "frequency": 5600,
         "key": "p0w3rt03h3p80pl3",
@@ -4061,7 +4061,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.313Z"
+            "updated": "2022-08-04T23:35:39.462Z"
         },
         "frequency": 5260,
         "key": "p0w3rt03h3p80pl3",
@@ -4070,7 +4070,7 @@
             "elevation": 2183,
             "heading": null,
             "latitude": 35.605077,
-            "longitude": -105.92832,
+            "longitude": -105.928318,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -4112,7 +4112,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.313Z"
+            "updated": "2022-08-04T23:35:39.462Z"
         },
         "frequency": 5630,
         "key": "p0w3rt03h3p80pl3",
@@ -4120,7 +4120,7 @@
             "altitude": 7,
             "elevation": 2183,
             "heading": null,
-            "latitude": 35.604988,
+            "latitude": 35.604985,
             "longitude": -105.928303,
             "magneticHeading": null,
             "roll": null,
@@ -4163,7 +4163,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.313Z"
+            "updated": "2022-08-04T23:35:39.462Z"
         },
         "frequency": 5485,
         "key": "p0w3rt03h3p80pl3",
@@ -4171,8 +4171,8 @@
             "altitude": 7,
             "elevation": 1843,
             "heading": null,
-            "latitude": 35.428132,
-            "longitude": -106.151185,
+            "latitude": 35.428128,
+            "longitude": -106.151183,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -4214,7 +4214,7 @@
                 "type": "endpoint"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.313Z"
+            "updated": "2022-08-04T23:35:39.462Z"
         },
         "frequency": 5590,
         "key": "p0w3rt03h3p80pl3",
@@ -4222,8 +4222,8 @@
             "altitude": 7,
             "elevation": null,
             "heading": null,
-            "latitude": 35.573928,
-            "longitude": -105.857168,
+            "latitude": 35.573911,
+            "longitude": -105.857174,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -4265,7 +4265,7 @@
                 "type": "endpoint"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.313Z"
+            "updated": "2022-08-04T23:35:39.462Z"
         },
         "frequency": 5580,
         "key": "z6tUBl7a7v3zmkg4CS7M",
@@ -4316,7 +4316,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.313Z"
+            "updated": "2022-08-04T23:35:39.463Z"
         },
         "frequency": 5485,
         "key": "p0w3rt03h3p80pl3",
@@ -4324,7 +4324,7 @@
             "altitude": 7,
             "elevation": -3492,
             "heading": null,
-            "latitude": 35.472918,
+            "latitude": 35.472917,
             "longitude": -106.040402,
             "magneticHeading": null,
             "roll": null,
@@ -4367,7 +4367,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.313Z"
+            "updated": "2022-08-04T23:35:39.463Z"
         },
         "frequency": 5570,
         "key": "p0w3rt03h3p80pl3",
@@ -4375,7 +4375,7 @@
             "altitude": 7,
             "elevation": 2080,
             "heading": null,
-            "latitude": 35.54794,
+            "latitude": 35.547945,
             "longitude": -105.921475,
             "magneticHeading": null,
             "roll": null,
@@ -4418,7 +4418,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.314Z"
+            "updated": "2022-08-04T23:35:39.463Z"
         },
         "frequency": 5835,
         "key": "p0w3rt03h3p80pl3",
@@ -4426,7 +4426,7 @@
             "altitude": 7,
             "elevation": 2080,
             "heading": null,
-            "latitude": 35.54794,
+            "latitude": 35.547938,
             "longitude": -105.921397,
             "magneticHeading": null,
             "roll": null,
@@ -4469,7 +4469,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.314Z"
+            "updated": "2022-08-04T23:35:39.463Z"
         },
         "frequency": 5660,
         "key": "p0w3rt03h3p80pl3",
@@ -4477,8 +4477,8 @@
             "altitude": 7,
             "elevation": 2080,
             "heading": null,
-            "latitude": 35.547983,
-            "longitude": -105.921462,
+            "latitude": 35.547988,
+            "longitude": -105.92146,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -4520,7 +4520,7 @@
                 "type": "endpoint"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.314Z"
+            "updated": "2022-08-04T23:35:39.463Z"
         },
         "frequency": 2427,
         "key": null,
@@ -4571,7 +4571,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.314Z"
+            "updated": "2022-08-04T23:35:39.463Z"
         },
         "frequency": 5180,
         "key": "p0w3rt03h3p80pl3",
@@ -4622,7 +4622,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.314Z"
+            "updated": "2022-08-04T23:35:39.463Z"
         },
         "frequency": 5625,
         "key": "p0w3rt03h3p80pl3",
@@ -4630,8 +4630,8 @@
             "altitude": 7,
             "elevation": 1880,
             "heading": null,
-            "latitude": 35.458132,
-            "longitude": -106.03549,
+            "latitude": 35.458135,
+            "longitude": -106.035495,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -4673,7 +4673,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.314Z"
+            "updated": "2022-08-04T23:35:39.463Z"
         },
         "frequency": 5485,
         "key": "p0w3rt03h3p80pl3",
@@ -4682,7 +4682,7 @@
             "elevation": 1852,
             "heading": null,
             "latitude": 35.421342,
-            "longitude": -106.229382,
+            "longitude": -106.229373,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -4724,7 +4724,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.314Z"
+            "updated": "2022-08-04T23:35:39.463Z"
         },
         "frequency": 5485,
         "key": "p0w3rt03h3p80pl3",
@@ -4775,7 +4775,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.314Z"
+            "updated": "2022-08-04T23:35:39.463Z"
         },
         "frequency": 5665,
         "key": "p0w3rt03h3p80pl3",
@@ -4783,8 +4783,8 @@
             "altitude": 7,
             "elevation": 1895,
             "heading": null,
-            "latitude": 35.495675,
-            "longitude": -106.055215,
+            "latitude": 35.495668,
+            "longitude": -106.05521,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -4826,7 +4826,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.314Z"
+            "updated": "2022-08-04T23:35:39.463Z"
         },
         "frequency": 5230,
         "key": "p0w3rt03h3p80pl3",
@@ -4834,8 +4834,8 @@
             "altitude": 7,
             "elevation": 1895,
             "heading": null,
-            "latitude": 35.495657,
-            "longitude": -106.055233,
+            "latitude": 35.495663,
+            "longitude": -106.055232,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -4877,7 +4877,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.314Z"
+            "updated": "2022-08-04T23:35:39.463Z"
         },
         "frequency": 5835,
         "key": "p0w3rt03h3p80pl3",
@@ -4886,7 +4886,7 @@
             "elevation": 1870,
             "heading": null,
             "latitude": 35.412833,
-            "longitude": -106.145998,
+            "longitude": -106.145993,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -4928,7 +4928,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.314Z"
+            "updated": "2022-08-04T23:35:39.463Z"
         },
         "frequency": 5680,
         "key": "p0w3rt03h3p80pl3",
@@ -4979,7 +4979,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.314Z"
+            "updated": "2022-08-04T23:35:39.464Z"
         },
         "frequency": 5325,
         "key": "p0w3rt03h3p80pl3",
@@ -5030,7 +5030,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.314Z"
+            "updated": "2022-08-04T23:35:39.464Z"
         },
         "frequency": 5300,
         "key": "p0w3rt03h3p80pl3",
@@ -5081,7 +5081,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.314Z"
+            "updated": "2022-08-04T23:35:39.464Z"
         },
         "frequency": 5240,
         "key": "p0w3rt03h3p80pl3",
@@ -5089,7 +5089,7 @@
             "altitude": 10,
             "elevation": null,
             "heading": null,
-            "latitude": 35.47599,
+            "latitude": 35.475987,
             "longitude": -106.094182,
             "magneticHeading": null,
             "roll": null,
@@ -5132,7 +5132,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.314Z"
+            "updated": "2022-08-04T23:35:39.464Z"
         },
         "frequency": 5685,
         "key": "p0w3rt03h3p80pl3",
@@ -5183,7 +5183,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.315Z"
+            "updated": "2022-08-04T23:35:39.464Z"
         },
         "frequency": 5570,
         "key": "p0w3rt03h3p80pl3",
@@ -5191,8 +5191,8 @@
             "altitude": 7,
             "elevation": 1874,
             "heading": null,
-            "latitude": 35.452137,
-            "longitude": -106.053497,
+            "latitude": 35.452135,
+            "longitude": -106.053493,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -5234,7 +5234,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.315Z"
+            "updated": "2022-08-04T23:35:39.464Z"
         },
         "frequency": 5485,
         "key": "p0w3rt03h3p80pl3",
@@ -5243,7 +5243,7 @@
             "elevation": 1874,
             "heading": null,
             "latitude": 35.452128,
-            "longitude": -106.053537,
+            "longitude": -106.053533,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -5285,7 +5285,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.315Z"
+            "updated": "2022-08-04T23:35:39.464Z"
         },
         "frequency": 5640,
         "key": "p0w3rt03h3p80pl3",
@@ -5293,8 +5293,8 @@
             "altitude": 9,
             "elevation": 1902,
             "heading": null,
-            "latitude": 35.384457,
-            "longitude": -106.116265,
+            "latitude": 35.384458,
+            "longitude": -106.11626,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -5336,7 +5336,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.315Z"
+            "updated": "2022-08-04T23:35:39.464Z"
         },
         "frequency": 5485,
         "key": "p0w3rt03h3p80pl3",
@@ -5344,8 +5344,8 @@
             "altitude": 9,
             "elevation": 1902,
             "heading": null,
-            "latitude": 35.384478,
-            "longitude": -106.116228,
+            "latitude": 35.384473,
+            "longitude": -106.116225,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -5387,7 +5387,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.315Z"
+            "updated": "2022-08-04T23:35:39.464Z"
         },
         "frequency": 5625,
         "key": "p0w3rt03h3p80pl3",
@@ -5395,8 +5395,8 @@
             "altitude": 9,
             "elevation": 1902,
             "heading": null,
-            "latitude": 35.384477,
-            "longitude": -106.116245,
+            "latitude": 35.384478,
+            "longitude": -106.116247,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -5438,7 +5438,7 @@
                 "type": "endpoint"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.315Z"
+            "updated": "2022-08-04T23:35:39.464Z"
         },
         "frequency": 5510,
         "key": "p0w3rt03h3p80pl3",
@@ -5489,7 +5489,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.315Z"
+            "updated": "2022-08-04T23:35:39.464Z"
         },
         "frequency": 917,
         "key": null,
@@ -5540,7 +5540,7 @@
                 "type": "endpoint"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.315Z"
+            "updated": "2022-08-04T23:35:39.464Z"
         },
         "frequency": 5240,
         "key": "Whitfieldclan",
@@ -5548,8 +5548,8 @@
             "altitude": 5,
             "elevation": null,
             "heading": null,
-            "latitude": 35.628112,
-            "longitude": -105.88283,
+            "latitude": 35.628131,
+            "longitude": -105.882831,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -5591,7 +5591,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.315Z"
+            "updated": "2022-08-04T23:35:39.464Z"
         },
         "frequency": 5515,
         "key": "p0w3rt03h3p80pl3",
@@ -5642,7 +5642,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.315Z"
+            "updated": "2022-08-04T23:35:39.464Z"
         },
         "frequency": 5335,
         "key": "p0w3rt03h3p80pl3",
@@ -5650,8 +5650,8 @@
             "altitude": 8,
             "elevation": 2440,
             "heading": null,
-            "latitude": 35.600203,
-            "longitude": -105.880522,
+            "latitude": 35.6002,
+            "longitude": -105.880525,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -5693,7 +5693,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.315Z"
+            "updated": "2022-08-04T23:35:39.464Z"
         },
         "frequency": 5240,
         "key": "p0w3rt03h3p80pl3",
@@ -5744,7 +5744,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.315Z"
+            "updated": "2022-08-04T23:35:39.465Z"
         },
         "frequency": 5485,
         "key": "p0w3rt03h3p80pl3",
@@ -5795,7 +5795,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.315Z"
+            "updated": "2022-08-04T23:35:39.465Z"
         },
         "frequency": 5650,
         "key": "p0w3rt03h3p80pl3",
@@ -5803,8 +5803,8 @@
             "altitude": 8,
             "elevation": 2440,
             "heading": null,
-            "latitude": 35.600265,
-            "longitude": -105.880555,
+            "latitude": 35.600268,
+            "longitude": -105.880552,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -5846,7 +5846,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.315Z"
+            "updated": "2022-08-04T23:35:39.465Z"
         },
         "frequency": 5165,
         "key": "p0w3rt03h3p80pl3",
@@ -5854,8 +5854,8 @@
             "altitude": 10,
             "elevation": 1967,
             "heading": null,
-            "latitude": 35.47779,
-            "longitude": -105.887255,
+            "latitude": 35.477788,
+            "longitude": -105.887253,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -5897,7 +5897,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.315Z"
+            "updated": "2022-08-04T23:35:39.465Z"
         },
         "frequency": 5320,
         "key": "p0w3rt03h3p80pl3",
@@ -5948,7 +5948,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.315Z"
+            "updated": "2022-08-04T23:35:39.465Z"
         },
         "frequency": 5530,
         "key": "p0w3rt03h3p80pl3",
@@ -5999,7 +5999,7 @@
                 "type": "site"
             },
             "type": "airFiber",
-            "updated": "2022-08-04T23:27:57.316Z"
+            "updated": "2022-08-04T23:35:39.465Z"
         },
         "frequency": 5265,
         "key": "0000:0000:0000:0000",
@@ -6007,8 +6007,8 @@
             "altitude": 5,
             "elevation": 2071,
             "heading": null,
-            "latitude": 35.488511,
-            "longitude": -105.894694,
+            "latitude": 35.488512,
+            "longitude": -105.894709,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -6050,7 +6050,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.316Z"
+            "updated": "2022-08-04T23:35:39.469Z"
         },
         "frequency": 5175,
         "key": "p0w3rt03h3p80pl3",
@@ -6101,7 +6101,7 @@
                 "type": "site"
             },
             "type": "airFiber",
-            "updated": "2022-08-04T23:27:57.316Z"
+            "updated": "2022-08-04T23:35:39.469Z"
         },
         "frequency": 5760,
         "key": "p0w3rt03h3p80pl3",
@@ -6152,7 +6152,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.316Z"
+            "updated": "2022-08-04T23:35:39.469Z"
         },
         "frequency": 5610,
         "key": "p0w3rt03h3p80pl3",
@@ -6203,16 +6203,16 @@
                 "type": "site"
             },
             "type": "airFiber",
-            "updated": "2022-08-04T23:27:57.316Z"
+            "updated": "2022-08-04T23:35:39.470Z"
         },
         "frequency": 68040,
         "key": "p0w3rt03h3p80pl3",
         "location": {
-            "altitude": 2112,
+            "altitude": 2113,
             "elevation": 2094,
             "heading": null,
-            "latitude": 35.636609,
-            "longitude": -105.958905,
+            "latitude": 35.636641,
+            "longitude": -105.958922,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -6254,7 +6254,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.316Z"
+            "updated": "2022-08-04T23:35:39.478Z"
         },
         "frequency": 5570,
         "key": "p0w3rt03h3p80pl3",
@@ -6262,7 +6262,7 @@
             "altitude": 10,
             "elevation": 2094,
             "heading": null,
-            "latitude": 35.636562,
+            "latitude": 35.636567,
             "longitude": -105.95891,
             "magneticHeading": null,
             "roll": null,
@@ -6305,7 +6305,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.316Z"
+            "updated": "2022-08-04T23:35:39.478Z"
         },
         "frequency": 5535,
         "key": "p0w3rt03h3p80pl3",
@@ -6356,7 +6356,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.316Z"
+            "updated": "2022-08-04T23:35:39.478Z"
         },
         "frequency": 5610,
         "key": "p0w3rt03h3p80pl3",
@@ -6364,8 +6364,8 @@
             "altitude": 7,
             "elevation": 1990,
             "heading": null,
-            "latitude": 35.480773,
-            "longitude": -105.888595,
+            "latitude": 35.480772,
+            "longitude": -105.888597,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -6407,7 +6407,7 @@
                 "type": "endpoint"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.316Z"
+            "updated": "2022-08-04T23:35:39.478Z"
         },
         "frequency": 2462,
         "key": "Gratitude",
@@ -6458,7 +6458,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.316Z"
+            "updated": "2022-08-04T23:35:39.479Z"
         },
         "frequency": 5710,
         "key": "p0w3rt03h3p80pl3",
@@ -6466,8 +6466,8 @@
             "altitude": 7,
             "elevation": 2386,
             "heading": null,
-            "latitude": 35.625837,
-            "longitude": -105.897797,
+            "latitude": 35.625835,
+            "longitude": -105.897798,
             "magneticHeading": null,
             "roll": null,
             "tilt": null
@@ -6509,7 +6509,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.316Z"
+            "updated": "2022-08-04T23:35:39.479Z"
         },
         "frequency": 5625,
         "key": "p0w3rt03h3p80pl3",
@@ -6517,7 +6517,7 @@
             "altitude": 7,
             "elevation": 2386,
             "heading": null,
-            "latitude": 35.626013,
+            "latitude": 35.626005,
             "longitude": -105.897923,
             "magneticHeading": null,
             "roll": null,
@@ -6526,57 +6526,6 @@
         "mac": "78:8A:20:EC:8C:6D",
         "security": "wpa2",
         "ssid": "LCWNetHappyTrails5"
-    },
-    {
-        "airmax": {
-            "mode": "ap-ptmp-airmax-ac",
-            "wds": false
-        },
-        "authentication": "psk",
-        "backupRadio": null,
-        "channelWidth": 20,
-        "countryCode": 840,
-        "device": {
-            "authorized": true,
-            "category": "wireless",
-            "displayName": "RainbowsEnd5Northwest",
-            "firmwareVersion": "8.6.2",
-            "id": "3b0a1702-465e-48fa-92a8-f0c8fd4f25e3",
-            "ipAddress": "172.16.16.56/24",
-            "mac": "78:8a:20:14:3e:d3",
-            "model": "RP-5AC-Gen2",
-            "name": "RainbowsEnd5Northwest",
-            "platformId": "XC",
-            "platformName": "XC",
-            "serialNumber": null,
-            "site": {
-                "id": "ea5ee0e5-ec6f-4997-9b3b-13ae0f3b2566",
-                "name": "RainbowsEnd",
-                "parent": {
-                    "id": "e21c1eed-5c31-4bfc-91b3-e404f73da250",
-                    "parent": null
-                },
-                "status": "active",
-                "type": "site"
-            },
-            "type": "airMax",
-            "updated": "2022-08-04T23:27:57.316Z"
-        },
-        "frequency": 5745,
-        "key": "p0w3rt03h3p80pl3",
-        "location": {
-            "altitude": 2,
-            "elevation": 1765,
-            "heading": null,
-            "latitude": 35.421383,
-            "longitude": -106.071173,
-            "magneticHeading": null,
-            "roll": null,
-            "tilt": null
-        },
-        "mac": "78:8A:20:14:3E:D3",
-        "security": "wpa2",
-        "ssid": "LCWNetRbE5NW"
     },
     {
         "airmax": {
@@ -6611,7 +6560,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.316Z"
+            "updated": "2022-08-04T23:35:39.479Z"
         },
         "frequency": 5635,
         "key": "p0w3rt03h3p80pl3",
@@ -6662,7 +6611,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.316Z"
+            "updated": "2022-08-04T23:35:39.479Z"
         },
         "frequency": 5165,
         "key": "p0w3rt03h3p80pl3",
@@ -6679,6 +6628,57 @@
         "mac": "74:AC:B9:72:3C:AB",
         "security": "wpa2",
         "ssid": "LCWNetRbEURbE"
+    },
+    {
+        "airmax": {
+            "mode": "ap-ptmp-airmax-ac",
+            "wds": false
+        },
+        "authentication": "psk",
+        "backupRadio": null,
+        "channelWidth": 20,
+        "countryCode": 840,
+        "device": {
+            "authorized": true,
+            "category": "wireless",
+            "displayName": "RainbowsEnd5Northwest",
+            "firmwareVersion": "8.6.2",
+            "id": "3b0a1702-465e-48fa-92a8-f0c8fd4f25e3",
+            "ipAddress": "172.16.16.56/24",
+            "mac": "78:8a:20:14:3e:d3",
+            "model": "RP-5AC-Gen2",
+            "name": "RainbowsEnd5Northwest",
+            "platformId": "XC",
+            "platformName": "XC",
+            "serialNumber": null,
+            "site": {
+                "id": "ea5ee0e5-ec6f-4997-9b3b-13ae0f3b2566",
+                "name": "RainbowsEnd",
+                "parent": {
+                    "id": "e21c1eed-5c31-4bfc-91b3-e404f73da250",
+                    "parent": null
+                },
+                "status": "active",
+                "type": "site"
+            },
+            "type": "airMax",
+            "updated": "2022-08-04T23:35:39.479Z"
+        },
+        "frequency": 5745,
+        "key": "p0w3rt03h3p80pl3",
+        "location": {
+            "altitude": 2,
+            "elevation": 1765,
+            "heading": null,
+            "latitude": 35.421382,
+            "longitude": -106.071173,
+            "magneticHeading": null,
+            "roll": null,
+            "tilt": null
+        },
+        "mac": "78:8A:20:14:3E:D3",
+        "security": "wpa2",
+        "ssid": "LCWNetRbE5NW"
     },
     {
         "airmax": {
@@ -6713,7 +6713,7 @@
                 "type": "site"
             },
             "type": "airMax",
-            "updated": "2022-08-04T23:27:57.316Z"
+            "updated": "2022-08-04T23:35:39.479Z"
         },
         "frequency": 64800,
         "key": "p0w3rt03h3p80pl3",
