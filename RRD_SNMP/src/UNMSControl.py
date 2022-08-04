@@ -531,11 +531,15 @@ class UNMSControl(object):
         # now we need to loop over the devices.
         # we will use the device.id column
         antenna_list=[]
+        gain_list = []
         for name,values in self.JR.AllDataFrameFiltered['device.id'].iteritems():
-            antenna_list.append(self.GetDeviceAntenna(values))
+            antenna_list.append(self.GetDeviceAntenna(values)[0])
+            gain_list.append(self.GetDeviceAntenna(values)[1])
 
         # now add antenna to the existing dataframe
         self.JR.AllDataFrameFiltered['device.antenna']=antenna_list
+
+        self.JR.AllDataFrameFiltered['device.antenna_gain']=gain_list
 
 
 
@@ -595,9 +599,11 @@ class UNMSControl(object):
         try:
             print("antenna",data['airmax']['antenna']['name'])
             antenna = data['airmax']['antenna']['name']
+            gain = data['airmax']['antenna']['gain']
         except:
             antenna = 'problem'
-        return antenna
+            gain = 0
+        return [antenna,gain] 
 
     def GetDevicesDiscovered(self):
         """provides list of devices
