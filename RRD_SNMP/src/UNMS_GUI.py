@@ -172,6 +172,7 @@ class MyFrame(wx.Frame):
         self.CreateMenuItem(service_menu, "Get Site Clients",self.OnGetSiteClients)
         self.CreateMenuItem(service_menu, "Get Site Clients by name",self.OnGetSiteClientsByName)
         self.CreateMenuItem(service_menu, "Get All APs",self.OnGetAllAP)
+        self.CreateMenuItem(service_menu, "Create AP table",self.OnCreateAPTable)
         self.CreateMenuItem(service_menu, "Get Devices discovered",self.OnGetDevicesDiscovered)
         self.CreateMenuItem(service_menu, "Get All SSID",self.OnGetAllSSID)
         self.CreateMenuItem(service_menu, "Get Device credentials",self.OnGetDeviceCredential)
@@ -263,6 +264,8 @@ class MyFrame(wx.Frame):
         """
         self.user = self.UNMS.GetUser()
         
+    def OnCreateAPTable(self,event):
+        self.UNMS.CreateAPTable()
 
     def OnGetSiteDetails(self,event):
         """
