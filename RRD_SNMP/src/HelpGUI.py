@@ -51,7 +51,7 @@ class MyPanel(wx.Panel):
         #find location of the files:
         filename = 'GUI_help.htm'
         
-        self.help_file = os.getcwd()+'/help_files/'+filename
+        self.help_file = os.getcwd()+'/src/help_files/'+filename
         if(os.path.isfile(self.help_file)):
             self.help_file ='file://'+self.help_file
 

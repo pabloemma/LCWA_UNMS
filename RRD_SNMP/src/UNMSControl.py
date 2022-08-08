@@ -570,6 +570,39 @@ class UNMSControl(object):
 
         return data
 
+    def GetDataLinks(self):
+        action='/data-links'
+        q_string='?siteLinksOnly=false'
+        data = self.SessionPost('GET',action+q_string,auth_token = self.auth_token)
+        outfil = 'LCWA_Data_Links.txt'
+        # write json file
+        if(self.output_dirname != None):
+            DLoutput_file = self.output_dirname +outfil
+        else:
+            DLoutput_file = os.getcwd() + '/'+outfil
+        self.DLoutput_file = DLoutput_file
+        self.ME.Logging(self.program_name,'Your Data links are in file '+DLoutput_file)
+        self.JsonInterface(data,DLoutput_file)
+
+        # create csv file
+
+
+        self.JR.ReadFile(DLoutput_file)
+        data = self.JR.CreatePandas()
+
+  
+
+        # create new output file based on thye textfile with a csv extension
+        self.DL_csv_file = DLoutput_file.replace('.txt','.csv')
+        self.JR.PandasFrame2CSV(data,self.DL_csv_file)
+  
+
+
+
+
+
+        return data
+
     def GetDeviceDetail(self,device_id = None):
 
         action ='/devices'
@@ -1107,8 +1140,10 @@ if __name__ == '__main__':
     #MyC.GetSiteClients( idsite = '856f32ac-2529-4049-a862-b6e014b05b1e') #ridgeraod
     #MyC.GetSiteClients( idsite = '529482c2-bde5-4f1d-8112-e67ffb8abe94') #spiritridge
     #MyC.GetTraceStats("camp-stoney")
-    MyC.CreateAPTable()
-    MyC.GetDeviceAntenna('085d5e32-43f1-4185-baf3-ef62d07683f1')
+    MyC.GetDataLinks()
+    #MyC.CreateAPTable()
+    #MyC.GetDeviceAntenna('085d5e32-43f1-4185-baf3-ef62d07683f1')
+    #MyC.GetDevicesDiscovered()
     #MyC.GetUser()
     #MyC.GetSiteID(sitename="madre-de-dios")
     #MyC.GetSiteDetails()

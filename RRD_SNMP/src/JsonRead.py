@@ -88,7 +88,8 @@ class JsonRead(object):
             self.AllData.append(flat_dict)
         # Now we have all in a list, we can create a large Pandas frame
         self.AllDataFrame = PD.DataFrame(self.AllData)
-        print(self.AllDataFrame)
+        #print(self.AllDataFrame)
+        return self.AllDataFrame
 
     def FilterSSID(self,filter):
         """this removes rows acoording to filter, where filter is a tuple"""
@@ -111,6 +112,11 @@ class JsonRead(object):
         """converts pandas into csv file"""
         print('\n',self.prompt,'Your output file for the AP table is at  ',filename,'\n\n')
         self.AllDataFrameFiltered.to_csv(filename)
+        return
+        
+    def PandasFrame2CSV(self,data,filename):  
+        print('\n',self.prompt,'Your output file for the Frame table is at  ',filename,'\n\n')
+        data.to_csv(filename)
         return
 
     def FlatMyDict(self,data: MutableMapping, sep: str= '.') -> MutableMapping:

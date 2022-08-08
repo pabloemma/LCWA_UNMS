@@ -171,6 +171,7 @@ class MyFrame(wx.Frame):
         self.CreateMenuItem(service_menu, "Get Site Statistic",self.OnGetSiteStatistics)
         self.CreateMenuItem(service_menu, "Get Site Clients",self.OnGetSiteClients)
         self.CreateMenuItem(service_menu, "Get Site Clients by name",self.OnGetSiteClientsByName)
+        self.CreateMenuItem(service_menu, "Get Data Links",self.OnGetDataLinks)
         self.CreateMenuItem(service_menu, "Get All APs",self.OnGetAllAP)
         self.CreateMenuItem(service_menu, "Create AP table",self.OnCreateAPTable)
         self.CreateMenuItem(service_menu, "Get Devices discovered",self.OnGetDevicesDiscovered)
@@ -266,6 +267,9 @@ class MyFrame(wx.Frame):
         
     def OnCreateAPTable(self,event):
         self.UNMS.CreateAPTable()
+
+    def OnGetDataLinks(self,event):
+        self.UNMS.GetDataLinks()
 
     def OnGetSiteDetails(self,event):
         """
