@@ -7,7 +7,7 @@ jq==1.0.2
 kiwisolver==1.2.0
 macholib==1.14
 matplotlib==3.3.0
-numpy==1.19.1
+numpy==1.22.0
 Pillow==7.2.0
 pyinstaller==4.0
 pyinstaller-hooks-contrib==2020.7
